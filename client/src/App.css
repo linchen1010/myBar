@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Shadows+Into+Light&display=swap');
+
+.myNavbar {
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+  font-weight: 800;
+}
