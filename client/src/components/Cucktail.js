@@ -1,14 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 export default function Cucktail(props) {
-  const [cucktail, setCucktail] = useState({});
+  const [cucktails, setCucktails] = useState([]);
 
   // fetch Cocktail
   const fetchCocktail = async () => {
-    const res = await axios.get('http://localhost:5000');
-    setCucktail(res.data);
+    const res = await axios.get('http://localhost:5000/top10');
+    setCucktails(res.data);
     console.log(res.data);
   };
 
@@ -18,8 +18,17 @@ export default function Cucktail(props) {
   return (
     <div className="cucktail">
       <Container>
-        <img src={cucktail.imageURL} alt="" className="img" />
-        <h6>{cucktail.name}</h6>
+        <Row className="justify-content-md-center">
+          <Col xs>
+            {cucktails.length > 0 &&
+              cucktails.map((cucktail) => (
+                <div>
+                  <img src={cucktail.imageURL} className="img"></img>
+                  <h6>{cucktail.name}</h6>
+                </div>
+              ))}
+          </Col>
+        </Row>
       </Container>
     </div>
   );
