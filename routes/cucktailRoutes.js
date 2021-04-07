@@ -28,7 +28,7 @@ async function getTop10() {
     const Cocktail = await axios.get(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cucktailName[i]}`
     );
-    tenCucktail.push(sanitizeCocktailDB(Cocktail.data['drinks'][0]));
+    tenCucktail.push(sanitizeCocktailDB(Cucktail.data['drinks'][0]));
   }
   return tenCucktail;
 }
