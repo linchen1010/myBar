@@ -7,7 +7,7 @@ const port = 5000;
 
 
 
-function sanitizeCocktailDB(data) {
+function sanitizeCucktailDB(data) {
   cucktails = {};
   cucktails['name'] = data['strDrink'];
   cucktails['instruction'] = data['strInstructions'];
@@ -27,10 +27,10 @@ async function getTop10() {
   cucktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
   tenCucktail = []
   for (let i = 0; i < cucktailName.length; i++) {
-    const Cocktail = await axios.get(
+    const Cucktail = await axios.get(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cucktailName[i]}`
     );
-    tenCucktail.push(sanitizeCocktailDB(Cocktail.data['drinks'][0]));
+    tenCucktail.push(sanitizeCucktailDB(Cucktail.data['drinks'][0]));
   }
   return tenCucktail;
 }
@@ -57,7 +57,7 @@ module.exports = (app) => {
     }
   });
 
-  app.get('/Top10', async (req, res) => {
+  app.get('/top10', async (req, res) => {
     try {
       tenCucktail = await getTop10()
       res.send(tenCucktail);
