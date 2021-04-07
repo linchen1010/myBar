@@ -5,20 +5,9 @@ const app = express();
 
 const port = 5000;
 
-async function grabTenCocktails() {
-  cucktails = [];
-  let i = 0;
-  for (i = 0; i < 10; ++i) {
-    const randomCocktail = await axios.get(
-      'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-    );
-    cucktails.push(randomCocktail.data);
-    console.log(randomCocktail.data);
-  }
-  return cucktails;
-}
 
-function getCuckTailData(data) {
+
+function sanitizeCocktailDB(data) {
   cucktails = {};
   cucktails['name'] = data['strDrink'];
   cucktails['instruction'] = data['strInstructions'];
@@ -34,20 +23,44 @@ function getCuckTailData(data) {
   return cucktails;
 }
 
-module.exports = (app) => {
-  app.get('/', async (req, res) => {
-    try {
-      const randomCocktail = await axios.get(
-        'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-      );
+async function getTop10() {
+  cocktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
+  TenCocktail = []
+  for (let i = 0; i < cocktailName.length; i++) {
+    const Cocktail = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName[i]}`
+    );
+    TenCocktail.push(sanitizeCocktailDB(Cocktail.data['drinks'][0]));
+  }
+  return TenCocktail;
+}
 
-      // res.send(randomCocktail.data);
-      const cucktail = getCuckTailData(randomCocktail.data['drinks'][0]);
-      let outputString = JSON.stringify(cucktail, null, 2);
-      res.send(cucktail);
-      // console.log(randomCocktail.data['drinks'][0]);
-      console.log(cucktail);
-      //console.log(data);
+async function getRandom() {
+  random = []
+  for (let i = 0; i < 6; ++i) {
+    const randomCocktail = await axios.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+    );
+    random.push(sanitizeCocktailDB(randomCocktail.data['drinks'][0]));
+  }
+  return random;
+}
+
+module.exports = (app) => {
+  app.get('/random', async (req, res) => {
+    try {
+      random = await getRandom();
+      res.send(random);
+    } catch (err) {
+      console.log('Error', err);
+      res.status(500).end(err.message);
+    }
+  });
+
+  app.get('/Top10', async (req, res) => {
+    try {
+      TenCocktail = await getTop10()
+      res.send(TenCocktail);
     } catch (err) {
       console.log('Error', err);
       res.status(500).end(err.message);
