@@ -24,24 +24,24 @@ function sanitizeCocktailDB(data) {
 }
 
 async function getTop10() {
-  cocktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
-  TenCocktail = []
-  for (let i = 0; i < cocktailName.length; i++) {
+  cucktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
+  tenCucktail = []
+  for (let i = 0; i < cucktailName.length; i++) {
     const Cocktail = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName[i]}`
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cucktailName[i]}`
     );
-    TenCocktail.push(sanitizeCocktailDB(Cocktail.data['drinks'][0]));
+    tenCucktail.push(sanitizeCocktailDB(Cocktail.data['drinks'][0]));
   }
-  return TenCocktail;
+  return tenCucktail;
 }
 
 async function getRandom() {
   random = []
   for (let i = 0; i < 6; ++i) {
-    const randomCocktail = await axios.get(
+    const randomCucktail = await axios.get(
       'https://www.thecocktaildb.com/api/json/v1/1/random.php'
     );
-    random.push(sanitizeCocktailDB(randomCocktail.data['drinks'][0]));
+    random.push(sanitizeCocktailDB(randomCucktail.data['drinks'][0]));
   }
   return random;
 }
@@ -59,8 +59,8 @@ module.exports = (app) => {
 
   app.get('/Top10', async (req, res) => {
     try {
-      TenCocktail = await getTop10()
-      res.send(TenCocktail);
+      tenCucktail = await getTop10()
+      res.send(tenCucktail);
     } catch (err) {
       console.log('Error', err);
       res.status(500).end(err.message);
