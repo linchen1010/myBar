@@ -25,10 +25,10 @@ async function getTop10() {
   cucktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
   tenCucktail = []
   for (let i = 0; i < cucktailName.length; i++) {
-    const Cocktail = await axios.get(
+    const cucktail = await axios.get(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cucktailName[i]}`
     );
-    tenCucktail.push(sanitizeCocktailDB(Cucktail.data['drinks'][0]));
+    tenCucktail.push(sanitizeCocktailDB(cucktail.data['drinks'][0]));
   }
   return tenCucktail;
 }
