@@ -41,9 +41,11 @@ module.exports = (app) => {
         'https://www.thecocktaildb.com/api/json/v1/1/random.php'
       );
 
-      res.send(randomCocktail.data);
+      // res.send(randomCocktail.data);
       const cucktail = getCuckTailData(randomCocktail.data['drinks'][0]);
-      console.log(randomCocktail.data['drinks'][0]);
+      let outputString = JSON.stringify(cucktail, null, 2);
+      res.send(cucktail);
+      // console.log(randomCocktail.data['drinks'][0]);
       console.log(cucktail);
       //console.log(data);
     } catch (err) {

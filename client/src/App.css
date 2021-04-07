@@ -9,3 +9,16 @@
   font-size: 25px;
   font-weight: 800;
 }
+
+.img {
+  border-radius: 50%;
+  width: 150px;
+}
+
+.cucktail {
+  text-align: center;
+  padding: auto;
+  font-family: 'Satisfy', cursive;
+  font-size: 50px;
+  font-weight: 800;
+}
