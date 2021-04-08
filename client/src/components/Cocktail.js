@@ -3,8 +3,17 @@ import React from 'react';
 export default function Cocktail(props) {
   return (
     <div className="cocktail">
-      <img src={props.imageURL} alt="cocktail image" className="img"></img>
-      <h6>{props.name}</h6>
+      <a href="#">
+        <img
+          src={props.imageURL}
+          alt="cocktail image"
+          className="cocktailImg"
+        ></img>
+        <div class="middle">
+          <div class="text">see more</div>
+        </div>
+      </a>
+      <h6 className="cocktailName">{props.name}</h6>
     </div>
   );
 }

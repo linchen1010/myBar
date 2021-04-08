@@ -3,16 +3,56 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Shadows+Into+Light&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Indie+Flower&display=swap');
+/* navbar */
 .myNavbar {
   font-family: 'Satisfy', cursive;
   font-size: 25px;
   font-weight: 800;
 }
 
-.img {
+.jumbotron {
+  height: 400px;
+  background-image: url('https://images.unsplash.com/photo-1544782321-8fab42cfd62e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+  background-size: auto 100%;
+  color: white;
+  text-align: center;
+  opacity: 0.9;
+  font-family: 'Courgette', cursive;
+}
+
+.jumbotron .p {
+  padding-top: 50px;
+}
+
+.cocktailImg {
   border-radius: 50%;
   width: 175px;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.cocktail:hover .cocktailImg {
+  opacity: 0.7;
+}
+
+.cocktail:hover .middle {
+  opacity: 0.8;
+}
+
+.text {
+  color: white;
+  font-size: 14px;
+  padding: 16px 32px;
 }
 
 .cocktail {
@@ -20,4 +60,18 @@
   padding: auto;
   font-size: 50px;
   font-weight: 800;
+}
+
+/* Top 10, popular ...*/
+.cocktailCategory {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 800;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.cocktailName {
+  padding-top: 15px;
+  padding-bottom: 20px;
 }

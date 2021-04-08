@@ -20,6 +20,7 @@ export default function Cocktails() {
   return (
     <div>
       <Container fluid="sm">
+        <h1 className="cocktailCategory">Top 10</h1>
         <Row className="justify-content-md-center">
           {cocktails.length > 0 &&
             cocktails.map((cocktail, i) => (
