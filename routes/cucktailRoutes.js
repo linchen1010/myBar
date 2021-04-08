@@ -5,13 +5,7 @@ const app = express();
 
 const port = 5000;
 
-<<<<<<< HEAD
-
-
-function sanitizeCucktailDB(data) {
-=======
 function sanitizeCocktailDB(data) {
->>>>>>> 64b36cc572cddb72972a6f9da76c08fefc437583
   cucktails = {};
   cucktails['name'] = data['strDrink'];
   cucktails['instruction'] = data['strInstructions'];
@@ -31,17 +25,10 @@ async function getTop10() {
   cucktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
   tenCucktail = []
   for (let i = 0; i < cucktailName.length; i++) {
-<<<<<<< HEAD
-    const Cucktail = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cucktailName[i]}`
-    );
-    tenCucktail.push(sanitizeCucktailDB(Cucktail.data['drinks'][0]));
-=======
     const cucktail = await axios.get(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cucktailName[i]}`
     );
     tenCucktail.push(sanitizeCocktailDB(cucktail.data['drinks'][0]));
->>>>>>> 64b36cc572cddb72972a6f9da76c08fefc437583
   }
   return tenCucktail;
 }
