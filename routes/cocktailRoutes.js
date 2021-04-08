@@ -6,40 +6,40 @@ const app = express();
 const port = 5000;
 
 function sanitizeCocktailDB(data) {
-  cucktails = {};
-  cucktails['name'] = data['strDrink'];
-  cucktails['instruction'] = data['strInstructions'];
-  cucktails['imageURL'] = data['strDrinkThumb'];
-  cucktails['ingredient'] = [];
-  cucktails['measure'] = [];
+  cocktails = {};
+  cocktails['name'] = data['strDrink'];
+  cocktails['instruction'] = data['strInstructions'];
+  cocktails['imageURL'] = data['strDrinkThumb'];
+  cocktails['ingredient'] = [];
+  cocktails['measure'] = [];
   for (let i = 0; i < 15; i++) {
     if (data[`strIngredient${i}`] != null) {
-      cucktails['ingredient'].push(data[`strIngredient${i}`]);
-      cucktails['measure'].push(data[`strMeasure${i}`]);
+      cocktails['ingredient'].push(data[`strIngredient${i}`]);
+      cocktails['measure'].push(data[`strMeasure${i}`]);
     }
   }
-  return cucktails;
+  return cocktails;
 }
 
 async function getTop10() {
-  cucktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
-  tenCucktail = []
-  for (let i = 0; i < cucktailName.length; i++) {
-    const cucktail = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cucktailName[i]}`
+  cocktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
+  tenCocktail = []
+  for (let i = 0; i < cocktailName.length; i++) {
+    const cocktail = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName[i]}`
     );
-    tenCucktail.push(sanitizeCocktailDB(cucktail.data['drinks'][0]));
+    tenCocktail.push(sanitizeCocktailDB(cocktail.data['drinks'][0]));
   }
-  return tenCucktail;
+  return tenCocktail;
 }
 
 async function getRandom() {
   random = [];
   for (let i = 0; i < 6; ++i) {
-    const randomCucktail = await axios.get(
+    const randomCocktail = await axios.get(
       'https://www.thecocktaildb.com/api/json/v1/1/random.php'
     );
-    random.push(sanitizeCocktailDB(randomCucktail.data['drinks'][0]));
+    random.push(sanitizeCocktailDB(randomCocktail.data['drinks'][0]));
   }
   return random;
 }
@@ -58,11 +58,13 @@ module.exports = (app) => {
 
   app.get('/top10', async (req, res) => {
     try {
-      tenCucktail = await getTop10()
-      res.send(tenCucktail);
+      tenCocktail = await getTop10()
+      res.send(tenCocktail);
     } catch (err) {
       console.log('Error', err);
       res.status(500).end(err.message);
     }
   });
+
+
 };

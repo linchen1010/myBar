@@ -8,7 +8,7 @@ app.all('/*', function (req, res, next) {
   next();
 });
 
-require('./routes/cucktailRoutes')(app);
+require('./routes/cocktailRoutes')(app);
 
 const PORT = 5000;
 
