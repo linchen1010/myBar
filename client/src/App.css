@@ -9,6 +9,7 @@
   font-family: 'Satisfy', cursive;
   font-size: 25px;
   font-weight: 800;
+  margin-bottom: 5px;
 }
 
 .jumbotron {
@@ -21,8 +22,13 @@
   font-family: 'Courgette', cursive;
 }
 
-.jumbotron .p {
-  padding-top: 50px;
+.jumbotron p {
+  margin-top: 5%;
+}
+
+.jumbotron h1 {
+  margin-top: 3%;
+  font-size: 50px;
 }
 
 .cocktailImg {
