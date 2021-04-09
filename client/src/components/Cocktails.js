@@ -24,12 +24,8 @@ export default function Cocktails() {
         <Row className="justify-content-md-center">
           {cocktails.length > 0 &&
             cocktails.map((cocktail, i) => (
-              <Col>
-                <Cocktail
-                  key={i}
-                  imageURL={cocktail.imageURL}
-                  name={cocktail.name}
-                />
+              <Col key={cocktail.name}>
+                <Cocktail imageURL={cocktail.imageURL} name={cocktail.name} />
               </Col>
             ))}
         </Row>

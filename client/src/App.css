@@ -6,10 +6,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Indie+Flower&display=swap');
 /* navbar */
 .myNavbar {
-  font-family: 'Satisfy', cursive;
+  font-family: 'Courgette', cursive;
   font-size: 25px;
   font-weight: 800;
   margin-bottom: 5px;
+}
+
+.homeCover {
+  margin: 15px 15px !important;
 }
 
 .jumbotron {
@@ -37,14 +41,13 @@
 }
 
 .middle {
-  transition: 0.5s ease;
+  transition: 0.5s easet;
   opacity: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  text-align: center;
 }
 
 .cocktail:hover .cocktailImg {
@@ -75,9 +78,11 @@
   font-weight: 800;
   padding-top: 20px;
   padding-bottom: 20px;
+  font-family: 'Courgette', cursive;
 }
 
 .cocktailName {
   padding-top: 15px;
   padding-bottom: 20px;
+  font-weight: 500;
 }

@@ -3,7 +3,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 
 export default function HomeCover() {
   return (
-    <div>
+    <div className="homeCover">
       <Jumbotron>
         <h1>Make Your Own Cocktail</h1>
         <p>

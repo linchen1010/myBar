@@ -9,8 +9,8 @@ export default function Cocktail(props) {
           alt="cocktail image"
           className="cocktailImg"
         ></img>
-        <div class="middle">
-          <div class="text">see more</div>
+        <div className="middle">
+          <div className="text">See More</div>
         </div>
       </a>
       <h6 className="cocktailName">{props.name}</h6>

@@ -7,7 +7,7 @@ export default function Header() {
     <div>
       <Navbar bg="dark" variant="dark" className="myNavbar">
         <Navbar.Brand href="#index">
-          <LocalBarIcon color="white" fontSize="large" />
+          <LocalBarIcon color="inherit" fontSize="large" />
           myBestBar
         </Navbar.Brand>
         <Nav className="mr-auto">
