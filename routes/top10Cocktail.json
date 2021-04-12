@@ -1,0 +1,116 @@
+[
+  {
+    "id": "11001",
+    "name": "Old Fashioned",
+    "instruction": "Place sugar cube in old fashioned glass and saturate with bitters, add a dash of plain water. Muddle until dissolved.\r\nFill the glass with ice cubes and add whiskey.\r\n\r\nGarnish with orange twist, and a cocktail cherry.",
+    "imageURL": "https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg",
+    "ingredient": ["Bourbon", "Angostura bitters", "Sugar", "Water"],
+    "measure": ["4.5 cL", "2 dashes", "1 cube", "dash"]
+  },
+  {
+    "id": "11003",
+    "name": "Negroni",
+    "instruction": "Stir into glass over ice, garnish and serve.",
+    "imageURL": "https://www.thecocktaildb.com/images/media/drink/qgdu971561574065.jpg",
+    "ingredient": ["Gin", "Campari", "Sweet Vermouth"],
+    "measure": ["1 oz ", "1 oz ", "1 oz "]
+  },
+  {
+    "id": "11006",
+    "name": "Daiquiri",
+    "instruction": "Pour all ingredients into shaker with ice cubes. Shake well. Strain in chilled cocktail glass.",
+    "imageURL": "https://www.thecocktaildb.com/images/media/drink/mrz9091589574515.jpg",
+    "ingredient": ["Light rum", "Lime", "Powdered sugar"],
+    "measure": ["1 1/2 oz ", "Juice of 1/2 ", "1 tsp "]
+  },
+  {
+    "id": "17181",
+    "name": "Dirty Martini",
+    "instruction": "Pour the vodka, dry vermouth and olive brine into a cocktail shaker with a handful of ice and shake well.\r\nRub the rim of a martini glass with the wedge of lemon.\r\nStrain the contents of the cocktail shaker into the glass and add the olive.\r\nA dirty Martini contains a splash of olive brine or olive juice and is typically garnished with an olive.",
+    "imageURL": "https://www.thecocktaildb.com/images/media/drink/vcyvpq1485083300.jpg",
+    "ingredient": ["Vodka", "Dry Vermouth", "Olive Brine", "Lemon", "Olive"],
+    "measure": ["70ml/2fl oz", "1 tbsp", "2 tbsp", "1 wedge", "1"]
+  },
+  {
+    "id": "11007",
+    "name": "Margarita",
+    "instruction": "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
+    "imageURL": "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
+    "ingredient": ["Tequila", "Triple sec", "Lime juice", "Salt"],
+    "measure": ["1 1/2 oz ", "1/2 oz ", "1 oz ", null]
+  },
+  {
+    "id": "17204",
+    "name": "Long Island Iced Tea",
+    "instruction": "Mix all contents in a highball glass and sitr gently. Add dash of Coca-Cola for the coloring and garnish with lemon or lime twist.",
+    "imageURL": "https://www.thecocktaildb.com/images/media/drink/wx7hsg1504370510.jpg",
+    "ingredient": [
+      "Vodka",
+      "Tequila",
+      "Light rum",
+      "Gin",
+      "Coca-Cola",
+      "Lemon peel"
+    ],
+    "measure": [
+      "1/2 oz ",
+      "1/2 oz ",
+      "1/2 oz ",
+      "1/2 oz ",
+      "1 dash ",
+      "Twist of "
+    ]
+  },
+  {
+    "id": "11004",
+    "name": "Whiskey Sour",
+    "instruction": "Shake with ice. Strain into chilled glass, garnish and serve. If served 'On the rocks', strain ingredients into old-fashioned glass filled with ice.",
+    "imageURL": "https://www.thecocktaildb.com/images/media/drink/hbkfsh1589574990.jpg",
+    "ingredient": [
+      "Blended whiskey",
+      "Lemon",
+      "Powdered sugar",
+      "Cherry",
+      "Lemon"
+    ],
+    "measure": ["2 oz ", "Juice of 1/2 ", "1/2 tsp ", "1 ", "1/2 slice "]
+  },
+  {
+    "id": "11008",
+    "name": "Manhattan",
+    "instruction": "Stirred over ice, strained into a chilled glass, garnished, and served up.",
+    "imageURL": "https://www.thecocktaildb.com/images/media/drink/yk70e31606771240.jpg",
+    "ingredient": [
+      "Sweet Vermouth",
+      "Bourbon",
+      "Angostura bitters",
+      "Ice",
+      "Maraschino cherry",
+      "Orange peel"
+    ],
+    "measure": [
+      "3/4 oz ",
+      "2 1/2 oz Blended ",
+      "dash ",
+      "2 or 3 ",
+      "1 ",
+      "1 twist of "
+    ]
+  },
+  {
+    "id": "178325",
+    "name": "Aperol Spritz",
+    "instruction": "Put a couple of cubes of ice into 2 glasses and add a 50 ml measure of Aperol to each. Divide the prosecco between the glasses and then top up with soda, if you like.",
+    "imageURL": "https://www.thecocktaildb.com/images/media/drink/iloasq1587661955.jpg",
+    "ingredient": ["Aperol", "Prosecco", "Soda Water", "", "", "", ""],
+    "measure": ["100 ml", "150 ml", "Top", "", "", "", ""]
+  },
+  {
+    "id": "11000",
+    "name": "Mojito",
+    "instruction": "Muddle mint leaves with sugar and lime juice. Add a splash of soda water and fill the glass with cracked ice. Pour the rum and top with soda water. Garnish and serve with straw.",
+    "imageURL": "https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg",
+    "ingredient": ["Light rum", "Lime", "Sugar", "Mint", "Soda water"],
+    "measure": ["2-3 oz ", "Juice of 1 ", "2 tsp ", "2-4 ", null]
+  }
+]

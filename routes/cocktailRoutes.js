@@ -1,10 +1,17 @@
 const express = require('express');
 const axios = require('axios');
-
+const top10Data = require('./top10Cocktail.json')
 const app = express();
 
 const port = 5000;
 
+
+/**
+* Filter unused cocktail data in cocktail API 
+* Return data contains cocktail id,name,instruction,image URL, ingredient, measure.
+* @param {Object} data
+* @return {Object}
+*/
 function sanitizeCocktailDB(data) {
   cocktails = {};
   cocktails['id'] = data['idDrink']
@@ -22,28 +29,29 @@ function sanitizeCocktailDB(data) {
   return cocktails;
 }
 
-function sanitizeIngredient(data) {
-  ingredient = {};
-  console.log(data['strIngredient']);
-  ingredient['id'] = data['idIngredient'];
-  ingredient['name'] = data['strIngredient'];
-  ingredient['Description'] = data['strDescription'];
-  ingredient['imageURL'] = getIngrediantImg(data['strIngredient']);
-  return ingredient;
-}
 
-async function getTop10() {
-  cocktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
-  tenCocktail = []
-  for (let i = 0; i < cocktailName.length; i++) {
-    const cocktail = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName[i]}`
-    );
-    tenCocktail.push(sanitizeCocktailDB(cocktail.data['drinks'][0]));
-  }
-  return tenCocktail;
-}
+/* 
+get top 10 cocktail data from cocktail API 
+(currently not use this function)
+*/
+// async function getTop10() {
+//   cocktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
+//   tenCocktail = []
+//   for (let i = 0; i < cocktailName.length; i++) {
+//     const cocktail = await axios.get(
+//       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName[i]}`
+//     );
+//     tenCocktail.push(sanitizeCocktailDB(cocktail.data['drinks'][0]));
+//   }
+//   return tenCocktail;
+// }
 
+
+/**
+* Fetch random six cocktails from cocktail API
+* Return six random cocktails
+* @return {Object}
+*/
 async function getRandom() {
   random = [];
   for (let i = 0; i < 6; ++i) {
@@ -55,43 +63,24 @@ async function getRandom() {
   return random;
 }
 
-async function getCocktailByID(val) {
+/**
+* Search specific cocktail by id
+* Return filtered one cocktail data
+* @param {Number} id
+* @return {Object} 
+*/
+async function getCocktailByID(id) {
   const cocktailID = await axios.get(
-    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${val}`
+    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
   );
   return sanitizeCocktailDB(cocktailID.data['drinks'][0]);
 }
 
-async function getIngrediantByID(val) {
-  const ingrediantID = await axios.get(
-    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${val}`
-  );
-  return sanitizeIngredient(ingrediantID.data['ingredients'][0]);
-}
-
-function getIngrediantImg(data) {
-  return `www.thecocktaildb.com/images/ingredients/${data}-Medium.png`;
-}
-
-async function getIngrediant(data) {
-  const ingredient = await axios.get(
-    `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${data}`
-  );
-  return sanitizeIngredient(ingredient.data['ingredients'][0]);
-}
-
-async function getPopularIngred() {
-  ingredName = ['vodka', 'gin', 'rum', 'tequila'];
-  popIngred = [];
-  for (let i = 0; i < ingredName.length; i++) {
-    const temp = await getIngrediant(ingredName[i]);
-    popIngred.push(temp);
-  }
-  console.log(popIngred)
-  return popIngred;
-}
-
 module.exports = (app) => {
+
+  /**
+  * Get six random cocktails data
+  */
   app.get('/cocktail/random', async (req, res) => {
     try {
       random = await getRandom();
@@ -103,16 +92,21 @@ module.exports = (app) => {
     }
   });
 
+  /**
+  * Get top10 cocktails from local json data
+  */
   app.get('/cocktail/top10', async (req, res) => {
     try {
-      tenCocktail = await getTop10()
-      res.send(tenCocktail);
+      res.send(top10Data);
     } catch (err) {
       console.log('Error', err);
       res.status(500).end(err.message);
     }
   });
 
+  /**
+  * Get specific cocktail by cocktail id
+  */
   app.get('/cocktail/searchID/:cocktail_id', async (req, res) => {
     try {
       const cocktailID = await getCocktailByID(req.params.cocktail_id);
@@ -122,39 +116,5 @@ module.exports = (app) => {
       res.status(500).end(err.message);
     }
   });
-
-
-  app.get('/ingredient/searchName/:name', async (req, res) => {
-    try {
-      ingredient = await getIngrediant(req.params.name)
-      res.send(ingredient);
-    } catch (err) {
-      console.log('Error', err);
-      res.status(500).end(err.message);
-    }
-  });
-
-
-  app.get('/ingredient/searchID/:ingredient_id', async (req, res) => {
-    try {
-      const ingredientID = await getIngrediantByID(req.params.ingredient_id);
-      res.send(ingredientID);
-    } catch (err) {
-      console.log('Error', err);
-      res.status(500).end(err.message);
-    }
-  });
-
-  app.get('/ingredient/popIngred', async (req, res) => {
-    try {
-      ingreds = await getPopularIngred();
-      res.send(ingreds);
-    } catch (err) {
-      console.log('Error', err);
-      res.status(500).end(err.message);
-    }
-  });
-
-
 
 };

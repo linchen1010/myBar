@@ -1,5 +1,6 @@
 const express = require('express');
-
+const fs = require("fs");
+const axios = require('axios');
 const app = express();
 
 app.all('/*', function (req, res, next) {
@@ -8,7 +9,9 @@ app.all('/*', function (req, res, next) {
   next();
 });
 
+
 require('./routes/cocktailRoutes')(app);
+require('./routes/ingredientRoutes')(app);
 
 const PORT = 5000;
 
