@@ -9,7 +9,7 @@ export default function Cocktails() {
 
   // fetch Cocktail
   const fetchCocktail = async () => {
-    const res = await axios.get('http://localhost:5000/top10');
+    const res = await axios.get('http://localhost:5000/cocktail/top10');
     setCocktails(res.data);
     console.log(res.data);
   };
@@ -25,7 +25,11 @@ export default function Cocktails() {
           {cocktails.length > 0 &&
             cocktails.map((cocktail, i) => (
               <Col key={cocktail.name}>
-                <Cocktail imageURL={cocktail.imageURL} name={cocktail.name} />
+                <Cocktail
+                  imageURL={cocktail.imageURL}
+                  name={cocktail.name}
+                  id={cocktail.id}
+                />
               </Col>
             ))}
         </Row>
