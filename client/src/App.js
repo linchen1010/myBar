@@ -1,9 +1,10 @@
 import './App.css';
 import Header from './components/Header';
-import Cocktails from './components/Cocktails';
+import Cocktails from './components/Cocktails/Cocktails';
 import HomeCover from './components/HomeCover';
 import About from './components/About';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CocktailDetail from './components/Cocktails/CocktailDetail';
 function App() {
   return (
     <Router>
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" exact component={HomeCover} />
         <Route path="/" exact component={Cocktails} />
         <Route path="/about" component={About} />
+        <Route path="/cocktails/:id" component={CocktailDetail} />
       </div>
     </Router>
   );

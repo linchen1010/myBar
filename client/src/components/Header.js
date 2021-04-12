@@ -7,29 +7,25 @@ export default function Header() {
   return (
     <div>
       <Navbar bg="dark" variant="dark" className="myNavbar">
-        <Link to="/">
-          <Navbar.Brand href="/">
-            <LocalBarIcon color="inherit" fontSize="large" />
-            myBestBar
-          </Navbar.Brand>
-        </Link>
+        <Navbar.Brand href="/" to="/">
+          <LocalBarIcon color="inherit" fontSize="large" />
+          myBestBar
+        </Navbar.Brand>
+
         <Nav className="mr-auto">
-          <Link to="/">
-            <Nav.Link href="/">Home</Nav.Link>
-          </Link>
-          {/* <Link to="/">
-            <Nav.Link href="/category">Category</Nav.Link>
-          </Link> */}
-          <Link to="/about">
-            <Nav.Link href="/about">About</Nav.Link>
-          </Link>
+          <Nav.Link as={Link} to="/">
+            Home
+          </Nav.Link>
+          <Nav.Link as={Link} to="/about">
+            About
+          </Nav.Link>
 
           {/* <Nav.Link href="#">Pricing</Nav.Link> */}
         </Nav>
         <Nav className="ml-auto">
-          <Link to="/signup">
-            <Nav.Link href="/signup">Sign up</Nav.Link>
-          </Link>
+          <Nav.Link as={Link} to="signup">
+            Sign up
+          </Nav.Link>
         </Nav>
       </Navbar>
     </div>
