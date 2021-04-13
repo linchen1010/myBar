@@ -23,7 +23,6 @@ function getIngredientImg(name) {
 * @return {Object}
 */
 function sanitizeCocktailDB(data) {
-  console.log(data);
   let cocktails = {};
   cocktails['id'] = data['idDrink']
   cocktails['name'] = data['strDrink'];
@@ -40,24 +39,6 @@ function sanitizeCocktailDB(data) {
   }
   return cocktails;
 }
-
-
-/* 
-get top 10 cocktail data from cocktail API 
-(currently not use this function)
-*/
-// async function getTop10() {
-//   cocktailName = ['Old Fashioned', 'Negroni', 'Daiquiri', 'Dirty Martini', 'Margarita', 'Long Island Iced Tea', 'Whiskey Sour', 'Manhattan', 'Aperol Spritz', 'Mojito']
-//   tenCocktail = []
-//   for (let i = 0; i < cocktailName.length; i++) {
-//     const cocktail = await axios.get(
-//       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName[i]}`
-//     );
-//     tenCocktail.push(sanitizeCocktailDB(cocktail.data['drinks'][0]));
-//   }
-//   return tenCocktail;
-// }
-
 
 /**
 * Fetch random six cocktails from cocktail API
