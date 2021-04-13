@@ -7,22 +7,34 @@ const port = 5000;
 
 
 /**
+* Fetch ingredient image by name
+* Return that ingredient medium size image 
+* @param {Object} data
+* @return {Object}
+*/
+function getIngredientImg(name) {
+  return `www.thecocktaildb.com/images/ingredients/${name}-Medium.png`;
+}
+
+/**
 * Filter unused cocktail data in cocktail API 
 * Return data contains cocktail id,name,instruction,image URL, ingredient, measure.
 * @param {Object} data
 * @return {Object}
 */
 function sanitizeCocktailDB(data) {
-  cocktails = {};
+  console.log(data);
+  let cocktails = {};
   cocktails['id'] = data['idDrink']
   cocktails['name'] = data['strDrink'];
   cocktails['instruction'] = data['strInstructions'];
   cocktails['imageURL'] = data['strDrinkThumb'];
-  cocktails['ingredient'] = [];
+  cocktails['ingredient'] = {};
   cocktails['measure'] = [];
-  for (let i = 0; i < 15; i++) {
+  for (let i = 1; i <= 15; i++) {
     if (data[`strIngredient${i}`] != null) {
-      cocktails['ingredient'].push(data[`strIngredient${i}`]);
+      cocktails['ingredient'][data[`strIngredient${i}`]] = {};
+      cocktails['ingredient'][data[`strIngredient${i}`]] = getIngredientImg(data[`strIngredient${i}`]);
       cocktails['measure'].push(data[`strMeasure${i}`]);
     }
   }
