@@ -44,20 +44,6 @@ async function getIngredient(name) {
     return sanitizeIngredient(ingredient.data['ingredients'][0]);
 }
 
-/* 
-get popular ingredient data from cocktail API 
-(currently not use this function)
-*/
-// async function getPopularIngred() {
-//     ingredName = ['vodka', 'gin', 'rum', 'tequila'];
-//     popIngred = [];
-//     for (let i = 0; i < ingredName.length; i++) {
-//         const temp = await getIngredient(ingredName[i]);
-//         popIngred.push(temp);
-//     }
-//     return popIngred;
-// }
-
 
 /**
 * Search specific ingredient by id
