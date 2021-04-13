@@ -20,7 +20,7 @@ export default function Cocktail(props) {
         component={() => <CocktailDetail id={props.id} />}
       />
       <Route path={`/cocktails/${props.id}`} component={CocktailDetail} />
-      <h6 className="cocktailName">{props.name}</h6>
+      <div className="cocktailName">{props.name}</div>
     </div>
   );
 }

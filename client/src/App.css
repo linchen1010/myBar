@@ -71,19 +71,29 @@
   font-weight: 800;
 }
 
+.divider {
+  border-top: 5px solid rgb(117, 110, 110);
+  border-radius: 10px;
+  margin-top: 60px;
+  /* padding-top: 20px; */
+  /* padding-bottom: 20px; */
+}
+
 /* Top 10, popular ...*/
 .cocktailCategory {
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 800;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   font-family: 'Courgette', cursive;
 }
 
 .cocktailName {
-  padding-top: 15px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 /* cocktailDetail */

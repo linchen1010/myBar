@@ -7,6 +7,7 @@ import { Container, Row, Col, Spinner } from 'react-bootstrap';
 export default function CocktailDetail() {
   const [cocktails, setCocktails] = useState([]);
   const [ingredients, setIngredients] = useState({});
+  const [ingredientURLs, setIngredientURLs] = useState([]);
 
   let { id } = useParams();
   const style = { textAlign: 'center' };
@@ -16,13 +17,17 @@ export default function CocktailDetail() {
       `http://localhost:5000/cocktail/searchID/${id}`
     );
     let ingredientData = {};
-    for (const [key, val] of res.data.ingredient.entries()) {
-      ingredientData[val] = res.data.measure[key];
+
+    let i = 0;
+    for (const [key, val] of Object.entries(res.data.ingredient)) {
+      ingredientData[key] = res.data.measure[i++];
+      setIngredientURLs(ingredientURLs.push(val));
     }
+
     setCocktails(res.data);
     setIngredients(ingredientData);
-    console.log(ingredients);
-    console.log(cocktails);
+    // console.log(ingredients);
+    // console.log(cocktails);
   };
 
   useEffect(() => {
@@ -56,11 +61,12 @@ export default function CocktailDetail() {
           </Col>
         </Row>
         {Object.keys(ingredients).map((key, i) => (
-          <Row className="justify-content-center">
+          <Row className="justify-content-center" key={i}>
             <Col md="8">
-              <div style={style} key={i}>
-                <h3>{key}</h3>
-                <h4>{ingredients[key]}</h4>
+              <div style={style}>
+                <h3>
+                  {ingredients[key]} | {key}
+                </h3>
               </div>
             </Col>
           </Row>
