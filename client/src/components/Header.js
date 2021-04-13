@@ -22,8 +22,13 @@ export default function Header() {
 
           {/* <Nav.Link href="#">Pricing</Nav.Link> */}
         </Nav>
-        <Nav className="ml-auto">
-          <Nav.Link as={Link} to="signup">
+        <Nav className="ml">
+          <Nav.Link as={Link} to="/login">
+            Log in
+          </Nav.Link>
+        </Nav>
+        <Nav className="ml">
+          <Nav.Link as={Link} to="/signup">
             Sign up
           </Nav.Link>
         </Nav>

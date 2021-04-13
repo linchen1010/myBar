@@ -74,7 +74,7 @@
 /* Top 10, popular ...*/
 .cocktailCategory {
   text-align: center;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 800;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -84,5 +84,30 @@
 .cocktailName {
   padding-top: 15px;
   padding-bottom: 20px;
+}
+
+/* cocktailDetail */
+
+.cocktailDetailName {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 900;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: 'Courgette', cursive;
+  /* font-family: 'Courgette', cursive; */
+}
+
+.cocktailDetailImg {
+  border-radius: 10%;
+  width: 300px;
+}
+
+.cocktailDetailInstruction {
+  text-align: center;
+  font-size: 25px;
   font-weight: 500;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: saddlebrown;
 }
