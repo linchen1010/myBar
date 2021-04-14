@@ -8,18 +8,19 @@ export default function Cocktails(props) {
   const [cocktails, setCocktails] = useState([]);
 
   // fetch Cocktail
+  console.log("in cokctails")
   const fetchCocktail = async () => {
-    const res = await axios.get(props.url);
+    const res = await axios.get("/api");
     setCocktails(res.data);
-    console.log(res.data);
   };
 
   useEffect(() => {
     fetchCocktail();
   }, []);
-  console.log(props.url);
+  
   return (
     <div>
+      
       <Container fluid="sm">
         <div className="cocktailCategory">{props.title}</div>
         <Row className="justify-content-md-center">

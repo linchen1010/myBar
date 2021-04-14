@@ -12,6 +12,7 @@ app.all('/*', function (req, res, next) {
 
 require('./routes/cocktailRoutes')(app);
 require('./routes/ingredientRoutes')(app);
+require('./routes/cocktailTest')(app);
 
 const PORT = 5000;
 

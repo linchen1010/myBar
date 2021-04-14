@@ -14,18 +14,19 @@ export default function CocktailDetail() {
 
   const fetchCocktail = async () => {
     const res = await axios.get(
-      `http://localhost:5000/cocktail/searchID/${id}`
+      `/api/cocktails/${id}`
     );
     let ingredientData = {};
-
+    let ingreURL = [];
     let i = 0;
     for (const [key, val] of Object.entries(res.data.ingredient)) {
       ingredientData[key] = res.data.measure[i++];
-      setIngredientURLs(ingredientURLs.push(val));
+      setIngredientURLs(ingredientURLs.concat(ingreURL));
     }
 
     setCocktails(res.data);
     setIngredients(ingredientData);
+    console.log(ingredientURLs);
     // console.log(ingredients);
     // console.log(cocktails);
   };
@@ -71,6 +72,20 @@ export default function CocktailDetail() {
             </Col>
           </Row>
         ))}
+        <Row className="justify-content-center">
+          {ingredientURLs.length > 0 &&
+            ingredientURLs.map((url, i) => (
+              <Col>
+                <img
+                  src={url}
+                  alt="cocktail image"
+                  className="cocktailImg"
+                ></img>
+              </Col>
+            ))}
+        </Row>
+        <img
+        src={ingredientURLs[0]}></img>
       </Container>
     </div>
   );
