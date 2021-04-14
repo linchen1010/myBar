@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
@@ -8,19 +8,17 @@ export default function Cocktails(props) {
   const [cocktails, setCocktails] = useState([]);
 
   // fetch Cocktail
-  console.log("in cokctails")
   const fetchCocktail = async () => {
-    const res = await axios.get("/api");
+    const res = await axios.get(props.url);
     setCocktails(res.data);
   };
 
   useEffect(() => {
     fetchCocktail();
   }, []);
-  
+
   return (
     <div>
-      
       <Container fluid="sm">
         <div className="cocktailCategory">{props.title}</div>
         <Row className="justify-content-md-center">

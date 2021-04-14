@@ -5,6 +5,7 @@ import HomeCover from './components/HomeCover';
 import About from './components/About';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import CocktailHome from './components/Cocktails/CocktailHome';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CocktailDetail from './components/Cocktails/CocktailDetail';
 function App() {
@@ -14,20 +15,7 @@ function App() {
       <div>
         <Header />
         <Route path="/" exact component={HomeCover} />
-        <Route
-          path="/"
-          exact
-          render={(props) => (
-            <Cocktails {...props} title="Top 10" />
-          )}
-        />
-        <Route
-          path="/"
-          exact
-          render={(props) => (
-            <Cocktails {...props} title="Random" />
-          )}
-        />
+        <Route path="/" exact component={CocktailHome}/>
         <Route path="/about" component={About} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
