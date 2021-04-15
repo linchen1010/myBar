@@ -7,14 +7,14 @@ import Cocktail from './Cocktail';
 export default function Cocktails(props) {
   const [cocktails, setCocktails] = useState([]);
 
-  // fetch Cocktail
+  //fetch Cocktail
   const fetchCocktail = async () => {
     const res = await axios.get(props.url);
     setCocktails(res.data);
   };
 
   useEffect(() => {
-    fetchCocktail();
+    fetchCocktail(props.url);
   }, []);
 
   return (

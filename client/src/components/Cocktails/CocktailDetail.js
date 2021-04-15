@@ -13,22 +13,18 @@ export default function CocktailDetail() {
   const style = { textAlign: 'center' };
 
   const fetchCocktail = async () => {
-    const res = await axios.get(
-      `/api/cocktails/${id}`
-    );
+    const res = await axios.get(`/api/cocktails/${id}`);
     let ingredientData = {};
     let ingreURL = [];
     let i = 0;
     for (const [key, val] of Object.entries(res.data.ingredient)) {
       ingredientData[key] = res.data.measure[i++];
-      setIngredientURLs(ingredientURLs.concat(ingreURL));
+      ingreURL = [...ingreURL, val];
     }
 
     setCocktails(res.data);
     setIngredients(ingredientData);
-    console.log(ingredientURLs);
-    // console.log(ingredients);
-    // console.log(cocktails);
+    setIngredientURLs(ingreURL);
   };
 
   useEffect(() => {
@@ -54,6 +50,12 @@ export default function CocktailDetail() {
             ></img>
           )}
         </Row>
+        <hr className="detailDivider"></hr>
+        <Row className="justify-content-center detailTitle">
+          <Col md="8">
+            <div>Instruction</div>
+          </Col>
+        </Row>
         <Row className="justify-content-center">
           <Col md="8">
             <div className="cocktailDetailInstruction">
@@ -61,31 +63,44 @@ export default function CocktailDetail() {
             </div>
           </Col>
         </Row>
+        <hr className="detailDivider"></hr>
+        <Row className="justify-content-center detailTitle">
+          <Col md="8">
+            <div>ingredient</div>
+          </Col>
+        </Row>
         {Object.keys(ingredients).map((key, i) => (
           <Row className="justify-content-center" key={i}>
             <Col md="8">
               <div style={style}>
-                <h3>
-                  {ingredients[key]} | {key}
-                </h3>
+                {ingredients[key] != null ? (
+                  <h4>
+                    {ingredients[key]} | {key}
+                  </h4>
+                ) : (
+                  <h4>{key}</h4>
+                )}
               </div>
             </Col>
           </Row>
         ))}
+        <Row className="justify-content-center detailTitle">
+          {/* <Col md="8">
+            <div> </div>
+          </Col> */}
+        </Row>
         <Row className="justify-content-center">
           {ingredientURLs.length > 0 &&
             ingredientURLs.map((url, i) => (
-              <Col>
+              <Col md="auto" key={i}>
                 <img
                   src={url}
                   alt="cocktail image"
-                  className="cocktailImg"
+                  className="detailIngredientImg"
                 ></img>
               </Col>
             ))}
         </Row>
-        <img
-        src={ingredientURLs[0]}></img>
       </Container>
     </div>
   );
