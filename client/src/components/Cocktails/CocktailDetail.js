@@ -90,7 +90,7 @@ export default function CocktailDetail() {
         <Row className="justify-content-center">
           {ingredientURLs.length > 0 &&
             ingredientURLs.map((url, i) => (
-              <Col md="auto" key={i}>
+              <Col md="sm" key={i}>
                 <a as={Link} href={`/ingredients/${ingredientNames[i]}`}>
                   <img
                     src={url}
@@ -98,6 +98,7 @@ export default function CocktailDetail() {
                     className="detailIngredientImg"
                   ></img>
                 </a>
+                <div style={style}></div>
               </Col>
             ))}
         </Row>

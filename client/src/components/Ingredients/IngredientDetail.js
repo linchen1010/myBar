@@ -46,10 +46,7 @@ export default function IngredientDetail(props) {
         ) : (
           <div></div>
         )}
-        <Row
-          className="justify-content-md-center"
-          style={{ textAlign: 'center' }}
-        >
+        <Row className="justify-content-center" style={{ textAlign: 'center' }}>
           <Button
             onClick={() => setOpen(!open)}
             aria-controls="example-fade-text"
@@ -65,7 +62,7 @@ export default function IngredientDetail(props) {
             </div>
           </Button>
         </Row>
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-center">
           <Fade in={open}>
             <Row className="justify-content-center">
               <Col md="8">
@@ -74,9 +71,7 @@ export default function IngredientDetail(props) {
                     {ingredient.Description}
                   </div>
                 ) : (
-                  <div className="ingredientDescription">
-                    Just a common {ingredient.name} : )
-                  </div>
+                  <h3>Just a common {ingredient.name} : )</h3>
                 )}
               </Col>
             </Row>
