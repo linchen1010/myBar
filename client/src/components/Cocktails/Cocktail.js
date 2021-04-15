@@ -15,7 +15,6 @@ export default function Cocktail(props) {
           <div className="text">See More</div>
         </div>
       </a>
-      <Route path={`/cocktails/${props.id}`} component={CocktailDetail} />
       <div className="cocktailName">{props.name}</div>
     </div>
   );

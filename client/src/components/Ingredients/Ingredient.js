@@ -16,7 +16,6 @@ export default function Ingredient(props) {
             <div className="text">See More</div>
           </div>
         </a>
-        <Route path={`/ingredients/${props.id}`} component={IngredientDetail} />
         <div className="cocktailName">{props.name}</div>
       </div>
     </div>

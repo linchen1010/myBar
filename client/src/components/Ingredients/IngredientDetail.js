@@ -39,18 +39,28 @@ export default function IngredientDetail(props) {
             ></img>
           )}
         </Row>
-        <hr className="detailDivider"></hr>
+        {ingredient.imageURL ? (
+          <hr className="detailDivider"></hr>
+        ) : (
+          <div></div>
+        )}
         <Row className="justify-content-center detailTitle">
           <Col md="8">
-            <div>Some fun facts ...</div>
+            {ingredient.imageURL ? (
+              <div style={{ color: 'rgb(0, 106, 148)' }}>
+                Some fun facts ...
+              </div>
+            ) : (
+              <div></div>
+            )}
           </Col>
-          <Col md="8">
+          {/* <Col md="8">
             <div style={{ color: 'rgb(0, 106, 148)' }}>{ingredient.name}</div>
-          </Col>
+          </Col> */}
         </Row>
         <Row className="justify-content-center">
           <Col md="8">
-            <div className="cocktailDetailInstruction">
+            <div className="ingredientDescription">
               {ingredient.Description}
             </div>
           </Col>
