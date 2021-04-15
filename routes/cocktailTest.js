@@ -164,7 +164,7 @@ module.exports = (app) => {
   /**
    * Get specific ingredient by ingredient name
    */
-  app.get('/ingredient/searchName/:name', async (req, res) => {
+  app.get('/api/ingredients/:name', async (req, res) => {
     try {
       ingredient = await getIngredient(req.params.name);
       res.send(ingredient);
@@ -177,7 +177,7 @@ module.exports = (app) => {
   /**
    * Get specific ingredient by ingredient id
    */
-  app.get('/api/ingredients/:ingredient_id', async (req, res) => {
+  app.get('/api/ingredient/:ingredient_id', async (req, res) => {
     try {
       const ingredientID = await getIngredientByID(req.params.ingredient_id);
       res.send(ingredientID);

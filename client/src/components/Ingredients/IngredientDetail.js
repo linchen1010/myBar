@@ -3,18 +3,20 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, useParams } from 'react-router-dom';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
+import { Collapse, Button, Fade } from 'react-bootstrap';
 
 export default function IngredientDetail(props) {
   const [ingredient, setIngredient] = useState({});
+  const [open, setOpen] = useState(false);
 
-  let { id } = useParams();
+  let { name } = useParams();
   const style = { textAlign: 'center' };
 
   const fetchIngredient = async () => {
-    const res = await axios.get(`/api/ingredients/${id}`);
+    const res = await axios.get(`/api/ingredients/${name}`);
     setIngredient(res.data);
     console.log(res.data);
-    console.log(id);
+    console.log(name);
   };
 
   useEffect(() => {
@@ -44,26 +46,41 @@ export default function IngredientDetail(props) {
         ) : (
           <div></div>
         )}
-        <Row className="justify-content-center detailTitle">
-          <Col md="8">
-            {ingredient.imageURL ? (
-              <div style={{ color: 'rgb(0, 106, 148)' }}>
-                Some fun facts ...
-              </div>
-            ) : (
-              <div></div>
-            )}
-          </Col>
-          {/* <Col md="8">
-            <div style={{ color: 'rgb(0, 106, 148)' }}>{ingredient.name}</div>
-          </Col> */}
-        </Row>
-        <Row className="justify-content-center">
-          <Col md="8">
-            <div className="ingredientDescription">
-              {ingredient.Description}
+        <Row
+          className="justify-content-md-center"
+          style={{ textAlign: 'center' }}
+        >
+          <Button
+            onClick={() => setOpen(!open)}
+            aria-controls="example-fade-text"
+            aria-expanded={open}
+            variant="link"
+            size="lg"
+          >
+            <div
+              style={{ color: 'rgb(0, 106, 148)', textAlign: 'center' }}
+              className="detailTitle"
+            >
+              Some fun facts ...
             </div>
-          </Col>
+          </Button>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Fade in={open}>
+            <Row className="justify-content-center">
+              <Col md="8">
+                {ingredient.Description ? (
+                  <div className="ingredientDescription">
+                    {ingredient.Description}
+                  </div>
+                ) : (
+                  <div className="ingredientDescription">
+                    Just a common {ingredient.name} : )
+                  </div>
+                )}
+              </Col>
+            </Row>
+          </Fade>
         </Row>
       </Container>
     </div>

@@ -150,4 +150,12 @@
   font-size: 20px;
   font-weight: 500;
   padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+/* description button */
+
+.btn-outline-info {
+  font-weight: 500;
+  color: black;
 }
