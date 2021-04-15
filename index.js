@@ -10,12 +10,16 @@ app.all('/*', function (req, res, next) {
 });
 
 
-require('./routes/cocktailRoutes')(app);
-require('./routes/ingredientRoutes')(app);
+const cocktail = require('./routes/cocktailRoutes');
+const ingredient = require('./routes/ingredientRoutes');
+const home = require('./routes/home');
 require('./routes/cocktailTest')(app);
 
-const PORT = 5000;
+app.use('/', home);
+app.use('/cocktails', cocktail);
+app.use('/ingredients', ingredient);
 
+const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT} ...`);
 });

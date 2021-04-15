@@ -1,8 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const top10Data = require('./top10Cocktail.json')
-const app = express();
-
+const router = express.Router()
 const port = 5000;
 
 
@@ -69,45 +68,14 @@ async function getCocktailByID(id) {
   return sanitizeCocktailDB(cocktailID.data['drinks'][0]);
 }
 
-module.exports = (app) => {
+router.get('/:cocktail_id', async (req, res) => {
+  try {
+    const cocktailID = await getCocktailByID(req.params.cocktail_id);
+    res.send(cocktailID);
+  } catch (err) {
+    console.log('Error', err);
+    res.status(500).end(err.message);
+  }
+});
 
-  /**
-  * Get six random cocktails data
-  */
-  app.get('/cocktail/random', async (req, res) => {
-    try {
-      random = await getRandom();
-      console.log(random);
-      res.send(random);
-    } catch (err) {
-      console.log('Error', err);
-      res.status(500).end(err.message);
-    }
-  });
-
-  /**
-  * Get top10 cocktails from local json data
-  */
-  app.get('/cocktail/top10', async (req, res) => {
-    try {
-      res.send(top10Data);
-    } catch (err) {
-      console.log('Error', err);
-      res.status(500).end(err.message);
-    }
-  });
-
-  /**
-  * Get specific cocktail by cocktail id
-  */
-  app.get('/cocktail/searchID/:cocktail_id', async (req, res) => {
-    try {
-      const cocktailID = await getCocktailByID(req.params.cocktail_id);
-      res.send(cocktailID);
-    } catch (err) {
-      console.log('Error', err);
-      res.status(500).end(err.message);
-    }
-  });
-
-};
+module.exports = router;
