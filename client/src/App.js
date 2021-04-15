@@ -20,7 +20,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/cocktails/:id" component={CocktailDetail} />
-        <Route path="/ingredients/:id" component={IngredientDetail} />
+        <Route path="/ingredients/:name" component={IngredientDetail} />
       </div>
     </Router>
   );

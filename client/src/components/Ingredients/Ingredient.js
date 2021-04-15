@@ -6,7 +6,7 @@ export default function Ingredient(props) {
   return (
     <div>
       <div className="cocktail">
-        <a as={Link} href={`/ingredients/${props.id}`}>
+        <a as={Link} href={`/ingredients/${props.name}`}>
           <img
             src={props.imageURL}
             alt="cocktail image"
