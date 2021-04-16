@@ -1,25 +1,24 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
-import { Collapse, Button, Fade } from 'react-bootstrap';
+import { Button, Fade } from 'react-bootstrap';
 
 export default function IngredientDetail(props) {
   const [ingredient, setIngredient] = useState({});
   const [open, setOpen] = useState(false);
 
-  let { name } = useParams();
+  const { name } = useParams();
   const style = { textAlign: 'center' };
 
-  const fetchIngredient = async () => {
-    const res = await axios.get(`/api/ingredients/${name}`);
-    setIngredient(res.data);
-    console.log(res.data);
-    console.log(name);
-  };
-
   useEffect(() => {
+    const fetchIngredient = async () => {
+      const res = await axios.get(`/api/ingredients/${name}`);
+      setIngredient(res.data);
+      //   console.log(res.data);
+      //   console.log(name);
+    };
     fetchIngredient();
   }, []);
   return (
@@ -35,7 +34,7 @@ export default function IngredientDetail(props) {
             <Spinner animation="border" style={style} />
           ) : (
             <img
-              alt="cocktail can't showed"
+              alt="cocktail"
               src={ingredient.imageURL}
               className="cocktailDetailImg"
             ></img>

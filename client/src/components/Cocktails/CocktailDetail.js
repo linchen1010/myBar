@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 
 export default function CocktailDetail() {
@@ -91,10 +91,10 @@ export default function CocktailDetail() {
           {ingredientURLs.length > 0 &&
             ingredientURLs.map((url, i) => (
               <Col md="sm" key={i}>
-                <a as={Link} href={`/ingredients/${ingredientNames[i]}`}>
+                <a href={`/ingredients/${ingredientNames[i]}`}>
                   <img
                     src={url}
-                    alt="cocktail image"
+                    alt="cocktail"
                     className="detailIngredientImg"
                   ></img>
                 </a>

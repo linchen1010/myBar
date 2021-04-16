@@ -30,7 +30,7 @@ function sanitizeCocktailDB(data) {
   cocktails['ingredient'] = {};
   cocktails['measure'] = [];
   for (let i = 1; i <= 15; i++) {
-    if (data[`strIngredient${i}`] != null) {
+    if (data[`strIngredient${i}`] != null && data[`strIngredient${i}`].length > 1) {
       cocktails['ingredient'][data[`strIngredient${i}`]] = {};
       cocktails['ingredient'][data[`strIngredient${i}`]] = getIngredientImg(data[`strIngredient${i}`]);
       cocktails['measure'].push(data[`strMeasure${i}`]);

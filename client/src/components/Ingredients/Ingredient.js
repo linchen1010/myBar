@@ -1,15 +1,14 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
-import IngredientDetail from './IngredientDetail';
+
 
 export default function Ingredient(props) {
   return (
     <div>
       <div className="cocktail">
-        <a as={Link} href={`/ingredients/${props.name}`}>
+        <a href={`/ingredients/${props.name}`}>
           <img
             src={props.imageURL}
-            alt="cocktail image"
+            alt="cocktail"
             className="cocktailImg"
           ></img>
           <div className="middle">

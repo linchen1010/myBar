@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
@@ -8,13 +8,13 @@ export default function Cocktails(props) {
   const [cocktails, setCocktails] = useState([]);
 
   //fetch Cocktail
-  const fetchCocktail = async () => {
-    const res = await axios.get(props.url);
-    setCocktails(res.data);
-  };
 
   useEffect(() => {
-    fetchCocktail(props.url);
+    const fetchCocktail = async () => {
+      const res = await axios.get(props.url);
+      setCocktails(res.data);
+    };
+    fetchCocktail();
   }, []);
 
   return (

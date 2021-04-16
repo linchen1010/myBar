@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
@@ -8,13 +8,13 @@ export default function Ingredients(props) {
   const [ingredients, setIngredients] = useState([]);
 
   //fetch Ingredient
-  const fetchIngredient = async () => {
-    const res = await axios.get(props.url);
-    setIngredients(res.data);
-  };
 
   useEffect(() => {
-    fetchIngredient(props.url);
+    const fetchIngredient = async () => {
+      const res = await axios.get(props.url);
+      setIngredients(res.data);
+    };
+    fetchIngredient();
   }, []);
 
   return (
