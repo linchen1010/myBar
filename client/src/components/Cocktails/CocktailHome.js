@@ -5,8 +5,8 @@ import Ingredients from '../Ingredients/Ingredients';
 export default function CocktailHome(props) {
   return (
     <div>
-      <Cocktails url="/top10" title="Top10" />
-      <Cocktails url="/api/cocktail/random" title="Random" />
+      <Cocktails url="/api/cocktails/top10" title="Top10" />
+      <Cocktails url="/api/cocktails/random" title="Random" />
       <Ingredients
         url="/api/ingredients/popIngred"
         title="Popular Ingredient"
