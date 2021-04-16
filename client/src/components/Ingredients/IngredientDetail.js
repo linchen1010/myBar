@@ -12,13 +12,13 @@ export default function IngredientDetail(props) {
   const { name } = useParams();
   const style = { textAlign: 'center' };
 
+  const fetchIngredient = async () => {
+    const res = await axios.get(`/api/ingredients/${name}`);
+    setIngredient(res.data);
+    //   console.log(res.data);
+    //   console.log(name);
+  };
   useEffect(() => {
-    const fetchIngredient = async () => {
-      const res = await axios.get(`/api/ingredients/${name}`);
-      setIngredient(res.data);
-      //   console.log(res.data);
-      //   console.log(name);
-    };
     fetchIngredient();
   }, []);
   return (

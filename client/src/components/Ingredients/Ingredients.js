@@ -8,12 +8,11 @@ export default function Ingredients(props) {
   const [ingredients, setIngredients] = useState([]);
 
   //fetch Ingredient
-
+  const fetchIngredient = async () => {
+    const res = await axios.get(props.url);
+    setIngredients(res.data);
+  };
   useEffect(() => {
-    const fetchIngredient = async () => {
-      const res = await axios.get(props.url);
-      setIngredients(res.data);
-    };
     fetchIngredient();
   }, []);
 
