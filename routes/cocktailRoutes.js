@@ -44,7 +44,7 @@ function sanitizeCocktailDB(data) {
 * Return six random cocktails
 * @return {Object}
 */
-async function getRandom() {
+async function getSixRandom() {
   random = [];
   for (let i = 0; i < 6; ++i) {
     const randomCocktail = await axios.get(
@@ -54,6 +54,24 @@ async function getRandom() {
   }
   return random;
 }
+
+/**
+* Fetch specific numbers of random cocktails from cocktail API
+* Return six random cocktails
+* @param {Number} val
+* @return {Object}
+*/
+async function getRandom(val) {
+  random = [];
+  for (let i = 0; i < val; ++i) {
+    const randomCocktail = await axios.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+    );
+    random.push(sanitizeCocktailDB(randomCocktail.data['drinks'][0]));
+  }
+  return random;
+}
+
 
 /**
 * Search specific cocktail by id
@@ -68,7 +86,47 @@ async function getCocktailByID(id) {
   return sanitizeCocktailDB(cocktailID.data['drinks'][0]);
 }
 
-router.get('/:cocktail_id', async (req, res) => {
+/**
+    * Get six random cocktails data
+    */
+router.get('/cocktails/random', async (req, res) => {
+  try {
+    random = await getSixRandom();
+    res.send(random);
+  } catch (err) {
+    console.log('Error', err);
+    res.status(500).end(err.message);
+  }
+});
+
+/**
+  * Get specific numbers of random cocktail data
+  * 
+  */
+router.get('/cocktails/random/:nums', async (req, res) => {
+  try {
+    random = await getRandom(req.params.nums);
+    res.send(random);
+  } catch (err) {
+    console.log('Error', err);
+    res.status(500).end(err.message);
+  }
+});
+
+/**
+* Get top10 cocktails from local json data
+*/
+router.get('/cocktails/top10', async (req, res) => {
+  try {
+    res.send(top10Data);
+  } catch (err) {
+    console.log('Error', err);
+    res.status(500).end(err.message);
+  }
+});
+
+
+router.get('/cocktails/:cocktail_id', async (req, res) => {
   try {
     const cocktailID = await getCocktailByID(req.params.cocktail_id);
     res.send(cocktailID);
@@ -77,5 +135,6 @@ router.get('/:cocktail_id', async (req, res) => {
     res.status(500).end(err.message);
   }
 });
+
 
 module.exports = router;
