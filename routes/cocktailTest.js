@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const top10Data = require('./top10Cocktail.json');
+const popIngredData = require('./popIngredient.json');
 const app = express();
 
 const port = 5000;
@@ -125,7 +126,7 @@ module.exports = (app) => {
   /**
    * Get six random cocktails data
    */
-  app.get('/api/cocktail/random', async (req, res) => {
+  app.get('/api/cocktails/random', async (req, res) => {
     try {
       random = await getRandom();
       console.log(random);
@@ -139,7 +140,7 @@ module.exports = (app) => {
   /**
    * Get top10 cocktails from local json data
    */
-  app.get('/api', async (req, res) => {
+  app.get('/api/cocktails/top10', async (req, res) => {
     try {
       res.send(top10Data);
     } catch (err) {
@@ -155,6 +156,15 @@ module.exports = (app) => {
     try {
       const cocktailID = await getCocktailByID(req.params.cocktail_id);
       res.send(cocktailID);
+    } catch (err) {
+      console.log('Error', err);
+      res.status(500).end(err.message);
+    }
+  });
+
+  app.get('/api/ingredients/popIngred', async (req, res) => {
+    try {
+      res.send(popIngredData);
     } catch (err) {
       console.log('Error', err);
       res.status(500).end(err.message);
@@ -177,26 +187,18 @@ module.exports = (app) => {
   /**
    * Get specific ingredient by ingredient id
    */
-  app.get('/api/ingredient/:ingredient_id', async (req, res) => {
-    try {
-      const ingredientID = await getIngredientByID(req.params.ingredient_id);
-      res.send(ingredientID);
-    } catch (err) {
-      console.log('Error', err);
-      res.status(500).end(err.message);
-    }
-  });
+//   app.get('/api/ingredient/:ingredient_id', async (req, res) => {
+//     try {
+//       const ingredientID = await getIngredientByID(req.params.ingredient_id);
+//       res.send(ingredientID);
+//     } catch (err) {
+//       console.log('Error', err);
+//       res.status(500).end(err.message);
+//     }
+//   });
 
   /**
    * Get 4 popular ingredient from locol json data
    */
 
-  app.get('/api/ingredients/popIngred', async (req, res) => {
-    try {
-      res.send(popIngredData);
-    } catch (err) {
-      console.log('Error', err);
-      res.status(500).end(err.message);
-    }
-  });
 };
