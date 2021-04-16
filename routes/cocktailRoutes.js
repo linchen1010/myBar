@@ -12,7 +12,7 @@ const port = 5000;
 * @return {Object}
 */
 function getIngredientImg(name) {
-  return `www.thecocktaildb.com/images/ingredients/${name}-Medium.png`;
+  return `https://www.thecocktaildb.com/images/ingredients/${name}-Medium.png`;
 }
 
 /**
