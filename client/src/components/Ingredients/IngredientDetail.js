@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
-import { Button, Fade } from 'react-bootstrap';
+import { Collapse, Button, Fade } from 'react-bootstrap';
+import Cocktails from '.././Cocktails/Cocktails';
 
 export default function IngredientDetail(props) {
   const [ingredient, setIngredient] = useState({});
@@ -15,7 +16,7 @@ export default function IngredientDetail(props) {
   const fetchIngredient = async () => {
     const res = await axios.get(`/api/ingredients/${name}`);
     setIngredient(res.data);
-    //   console.log(res.data);
+    console.log(res.data);
     //   console.log(name);
   };
   useEffect(() => {
@@ -40,15 +41,10 @@ export default function IngredientDetail(props) {
             ></img>
           )}
         </Row>
-        {ingredient.imageURL ? (
-          <hr className="detailDivider"></hr>
-        ) : (
-          <div></div>
-        )}
         <Row className="justify-content-center" style={{ textAlign: 'center' }}>
           <Button
             onClick={() => setOpen(!open)}
-            aria-controls="example-fade-text"
+            aria-controls="example-collapse-text"
             aria-expanded={open}
             variant="link"
             size="lg"
@@ -62,7 +58,7 @@ export default function IngredientDetail(props) {
           </Button>
         </Row>
         <Row className="justify-content-center">
-          <Fade in={open}>
+          <Collapse in={open}>
             <Row className="justify-content-center">
               <Col md="8">
                 {ingredient.Description ? (
@@ -74,7 +70,22 @@ export default function IngredientDetail(props) {
                 )}
               </Col>
             </Row>
-          </Fade>
+          </Collapse>
+        </Row>
+        {ingredient.imageURL ? (
+          <hr className="detailDivider"></hr>
+        ) : (
+          <div></div>
+        )}
+        <Row className="justify-content-center">
+          {!ingredient.name ? (
+            <div></div>
+          ) : (
+            <Cocktails
+              url={`/api/ingredients/${ingredient.name}/relatedCocktails/10`}
+              title={`Some cocktails made by ${ingredient.name} ...`}
+            />
+          )}
         </Row>
       </Container>
     </div>

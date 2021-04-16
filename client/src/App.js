@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import CocktailHome from './components/Cocktails/CocktailHome';
 import CocktailDetail from './components/Cocktails/CocktailDetail';
 import IngredientDetail from './components/Ingredients/IngredientDetail';
+import Footer from './components/Footer';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/cocktails/:id" component={CocktailDetail} />
         <Route path="/ingredients/:name" component={IngredientDetail} />
+        <Route path="/" component={Footer} />
       </div>
     </Router>
   );

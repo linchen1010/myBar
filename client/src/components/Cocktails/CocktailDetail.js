@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
+import Cocktails from './Cocktails';
 
 export default function CocktailDetail() {
   const [cocktails, setCocktails] = useState([]);
@@ -101,6 +102,10 @@ export default function CocktailDetail() {
                 <div style={style}></div>
               </Col>
             ))}
+        </Row>
+        <hr className="detailDivider"></hr>
+        <Row className="justify-content-center">
+          <Cocktails url="/api/cocktails/random/5" title="See also ..." />
         </Row>
       </Container>
     </div>

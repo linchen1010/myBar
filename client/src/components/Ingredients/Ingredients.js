@@ -35,7 +35,6 @@ export default function Ingredients(props) {
             ))
           )}
         </Row>
-        <hr className="divider"></hr>
       </Container>
     </div>
   );

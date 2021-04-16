@@ -35,7 +35,7 @@ export default function Cocktails(props) {
             ))
           )}
         </Row>
-        <hr className="divider"></hr>
+        {/* <hr className="divider"></hr> */}
       </Container>
     </div>
   );
