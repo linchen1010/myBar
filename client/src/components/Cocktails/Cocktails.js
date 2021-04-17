@@ -22,7 +22,11 @@ export default function Cocktails(props) {
         <div className="cocktailCategory">{props.title}</div>
         <Row className="justify-content-md-center">
           {!cocktails.length > 0 ? (
-            <Spinner animation="border" />
+            <Row className="justify-content-md-center">
+              <Col md="8">
+                <Spinner animation="border" />
+              </Col>
+            </Row>
           ) : (
             cocktails.map((cocktail, i) => (
               <Col key={cocktail.name}>

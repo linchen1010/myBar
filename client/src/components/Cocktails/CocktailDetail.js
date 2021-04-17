@@ -49,7 +49,11 @@ export default function CocktailDetail() {
         </Row>
         <Row className="justify-content-center">
           {!cocktails.imageURL ? (
-            <Spinner animation="border" style={style} />
+            <Row className="justify-content-center">
+              <Col md="8">
+                <Spinner animation="border" style={style} />
+              </Col>
+            </Row>
           ) : (
             <img
               alt="cocktail can't showed"

@@ -90,7 +90,7 @@ export default function IngredientDetail(props) {
           ) : (
             <Cocktails
               url={`/api/ingredients/${ingredient.name}/relatedCocktails/10`}
-              title={`Some cocktails also made with ${ingredient.name} ...`}
+              title={`Cocktails that use ${ingredient.name} ...`}
             />
           )}
         </Row>
