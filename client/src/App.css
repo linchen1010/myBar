@@ -170,3 +170,12 @@
   width: 100%;
   padding-top: 60px;
 }
+
+a.ingredLink {
+  color: rgb(0, 55, 107);
+}
+
+a.ingredLink:hover {
+  font-size: 110%;
+  text-decoration: none;
+}

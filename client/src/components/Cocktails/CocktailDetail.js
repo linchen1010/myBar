@@ -11,7 +11,10 @@ export default function CocktailDetail() {
   const [ingredientURLs, setIngredientURLs] = useState([]);
   const [ingredientNames, setIngredientNames] = useState([]);
   let { id } = useParams();
-  const style = { textAlign: 'center' };
+  const style = {
+    justifyContent: 'center',
+    display: 'flex',
+  };
 
   const fetchCocktail = async () => {
     const res = await axios.get(`/api/cocktails/${id}`);
@@ -76,13 +79,25 @@ export default function CocktailDetail() {
         {Object.keys(ingredients).map((key, i) => (
           <Row className="justify-content-center" key={i}>
             <Col md="8">
-              <div style={style}>
+              <div>
                 {ingredients[key] != null ? (
-                  <h4>
-                    {ingredients[key]} | {key}
+                  <h4 style={style}>
+                    {ingredients[key]}
+                    <a
+                      className="ingredLink"
+                      href={`/ingredients/${ingredientNames[i]}`}
+                      style={{ marginLeft: '10px' }}
+                    >
+                      {key}
+                    </a>
                   </h4>
                 ) : (
-                  <h4>{key}</h4>
+                  <a
+                    className="ingredLink"
+                    href={`/ingredients/${ingredientNames[i]}`}
+                  >
+                    <h4 style={style}>{key}</h4>
+                  </a>
                 )}
               </div>
             </Col>
