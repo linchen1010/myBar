@@ -12,8 +12,9 @@ export default function CocktailDetail() {
   const [ingredientNames, setIngredientNames] = useState([]);
   let { id } = useParams();
   const style = {
-    justifyContent: 'center',
     display: 'flex',
+    textAlign: 'center',
+    justifyContent: 'center',
   };
 
   const fetchCocktail = async () => {
@@ -79,9 +80,9 @@ export default function CocktailDetail() {
         {Object.keys(ingredients).map((key, i) => (
           <Row className="justify-content-center" key={i}>
             <Col md="8">
-              <div>
+              <div style={style}>
                 {ingredients[key] != null ? (
-                  <h4 style={style}>
+                  <h4>
                     {ingredients[key]}
                     <a
                       className="ingredLink"
@@ -92,12 +93,15 @@ export default function CocktailDetail() {
                     </a>
                   </h4>
                 ) : (
-                  <a
-                    className="ingredLink"
-                    href={`/ingredients/${ingredientNames[i]}`}
-                  >
-                    <h4 style={style}>{key}</h4>
-                  </a>
+                  <h4 style={style}>
+                    <a
+                      className="ingredLink"
+                      href={`/ingredients/${ingredientNames[i]}`}
+                      style={{ marginLeft: '10px' }}
+                    >
+                      {key}
+                    </a>
+                  </h4>
                 )}
               </div>
             </Col>
@@ -114,7 +118,6 @@ export default function CocktailDetail() {
                     className="detailIngredientImg"
                   ></img>
                 </a>
-                <div style={style}></div>
               </Col>
             ))}
         </Row>

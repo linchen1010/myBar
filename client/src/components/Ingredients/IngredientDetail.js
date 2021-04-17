@@ -46,7 +46,12 @@ export default function IngredientDetail(props) {
             onClick={() => setOpen(!open)}
             aria-controls="example-collapse-text"
             aria-expanded={open}
-            variant="link"
+            variant="light"
+            style={{
+              backgroundColor: 'white',
+              border: 'none',
+              paddingBottom: '0px',
+            }}
             size="lg"
           >
             <div
