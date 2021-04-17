@@ -9,7 +9,7 @@ export default function CocktailHome(props) {
       <hr className="divider"></hr>
       <Ingredients
         url="/api/ingredients/popIngred"
-        title="Popular Ingredient"
+        title="Popular Ingredients"
       />
       <hr className="divider"></hr>
       <Cocktails url="/api/cocktails/random" title="Random Cocktails" />

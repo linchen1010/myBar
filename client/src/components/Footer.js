@@ -7,7 +7,7 @@ export default function Footer() {
     <div className="footer">
       <Navbar bg="dark" variant="dark">
         <Container className="myNavbar justify-content-center">
-          <NavbarBrand>
+          <NavbarBrand href="/" to="/">
             <LocalBarIcon color="inherit" fontSize="large" /> MyBestBar
           </NavbarBrand>
         </Container>
