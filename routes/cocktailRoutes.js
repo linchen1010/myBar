@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
-const top10Data = require('./top10Cocktail.json')
+const top10Data = require('./top10Cocktail.json');
+const { route } = require('./ingredientRoutes');
 const router = express.Router()
 const port = 5000;
 
@@ -37,6 +38,17 @@ function sanitizeCocktailDB(data) {
     }
   }
   return cocktails;
+}
+/**
+ * Sanitize data from search API
+ * @param {Object} data (uncleaned data)
+ */
+function sanitizeSearchResult(data) {
+  // let cocktails = {};
+  // cocktails['id'] = data['idDrink'];
+  // cocktails['imageURL'] = data['strDrinkThumb'];
+  // cocktails['type'] = data['strAlcoholic'];
+  // return cocktails
 }
 
 /**
@@ -135,6 +147,17 @@ router.get('/cocktails/:cocktail_id', async (req, res) => {
     res.status(500).end(err.message);
   }
 });
+
+router.get('/cocktails/search/:name', async (req, res) => {
+  try {
+    const searchResult = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${req.params.name}`);
+    if(searchResult.drinks == null) res.send(null);
+    else res.json(searchResult);
+  } catch(err) {
+    console.log('Error', err);
+    res.status(500).end(err.message);
+  }
+})
 
 
 module.exports = router;

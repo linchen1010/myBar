@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import SearchIcon from '@material-ui/icons/Search';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 export default function Header() {
+  const [search, setSearch] = useState('');
+
+  const history = useHistory();
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push(`/?s=${search}`);
+    // history.push('/cocktails/17268');
+    console.log(search);
+  };
+
   return (
     <div>
       <Navbar bg="dark" variant="dark" className="myNavbar">
@@ -23,12 +38,18 @@ export default function Header() {
 
           {/* <Nav.Link href="#">Pricing</Nav.Link> */}
         </Nav>
+
         <Form inline className="mr-sm-4">
-          <FormControl type="text" placeholder="Search for drinks" />
-          <Button variant="outline-light">
+          <FormControl
+            type="text"
+            placeholder="Search for drinks"
+            onChange={handleChange}
+          />
+          <Button onClick={handleSubmit} variant="outline-light">
             <SearchIcon />
           </Button>
         </Form>
+
         <Nav className="ml">
           <Nav.Link as={Link} to="/login">
             Log in

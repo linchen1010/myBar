@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import CocktailHome from './components/Cocktails/CocktailHome';
 import CocktailDetail from './components/Cocktails/CocktailDetail';
+import CocktailSearch from './components/Cocktails/CocktailSearch';
 import IngredientDetail from './components/Ingredients/IngredientDetail';
 import Footer from './components/Footer';
 
@@ -22,7 +23,7 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/cocktails/:id" component={CocktailDetail} />
         <Route path="/ingredients/:name" component={IngredientDetail} />
-        <Route path="/" component={Footer} />
+        {/* <Route path="/1" component={CocktailSearch} /> */}
       </div>
     </Router>
   );
