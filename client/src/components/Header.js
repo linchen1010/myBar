@@ -1,6 +1,7 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
+import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
@@ -22,6 +23,12 @@ export default function Header() {
 
           {/* <Nav.Link href="#">Pricing</Nav.Link> */}
         </Nav>
+        <Form inline className="mr-sm-4">
+          <FormControl type="text" placeholder="Search for drinks" />
+          <Button variant="outline-light">
+            <SearchIcon />
+          </Button>
+        </Form>
         <Nav className="ml">
           <Nav.Link as={Link} to="/login">
             Log in

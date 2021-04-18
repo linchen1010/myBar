@@ -101,11 +101,12 @@
 
 .cocktailDetailName {
   text-align: center;
-  font-size: 50px;
+  font-size: 60px;
   font-weight: 900;
   padding-top: 20px;
   padding-bottom: 20px;
   font-family: 'Courgette', cursive;
+  color: rgb(59, 59, 59);
   /* font-family: 'Courgette', cursive; */
 }
 
