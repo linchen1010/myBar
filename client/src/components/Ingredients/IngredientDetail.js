@@ -72,7 +72,7 @@ export default function IngredientDetail(props) {
                   </div>
                 ) : (
                   <div className="ingredientDescription">
-                    Just a common {ingredient.name} : )
+                    Just common {ingredient.name} : )
                   </div>
                 )}
               </Col>
