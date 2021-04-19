@@ -117,8 +117,16 @@ router.get('/cocktails/random', async (req, res) => {
   */
 router.get('/cocktails/random/:nums', async (req, res) => {
   try {
-    random = await getRandom(req.params.nums);
-    res.send(random);
+
+    // console.log(!isNaN(req.params.nums))
+    if (!isNaN(req.params.nums) && Number.isInteger(parseFloat(req.params.nums)) && parseInt(req.params.nums) <= 618) {
+      random = await getRandom(req.params.nums);
+      res.send(random);
+    } else {
+      res.send("input is not interger");
+      res.status(404);
+    }
+
   } catch (err) {
     console.log('Error', err);
     res.status(500).end(err.message);
@@ -151,9 +159,9 @@ router.get('/cocktails/:cocktail_id', async (req, res) => {
 router.get('/cocktails/search/:name', async (req, res) => {
   try {
     const searchResult = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${req.params.name}`);
-    if(searchResult.drinks == null) res.send(null);
+    if (searchResult.drinks == null) res.send(null);
     else res.json(searchResult);
-  } catch(err) {
+  } catch (err) {
     console.log('Error', err);
     res.status(500).end(err.message);
   }

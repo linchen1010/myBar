@@ -53,8 +53,9 @@ async function getIngredient(name) {
 }
 
 /**
- * Search specific ingredient by id
- * Return filtered one ingredient data
+ * fetch number of related coctail by specific ingredient by name
+ * Return filtered relating coctail data
+ * @param {Number} name 
  * @param {Number} val
  * @return {Object}
  */
@@ -108,7 +109,7 @@ router.get('/ingredients/:name', async (req, res) => {
 });
 
 /**
- * Get specific ingredient by ingredient name
+ * Get related cocktails by specific ingredient name
  */
 router.get('/ingredients/:name/relatedCocktails', async (req, res) => {
     try {
@@ -119,6 +120,10 @@ router.get('/ingredients/:name/relatedCocktails', async (req, res) => {
         res.status(500).end(err.message);
     }
 });
+
+/**
+ * Get number of related cocktails by specific ingredient name
+ */
 
 router.get('/ingredients/:name/relatedCocktails/:nums', async (req, res) => {
     try {
