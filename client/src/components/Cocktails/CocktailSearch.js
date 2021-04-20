@@ -23,13 +23,11 @@ export default function CocktailSearch() {
   return (
     <div>
       <Container>
-        <Row className="justify-content-center cocktailCategory">
-          Searching for "{query.get('s')}" ...
-        </Row>
         <Row className="justify-content-center">
           {item ? (
             <Cocktails
               url={`/api/cocktails/search/?s=${query.get('s')}`}
+              title={`Searching for "${query.get('s')}" ...`}
             ></Cocktails>
           ) : (
             <div></div>
