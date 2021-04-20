@@ -16,14 +16,15 @@ function App() {
     <Router>
       <div>
         <Header />
-        <Route path="/" exact component={HomeCover} />
-        <Route path="/" exact component={CocktailHome} />
+        <Route exact path="/" exact component={HomeCover} />
+        <Route exact path="/" exact component={CocktailHome} />
         <Route path="/about" component={About} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/cocktails/:id" component={CocktailDetail} />
         <Route path="/ingredients/:name" component={IngredientDetail} />
-        {/* <Route path="/1" component={CocktailSearch} /> */}
+        <Route path="/search" component={CocktailSearch} />
+        <Route path="/" component={Footer} />
       </div>
     </Router>
   );

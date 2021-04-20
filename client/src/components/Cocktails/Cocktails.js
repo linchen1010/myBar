@@ -4,22 +4,25 @@ import { useState, useEffect } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import Cocktail from './Cocktail';
 
-export default function Cocktails(props) {
+export default function Cocktails({ url, title }) {
   const [cocktails, setCocktails] = useState([]);
-
+  const [fetchURL, setFetchURL] = useState(url);
   //fetch Cocktail
   const fetchCocktail = async () => {
-    const res = await axios.get(props.url);
+    const res = await axios.get(url);
     setCocktails(res.data);
+    setFetchURL(url);
+    console.log(cocktails);
+    console.log(url);
   };
   useEffect(() => {
     fetchCocktail();
-  }, []);
+  }, [url]);
 
   return (
     <div>
       <Container fluid="sm">
-        <div className="cocktailCategory">{props.title}</div>
+        <div className="cocktailCategory">{title}</div>
         <Row className="justify-content-md-center">
           {!cocktails.length > 0 ? (
             <Row className="justify-content-md-center">

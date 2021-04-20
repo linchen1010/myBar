@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import SearchIcon from '@material-ui/icons/Search';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function Header() {
   const [search, setSearch] = useState('');
@@ -15,7 +15,7 @@ export default function Header() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/?s=${search}`);
+    history.push(`/search?s=${search}`);
     // history.push('/cocktails/17268');
     console.log(search);
   };
