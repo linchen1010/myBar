@@ -6,18 +6,14 @@ import Cocktail from './Cocktail';
 
 export default function Cocktails({ url, title }) {
   const [cocktails, setCocktails] = useState([]);
-  const [fetchURL, setFetchURL] = useState(url);
   const [found, setFound] = useState(true);
+
   //fetch Cocktail
   const fetchCocktail = async () => {
     const res = await axios.get(url);
     setCocktails(res.data);
-    console.log(res);
-    setFetchURL(url);
     if (res.data.error) setFound(false);
     else setFound(true);
-    console.log(cocktails);
-    console.log(url);
   };
   useEffect(() => {
     fetchCocktail();

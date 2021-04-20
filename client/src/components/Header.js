@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import SearchIcon from '@material-ui/icons/Search';
@@ -6,7 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 export default function Header() {
   const [search, setSearch] = useState('');
-
+  const searchEl = useRef(null);
   const history = useHistory();
 
   const handleChange = (e) => {
@@ -15,9 +15,20 @@ export default function Header() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/search?s=${search}`);
-    // history.push('/cocktails/17268');
-    console.log(search);
+    if (search == '') alert(`search cound not be empty!`);
+    else {
+      history.push(`/search?s=${search}`);
+      console.log(search);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      if (search == '') alert(`search cound not be empty!`);
+      else {
+        handleSubmit();
+      }
+    }
   };
 
   return (
@@ -44,8 +55,11 @@ export default function Header() {
             type="text"
             placeholder="Search for drinks"
             onChange={handleChange}
+            onKeyPress={handleKeyDown}
+            // onSubmit={handleKeyDown}
+            ref={searchEl}
           />
-          <Button onClick={handleSubmit} variant="outline-light">
+          <Button onClick={handleSubmit} ref={searchEl} variant="outline-light">
             <SearchIcon />
           </Button>
         </Form>

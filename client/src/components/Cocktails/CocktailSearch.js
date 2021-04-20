@@ -14,7 +14,6 @@ export default function CocktailSearch() {
   let query = useQuery();
   const updataSearch = () => {
     setItem(query.get('s'));
-    console.log(item);
   };
   useEffect(() => {
     updataSearch();
