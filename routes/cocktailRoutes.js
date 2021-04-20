@@ -61,7 +61,7 @@ function sanitizeSearchData(data) {
  * @returns
  */
 async function getSearchResult(query) {
-  console.log(query);
+  // console.log(query);
   const searchResult = await axios.get(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query.s}`
   );
@@ -150,8 +150,8 @@ router.get('/cocktails/random/:nums', async (req, res) => {
       random = await getRandom(req.params.nums);
       res.send(random);
     } else {
-      res.send('input is not interger');
-      res.status(404);
+      // res.send('input is not interger');
+      res.status(404).end('input is not interger');
     }
   } catch (err) {
     console.log('Error', err);
