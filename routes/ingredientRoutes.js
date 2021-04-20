@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const popIngredData = require('./popIngredient.json');
-const router = express.Router()
+const router = express.Router();
 
 /**
  * Fetch ingredient image by name
@@ -10,7 +10,7 @@ const router = express.Router()
  * @return {Object}
  */
 function getIngredientImg(name) {
-    return `https://www.thecocktaildb.com/images/ingredients/${name}-Medium.png`;
+  return `https://www.thecocktaildb.com/images/ingredients/${name}-Medium.png`;
 }
 
 /**
@@ -20,22 +20,21 @@ function getIngredientImg(name) {
  * @return {Object}
  */
 function sanitizeIngredient(data) {
-    ingredient = {};
-    ingredient['id'] = data['idIngredient'];
-    ingredient['name'] = data['strIngredient'];
-    ingredient['Description'] = data['strDescription'];
-    ingredient['imageURL'] = getIngredientImg(data['strIngredient']);
-    return ingredient;
+  ingredient = {};
+  ingredient['id'] = data['idIngredient'];
+  ingredient['name'] = data['strIngredient'];
+  ingredient['Description'] = data['strDescription'];
+  ingredient['imageURL'] = getIngredientImg(data['strIngredient']);
+  return ingredient;
 }
 
-
 function sanitizeRelated(data) {
-    relatedCocktails = {};
-    // console.log(data['strIngredient']);
-    relatedCocktails['id'] = data['idDrink'];
-    relatedCocktails['name'] = data['strDrink'];
-    relatedCocktails['imageURL'] = data['strDrinkThumb'];
-    return relatedCocktails;
+  relatedCocktails = {};
+  // console.log(data['strIngredient']);
+  relatedCocktails['id'] = data['idDrink'];
+  relatedCocktails['name'] = data['strDrink'];
+  relatedCocktails['imageURL'] = data['strDrinkThumb'];
+  return relatedCocktails;
 }
 
 /**
@@ -46,29 +45,34 @@ function sanitizeRelated(data) {
  */
 
 async function getIngredient(name) {
-    const ingredient = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${name}`
-    );
-    return sanitizeIngredient(ingredient.data['ingredients'][0]);
+  const ingredient = await axios.get(
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${name}`
+  );
+  return sanitizeIngredient(ingredient.data['ingredients'][0]);
 }
 
 /**
  * fetch number of related coctail by specific ingredient by name
  * Return filtered relating coctail data
- * @param {Number} name 
+ * @param {Number} name
  * @param {Number} val
  * @return {Object}
  */
 async function getNumRelatedCocktails(name, val) {
-    const relatedCocktails = [];
-    const ingredientID = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`
-    );
-    if (val == null) val = ingredientID.data['drinks'].length;
-    for (let index = 0; index < val; index++) {
-        relatedCocktails.push(sanitizeRelated(ingredientID.data['drinks'][index]));
-    }
-    return relatedCocktails;
+  const relatedCocktails = [];
+  const ingredientID = await axios.get(
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`
+  );
+  // if data not found, return this message to frontend
+  if (ingredientID.data['drinks'] == null) {
+    return { error: 'Result not found!' };
+  }
+  if (val == null || val > ingredientID.data['drinks'].length)
+    val = ingredientID.data['drinks'].length;
+  for (let index = 0; index < val; index++) {
+    relatedCocktails.push(sanitizeRelated(ingredientID.data['drinks'][index]));
+  }
+  return relatedCocktails;
 }
 
 /**
@@ -76,49 +80,47 @@ async function getNumRelatedCocktails(name, val) {
  */
 
 router.get('/ingredients/popIngred', async (req, res) => {
-    try {
-        res.send(popIngredData);
-    } catch (err) {
-        console.log('Error', err);
-        res.status(500).end(err.message);
-    }
+  try {
+    res.send(popIngredData);
+  } catch (err) {
+    console.log('Error', err);
+    res.status(500).end(err.message);
+  }
 });
 
 router.get('/ingredients/popIngred', async (req, res) => {
-    try {
-        res.send(popIngredData);
-    } catch (err) {
-        console.log('Error', err);
-        res.status(500).end(err.message);
-    }
+  try {
+    res.send(popIngredData);
+  } catch (err) {
+    console.log('Error', err);
+    res.status(500).end(err.message);
+  }
 });
-
-
 
 /**
  * Get specific ingredient by ingredient name
  */
 router.get('/ingredients/:name', async (req, res) => {
-    try {
-        ingredient = await getIngredient(req.params.name);
-        res.send(ingredient);
-    } catch (err) {
-        console.log('Error', err);
-        res.status(500).end(err.message);
-    }
+  try {
+    ingredient = await getIngredient(req.params.name);
+    res.send(ingredient);
+  } catch (err) {
+    console.log('Error', err);
+    res.status(500).end(err.message);
+  }
 });
 
 /**
  * Get related cocktails by specific ingredient name
  */
 router.get('/ingredients/:name/relatedCocktails', async (req, res) => {
-    try {
-        relatedCocktails = await getNumRelatedCocktails(req.params.name);
-        res.send(relatedCocktails);
-    } catch (err) {
-        console.log('Error', err);
-        res.status(500).end(err.message);
-    }
+  try {
+    relatedCocktails = await getNumRelatedCocktails(req.params.name);
+    res.send(relatedCocktails);
+  } catch (err) {
+    console.log('Error', err);
+    res.status(500).end(err.message);
+  }
 });
 
 /**
@@ -126,16 +128,16 @@ router.get('/ingredients/:name/relatedCocktails', async (req, res) => {
  */
 
 router.get('/ingredients/:name/relatedCocktails/:nums', async (req, res) => {
-    try {
-        relatedCocktails = await getNumRelatedCocktails(req.params.name, req.params.nums);
-        res.send(relatedCocktails);
-    } catch (err) {
-        console.log('Error', err);
-        res.status(500).end(err.message);
-    }
+  try {
+    relatedCocktails = await getNumRelatedCocktails(
+      req.params.name,
+      req.params.nums
+    );
+    res.send(relatedCocktails);
+  } catch (err) {
+    console.log('Error', err);
+    res.status(500).end(err.message);
+  }
 });
-
-
-
 
 module.exports = router;
