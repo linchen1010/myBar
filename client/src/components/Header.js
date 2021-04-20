@@ -15,7 +15,7 @@ export default function Header() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (search == '') alert(`search cound not be empty!`);
+    if (search === '') alert(`search cound not be empty!`);
     else {
       history.push(`/search?s=${search}`);
       console.log(search);
@@ -24,7 +24,7 @@ export default function Header() {
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      if (search == '') alert(`search cound not be empty!`);
+      if (search === '') alert(`search cound not be empty!`);
       else {
         handleSubmit();
       }

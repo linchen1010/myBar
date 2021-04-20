@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import { Collapse, Button, Fade } from 'react-bootstrap';
-import Cocktails from '.././Cocktails/Cocktails';
+import RelatedCocktails from '.././Cocktails/RelatedCocktails';
 
 export default function IngredientDetail(props) {
   const [ingredient, setIngredient] = useState({});
@@ -88,7 +88,7 @@ export default function IngredientDetail(props) {
           {!ingredient.name ? (
             <div></div>
           ) : (
-            <Cocktails
+            <RelatedCocktails
               url={`/api/ingredients/${ingredient.name}/relatedCocktails/10`}
               title={`Cocktails that use ${ingredient.name} ...`}
             />
