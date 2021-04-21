@@ -24,10 +24,10 @@ export default function RelatedCocktails({ url, title }) {
       {found ? (
         <Container fluid="sm">
           <div className="cocktailCategory">{title}</div>
-          <Row className="justify-content-md-center">
+          <Row className="m-auto">
             {!cocktails.length > 0 ? (
-              <Row className="justify-content-md-center">
-                <Col md="8">
+              <Row className="m-auto">
+                <Col>
                   <Spinner animation="border" />
                 </Col>
               </Row>
