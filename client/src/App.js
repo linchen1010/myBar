@@ -14,16 +14,18 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <div>
+      <div className="Site">
         <Header />
-        <Route exact path="/" exact component={HomeCover} />
-        <Route exact path="/" exact component={CocktailHome} />
-        <Route path="/about" component={About} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/cocktails/:id" component={CocktailDetail} />
-        <Route path="/ingredients/:name" component={IngredientDetail} />
-        <Route path="/search" component={CocktailSearch} />
+        <div className="Site-content">
+          <Route exact path="/" exact component={HomeCover} />
+          <Route exact path="/" exact component={CocktailHome} />
+          <Route path="/about" component={About} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/cocktails/:id" component={CocktailDetail} />
+          <Route path="/ingredients/:name" component={IngredientDetail} />
+          <Route path="/search" component={CocktailSearch} />
+        </div>
         <Route path="/" component={Footer} />
       </div>
     </Router>

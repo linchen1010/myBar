@@ -132,6 +132,32 @@
   margin-bottom: 30px;
 }
 
+/* add detail ingredient image shake */
+.detailIngredientImg:hover {
+  animation: shake 0.7s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+}
+
 .detailTitle {
   text-align: center;
   font-size: 40px;
@@ -179,4 +205,15 @@ a.ingredLink {
 a.ingredLink:hover {
   font-size: 110%;
   text-decoration: none;
+}
+
+/* let footer stick bottom */
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
 }
