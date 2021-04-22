@@ -9,8 +9,10 @@ import CocktailDetail from './components/Cocktails/CocktailDetail';
 import CocktailSearch from './components/Cocktails/CocktailSearch';
 import IngredientDetail from './components/Ingredients/IngredientDetail';
 import Footer from './components/Footer';
+import Drinks from './components/Drinks';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 function App() {
   return (
     <Router>
@@ -19,10 +21,11 @@ function App() {
         <div className="Site-content">
           <Route exact path="/" exact component={HomeCover} />
           <Route exact path="/" exact component={CocktailHome} />
+          <Route path="/drinks" component={Drinks} />
           <Route path="/about" component={About} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route path="/cocktails/:id" component={CocktailDetail} />
+          <Route exact path="/cocktails/:id" component={CocktailDetail} />
           <Route path="/ingredients/:name" component={IngredientDetail} />
           <Route path="/search" component={CocktailSearch} />
         </div>
