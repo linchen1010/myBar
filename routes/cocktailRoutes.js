@@ -76,6 +76,27 @@ async function getSearchResult(query) {
   return cocktails;
 }
 
+function getCategoryDrinks() {
+  const categories = ["Ordinary Drink", "Cocktail", "Milk / Float / Shake"];
+  const url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c="
+  const categoriesURL = categories.map(category => {
+    return url+category;
+  });
+  // console.log(categoriesURL);
+  const promises = categoriesURL.map(cURL => {
+    return axios.get(cURL);
+  });
+  Promise.all(promises).then(data => {
+    console.log(data[0].data.drinks.length);
+    console.log(data[1].data.drinks.length);
+    console.log(data[2].data.drinks.length);
+    // console.log(data[1].data[0]);
+    // console.log(data[2].data[0]);
+  })
+}
+
+
+
 /**
  * Fetch random six cocktails from cocktail API
  * Return six random cocktails
