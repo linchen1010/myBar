@@ -76,24 +76,41 @@ async function getSearchResult(query) {
   return cocktails;
 }
 
-function getCategoryDrinks() {
-  const categories = ["Ordinary Drink", "Cocktail", "Milk / Float / Shake"];
-  const url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c="
-  const categoriesURL = categories.map(category => {
-    return url+category;
-  });
-  // console.log(categoriesURL);
-  const promises = categoriesURL.map(cURL => {
-    return axios.get(cURL);
-  });
-  Promise.all(promises).then(data => {
-    console.log(data[0].data.drinks.length);
-    console.log(data[1].data.drinks.length);
-    console.log(data[2].data.drinks.length);
-    // console.log(data[1].data[0]);
-    // console.log(data[2].data[0]);
-  })
+// function getCategoryDrinks() {
+//   const categories = ["Ordinary Drink", "Cocktail", "Milk / Float / Shake"];
+//   const url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c="
+//   const categoriesURL = categories.map(category => {
+//     return url+category;
+//   });
+//   // console.log(categoriesURL);
+//   const promises = categoriesURL.map(cURL => {
+//     return axios.get(cURL);
+//   });
+//   Promise.all(promises).then(data => {
+//     console.log(data[0].data.drinks.length);
+//     console.log(data[1].data.drinks.length);
+//     console.log(data[2].data.drinks.length);
+//     // console.log(data[1].data[0]);
+//     // console.log(data[2].data[0]);
+//   })
+// }
+
+async function getCatergoryDrinks(category) {
+  const categoryDrinks = await axios.get(
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
+  );
+
+  if (categoryDrinks.data['drinks'] == null) return { error: 'Result not found!' };
+
+  let drinks = [];
+  let dataLen = categoryDrinks.data['drinks'] < 40 ? categoryDrinks.data['drinks'].length : 40;
+  for (let i = 0; i < dataLen; i++) {
+    drinks.push(sanitizeSearchData(categoryDrinks.data['drinks'][i]));
+  }
+  console.log(drinks)
+  return drinks;
 }
+
 
 
 
@@ -189,6 +206,16 @@ router.get('/cocktails/top10', async (req, res) => {
   } catch (err) {
     console.log('Error', err);
     res.status(500).end(err.message);
+  }
+});
+
+router.get('/cocktails/drinks/:category', async(req, res) => {
+  try {
+    const drinks = await getCatergoryDrinks(req.params.category);
+    res.send(drinks);
+  } catch(err) {
+    console.log('Error', err);
+    res.status(500).send(err.message);
   }
 });
 
