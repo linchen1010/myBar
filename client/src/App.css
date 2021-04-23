@@ -217,3 +217,10 @@ a.ingredLink:hover {
 .Site-content {
   flex: 1;
 }
+
+/* Drinks page */
+
+.categoryImg {
+  border-radius: 30%;
+  width: 205px;
+}
