@@ -9,7 +9,7 @@ import CocktailDetail from './components/Cocktails/CocktailDetail';
 import CocktailSearch from './components/Cocktails/CocktailSearch';
 import IngredientDetail from './components/Ingredients/IngredientDetail';
 import Footer from './components/Footer';
-import Drinks from './components/Drinks';
+import Drinks from './components/Drinks/Drinks';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ function App() {
         <div className="Site-content">
           <Route exact path="/" exact component={HomeCover} />
           <Route exact path="/" exact component={CocktailHome} />
-          <Route path="/drinks" component={Drinks} />
+          <Route exact path="/drinks" component={Drinks} />
           <Route path="/about" component={About} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import Drink from './Drink';
 export default function Drinks() {
   return (
     <div>
@@ -10,6 +11,11 @@ export default function Drinks() {
             <div className="detailTitle">
               we offer different categories of drinks for you
             </div>
+          </Col>
+        </Row>
+        <Row>
+        <Col>
+          <Drink/>
           </Col>
         </Row>
       </Container>
