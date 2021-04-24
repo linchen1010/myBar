@@ -11,7 +11,9 @@ export default function Category({ category }) {
             className="categoryImg"
           ></img>
         </a>
-        <div className="cocktailName">{category}</div>
+        <a className="ingredLink" href={`/drinks/category/${category}`}>
+          <div className="cocktailName">{category}</div>
+        </a>
       </div>
     </div>
   );
