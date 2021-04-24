@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import Drink from './Drink';
+import DrinkCategory from './DrinkCategory';
 export default function Drinks() {
   return (
     <div>
@@ -13,32 +13,38 @@ export default function Drinks() {
             </div>
           </Col>
         </Row>
-        <Row className="justify-content-center" style={{ textAlign: 'center' }}>
+        <Row
+          className="justify-content-center"
+          style={{ textAlign: 'center', marginTop: '40px' }}
+        >
           <Col>
-            <Drink category="Ordinary Drink" />
+            <DrinkCategory category="Ordinary Drink" />
           </Col>
           <Col>
-            <Drink category="Cocktail" />
+            <DrinkCategory category="Cocktail" />
           </Col>
           <Col>
-            <Drink category="Shot" />
+            <DrinkCategory category="Shot" />
           </Col>
           <Col>
-            <Drink category="Punch / Party Drink" />
+            <DrinkCategory category="Punch / Party Drink" />
           </Col>
         </Row>
-        <Row className="justify-content-center" style={{ textAlign: 'center' }}>
+        <Row
+          className="justify-content-center"
+          style={{ textAlign: 'center', marginTop: '40px' }}
+        >
           <Col>
-            <Drink category="Homemade Liqueur" />
+            <DrinkCategory category="Homemade Liqueur" />
           </Col>
           <Col>
-            <Drink category="Punch / Party Drink" />
+            <DrinkCategory category="Beer" />
           </Col>
           <Col>
-            <Drink category="Coffee / Tea" />
+            <DrinkCategory category="Coffee / Tea" />
           </Col>
           <Col>
-            <Drink category="Soft Drink / Soda" />
+            <DrinkCategory category="Soft Drink / Soda" />
           </Col>
         </Row>
       </Container>
