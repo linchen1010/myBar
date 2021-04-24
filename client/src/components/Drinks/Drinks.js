@@ -27,7 +27,7 @@ export default function Drinks() {
             <DrinkCategory category="Shot" />
           </Col>
           <Col>
-            <DrinkCategory category="Punch / Party Drink" />
+            <DrinkCategory category="Party Drink and Punch" />
           </Col>
         </Row>
         <Row
@@ -41,10 +41,10 @@ export default function Drinks() {
             <DrinkCategory category="Beer" />
           </Col>
           <Col>
-            <DrinkCategory category="Coffee / Tea" />
+            <DrinkCategory category="Coffee and Tea" />
           </Col>
           <Col>
-            <DrinkCategory category="Soft Drink / Soda" />
+            <DrinkCategory category="Soft Drink and Soda" />
           </Col>
         </Row>
       </Container>

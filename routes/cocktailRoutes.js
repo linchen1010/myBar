@@ -96,18 +96,22 @@ async function getSearchResult(query) {
 // }
 
 async function getCatergoryDrinks(category) {
+  if(category == 'Soft Drink and Soda') category = 'Soft Drink / Soda';
+  else if(category == 'Coffee and Tea') category = 'Coffee / Tea';
+  else if(category == 'Party Drink and Punch') category = 'Punch / Party Drink'
   const categoryDrinks = await axios.get(
     `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
   );
-
+  console.log(category);
   if (categoryDrinks.data['drinks'] == null) return { error: 'Result not found!' };
 
   let drinks = [];
-  let dataLen = categoryDrinks.data['drinks'] < 40 ? categoryDrinks.data['drinks'].length : 40;
+  let dataLen = categoryDrinks.data['drinks'].length < 60 ? categoryDrinks.data['drinks'].length : 60;
+  console.log(dataLen);
   for (let i = 0; i < dataLen; i++) {
     drinks.push(sanitizeSearchData(categoryDrinks.data['drinks'][i]));
   }
-  console.log(drinks)
+  // console.log(drinks)
   return drinks;
 }
 
