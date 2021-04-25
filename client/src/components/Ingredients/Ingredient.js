@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default function Ingredient(props) {
   return (
     <div>
@@ -15,7 +14,9 @@ export default function Ingredient(props) {
             <div className="text">See More</div>
           </div>
         </a>
-        <div className="cocktailName">{props.name}</div>
+        <a className="cocktailNameLink" href={`/ingredients/${props.name}`}>
+          <div className="cocktailName">{props.name}</div>
+        </a>
       </div>
     </div>
   );

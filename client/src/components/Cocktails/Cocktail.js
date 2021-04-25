@@ -9,7 +9,9 @@ export default function Cocktail(props) {
           <div className="text">See More</div>
         </div>
       </a>
-      <div className="cocktailName">{props.name}</div>
+      <a className="cocktailNameLink" href={`/cocktails/${props.id}`}>
+        <div className="cocktailName">{props.name}</div>
+      </a>
     </div>
   );
 }

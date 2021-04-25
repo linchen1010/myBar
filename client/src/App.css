@@ -93,7 +93,7 @@
 .cocktailName {
   padding-top: 10px;
   padding-bottom: 5px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
 }
 
@@ -207,6 +207,15 @@ a.ingredLink:hover {
   text-decoration: none;
 }
 
+a.cocktailNameLink {
+  color: rgb(0, 0, 0);
+}
+
+a.cocktailNameLink:hover {
+  color: rgb(59, 59, 59);
+  text-decoration: none;
+}
+
 /* let footer stick bottom */
 .Site {
   display: flex;
@@ -223,4 +232,16 @@ a.ingredLink:hover {
 .categoryImg {
   border-radius: 30%;
   width: 205px;
+}
+
+.categoryDescription {
+  width: 50%;
+  text-align: center;
+  margin-inline: auto;
+  margin-bottom: 40px;
+  margin: top 0%;
+  /* font-family: 'Courgette', cursive; */
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(59, 59, 59);
 }
