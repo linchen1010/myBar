@@ -3,10 +3,6 @@ import { Container, Row, Col, Button, CloseButton } from 'react-bootstrap';
 import Cocktails from '../Cocktails/Cocktails';
 import DrinkCategory from './DrinkCategory';
 
-const style = {
-  fontWeight: '600',
-};
-
 export default function Drinks() {
   const [random, setRandom] = useState(false);
   const click = () => {
@@ -73,7 +69,7 @@ export default function Drinks() {
           <Col>
             <Button
               variant="outline-info"
-              style={style}
+              bsPrefix="btn-random"
               onClick={() => click()}
             >
               Random
