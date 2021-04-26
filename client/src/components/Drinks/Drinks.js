@@ -62,10 +62,7 @@ export default function Drinks() {
             <div className="detailTitle">No idea what to get?</div>
           </Col>
         </Row>
-        <Row
-          className="justify-content-center"
-          style={{ textAlign: 'center', marginTop: '20px' }}
-        >
+        <Row className="justify-content-center" style={{ textAlign: 'center' }}>
           <Col>
             <Button
               variant="outline-info"

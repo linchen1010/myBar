@@ -257,15 +257,14 @@ a.cocktailNameLink:hover {
   background-color: #343a40;
   border: none;
   color: white;
-  padding: 8px 20px;
+  padding: 20px 20px;
   text-align: center;
   text-decoration: none;
-  font-size: 12px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 3vw;
   font-weight: 600;
-  width: 20%;
-  transition-duration: 0.3s;
+  width: 25%;
+  transition-duration: 0.4s;
   border: 3px solid #343a40;
   border-radius: 12px;
 }
@@ -276,17 +275,16 @@ a.cocktailNameLink:hover {
   border: 3px solid #343a40;
 }
 
-.btn-default {
+.btn-form {
   background-color: #343a40;
   border: none;
   color: white;
   padding: 8px 20px;
   text-align: center;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 3vw;
   margin: 20px 0;
   cursor: pointer;
-  font-size: 20px;
   font-weight: 600;
   width: 100%;
   transition-duration: 0.3s;
@@ -294,7 +292,7 @@ a.cocktailNameLink:hover {
   border-radius: 12px;
 }
 
-.btn-default:hover {
+.btn-form:hover {
   background-color: white;
   color: #343a40;
   border: 3px solid #343a40;

@@ -21,7 +21,7 @@ export default function Signup() {
               placeholder="Password"
               size="lg"
             />
-            <Button variant="success" bsPrefix="btn-default">
+            <Button variant="success" bsPrefix="btn-form">
               Create account
             </Button>
             <Row className="justify-content-center">

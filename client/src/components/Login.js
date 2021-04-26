@@ -19,7 +19,7 @@ export default function Login() {
               placeholder="Password"
               size="lg"
             />
-            <Button variant="success" bsPrefix="btn-default">
+            <Button variant="success" bsPrefix="btn-form">
               Login
             </Button>
             <Row className="justify-content-center">
