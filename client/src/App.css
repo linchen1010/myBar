@@ -245,3 +245,76 @@ a.cocktailNameLink:hover {
   font-weight: 500;
   color: rgb(59, 59, 59);
 }
+
+.loginForm {
+  width: 30%;
+  margin: 20px auto;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.btn-random {
+  background-color: #343a40;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  width: 20%;
+  transition-duration: 0.3s;
+  border: 3px solid #343a40;
+  border-radius: 12px;
+}
+
+.btn-random:hover {
+  background-color: white;
+  color: #343a40;
+  border: 3px solid #343a40;
+}
+
+.btn-default {
+  background-color: #343a40;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  margin: 20px 0;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  width: 100%;
+  transition-duration: 0.3s;
+  border: 3px solid #343a40;
+  border-radius: 12px;
+}
+
+.btn-default:hover {
+  background-color: white;
+  color: #343a40;
+  border: 3px solid #343a40;
+}
+
+.formText {
+  color: grey;
+  font-size: 16px;
+  text-align: center;
+}
+
+input[type='username'] {
+  padding: 20px 10px;
+  margin: 20px 0;
+  border: 4px solid #343a40;
+  font-size: 15px;
+}
+input[type='password'] {
+  padding: 20px 10px;
+  margin: 20px 0;
+  font-size: 15px;
+  border: 4px solid #343a40;
+}
