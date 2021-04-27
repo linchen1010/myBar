@@ -11,8 +11,10 @@ const app = express();
 
 const cocktail = require('./routes/cocktailRoutes');
 const ingredient = require('./routes/ingredientRoutes');
+const authsRoutes = require('./routes/authsRoutes');
 app.use('/api', cocktail);
 app.use('/api', ingredient);
+app.use('/api', authsRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {
