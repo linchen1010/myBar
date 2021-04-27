@@ -187,15 +187,15 @@ module.exports = (app) => {
   /**
    * Get specific ingredient by ingredient id
    */
-//   app.get('/api/ingredient/:ingredient_id', async (req, res) => {
-//     try {
-//       const ingredientID = await getIngredientByID(req.params.ingredient_id);
-//       res.send(ingredientID);
-//     } catch (err) {
-//       console.log('Error', err);
-//       res.status(500).end(err.message);
-//     }
-//   });
+  //   app.get('/api/ingredient/:ingredient_id', async (req, res) => {
+  //     try {
+  //       const ingredientID = await getIngredientByID(req.params.ingredient_id);
+  //       res.send(ingredientID);
+  //     } catch (err) {
+  //       console.log('Error', err);
+  //       res.status(500).end(err.message);
+  //     }
+  //   });
 
   /**
    * Get 4 popular ingredient from locol json data
