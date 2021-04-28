@@ -9,7 +9,17 @@ export default function Signup() {
         </Row>
         <Form.Group className="loginForm">
           <Form>
-          <Form.Control
+            <a href="/auth/google">
+              <Button variant="success" bsPrefix="btn-google">
+                <img
+                  className="googleImg"
+                  src="https://developers.google.com/identity/images/g-logo.png"
+                ></img>{' '}
+                Sign up with Google
+              </Button>
+            </a>
+            <div className="formText">or</div>
+            <Form.Control
               className="loginForm"
               type="username"
               placeholder="Username"

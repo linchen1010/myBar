@@ -7,6 +7,16 @@ export default function Login() {
         <Row className="cocktailCategory justify-content-center">Log In</Row>
         <Form.Group className="loginForm">
           <Form>
+            <a href="/auth/google">
+              <Button variant="success" bsPrefix="btn-google">
+                <img
+                  className="googleImg"
+                  src="https://developers.google.com/identity/images/g-logo.png"
+                ></img>{' '}
+                Login in with Google
+              </Button>
+            </a>
+            <div className="formText">or</div>
             <Form.Control
               className="loginForm"
               type="email"

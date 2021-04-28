@@ -288,14 +288,41 @@ a.cocktailNameLink:hover {
   font-weight: 600;
   width: 100%;
   transition-duration: 0.4s;
-  border: 3px solid #343a40;
+  border: 4px solid #343a40;
   border-radius: 12px;
 }
 
 .btn-form:hover {
   background-color: white;
   color: #343a40;
-  border: 3px solid #343a40;
+  border: 4px solid #343a40;
+}
+
+.btn-google {
+  background-color: white;
+  border: none;
+  color: #343a40;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  margin: 20px 0;
+  cursor: pointer;
+  font-weight: 700;
+  width: 100%;
+  transition-duration: 0.4s;
+  border: 4px solid #343a40;
+  border-radius: 12px;
+}
+
+.btn-google:hover {
+  transform: translateY(-3px);
+}
+
+.googleImg {
+  width: 20px;
+  margin-bottom: 3px;
+  margin-right: 5px;
 }
 
 .formText {
