@@ -9,19 +9,28 @@ export default function Signup() {
         </Row>
         <Form.Group className="loginForm">
           <Form>
-            <Form.Control
+          <Form.Control
               className="loginForm"
               type="username"
               placeholder="Username"
               size="lg"
+              required
+            />
+            <Form.Control
+              className="loginForm"
+              type="email"
+              placeholder="Email"
+              size="lg"
+              required
             />
             <Form.Control
               className="loginForm"
               type="password"
               placeholder="Password"
               size="lg"
+              required
             />
-            <Button variant="success" bsPrefix="btn-form">
+            <Button variant="success" bsPrefix="btn-form" type="submit">
               Create account
             </Button>
             <Row className="justify-content-center">

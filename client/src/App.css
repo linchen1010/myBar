@@ -316,3 +316,9 @@ input[type='password'] {
   font-size: 15px;
   border: 4px solid #343a40;
 }
+input[type='email'] {
+  padding: 20px 10px;
+  margin: 20px 0;
+  font-size: 15px;
+  border: 4px solid #343a40;
+}

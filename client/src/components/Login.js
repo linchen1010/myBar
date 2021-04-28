@@ -9,17 +9,19 @@ export default function Login() {
           <Form>
             <Form.Control
               className="loginForm"
-              type="username"
-              placeholder="Username"
+              type="email"
+              placeholder="Email"
               size="lg"
+              required
             />
             <Form.Control
               className="loginForm"
               type="password"
               placeholder="Password"
               size="lg"
+              required
             />
-            <Button variant="success" bsPrefix="btn-form">
+            <Button variant="success" bsPrefix="btn-form" type="submit">
               Login
             </Button>
             <Row className="justify-content-center">
