@@ -9,11 +9,13 @@ const User = mongoose.model('users');
 const app = express();
 
 passport.serializeUser((user, done) => {
+    console.log('serialze: ', user.id);
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
   User.findById(id).then((user) => {
+    console.log('serialze: ', user);
     done(null, user);
   });
 });
@@ -54,7 +56,7 @@ module.exports = (app) => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
-      res.redirect('/drinks');
+      res.redirect('/');
     }
   );
 
@@ -64,6 +66,7 @@ module.exports = (app) => {
   });
 
   app.get('/api/current_user', (req, res) => {
+      console.log(req.user);
     res.send(req.user);
   });
 };

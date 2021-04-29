@@ -1,10 +1,10 @@
 const express = require('express');
-const fs = require('fs');
-const axios = require('axios');
 const app = express();
+const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
 const mongoose = require('mongoose');
 const passport = require('passport');
+
 
 require('./models/User');
 mongoose.connect(keys.mongoURI2, {
@@ -19,12 +19,12 @@ mongoose.connect(keys.mongoURI2, {
 //   next();
 // });
 
-// app.use(
-//   cookieSession({
-//     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days, (ms)
-//     keys: [keys.cookieKey],
-//   })
-// );
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days, (ms)
+    keys: [keys.cookieKey],
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
