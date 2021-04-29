@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 require('./models/User');
-mongoose.connect(keys.mongoURI, {
+mongoose.connect(keys.mongoURI2, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -32,11 +32,13 @@ app.use(passport.session());
 const cocktail = require('./routes/cocktailRoutes');
 const ingredient = require('./routes/ingredientRoutes');
 const authsRoutes = require('./routes/authsRoutes');
+// const Login = require('./routes/Login');
 require('./routes/authGoogleRoutes')(app);
 
 app.use('/api', cocktail);
 app.use('/api', ingredient);
-// app.use('/api', authsRoutes);
+app.use('/api', authsRoutes);
+// app.use('/api', Login);
 
 const PORT = 5000;
 app.listen(PORT, () => {

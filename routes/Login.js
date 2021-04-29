@@ -9,8 +9,6 @@ const passport = require('passport');
 const flash = require('express-flash')
 const session = require('express-session')
 const users = []
-const mongoose = require('mongoose');
-const User = mongoose.model('users');
 
 const initializePassport = require('./passport-config');
 
@@ -41,52 +39,7 @@ router.post('/login', passport.authenticate('local', {
 
 
 router.get('/login', (req, res) => {
-    req.send("ok");
+    res.send("ok");
 })
-
-
-router.get('/signup', (req, res) => {
-
-});
-
-
-router.post('/signup', async (req, res) => {
-    try {
-
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        users.push({
-            id: Date.now().toString(),
-            name: req.body.username,
-            email: req.body.email,
-            password: hashedPassword
-        })
-        res.status(200).json({ message: "successful signup" })
-    } catch {
-        error => {
-            console.error(error);
-        }
-    }
-    console.log(users);
-
-
-});
-
-function checkAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next()
-    }
-
-    window.location = '/login';
-}
-
-function checkNotAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        console.log(req);
-        res.status(303).send("already exist");
-    }
-    next()
-}
-
-
 
 module.exports = router;

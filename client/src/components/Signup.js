@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Form, Button, Row } from 'react-bootstrap';
+import axios from 'axios';
+import { propTypes } from 'react-bootstrap/esm/Image';
 export default function Signup() {
+  const [customerSignUp, setCustomerSignUp] = useState(
+    { email: '', password: '', username: '' }
+  );
+  const handleChange = (event) => {
+    setCustomerSignUp({ ...customerSignUp, [event.target.name]: event.target.value })
+  }
+
+
+  const handleSubmit = async e => {
+
+    e.preventDefault();
+
+    console.log(customerSignUp);
+
+    let res = await axios.post('/api/signup', customerSignUp)
+    console.log(res.data)
+    if (res.status === 200) {
+      window.location.assign('/login')
+    }
+  }
+
   return (
     <div>
       <Container fluid="sm">
@@ -8,7 +31,7 @@ export default function Signup() {
           Start your cocktails journey.
         </Row>
         <Form.Group className="loginForm">
-          <Form>
+          <Form >
             <a href="/auth/google">
               <Button variant="success" bsPrefix="btn-google">
                 <img
@@ -22,25 +45,34 @@ export default function Signup() {
             <Form.Control
               className="loginForm"
               type="username"
+              name="username"
               placeholder="Username"
+              value={customerSignUp.username}
+              onChange={handleChange}
               size="lg"
               required
             />
             <Form.Control
               className="loginForm"
               type="email"
+              name="email"
               placeholder="Email"
+              value={customerSignUp.email}
+              onChange={handleChange}
               size="lg"
               required
             />
             <Form.Control
               className="loginForm"
               type="password"
+              name="password"
               placeholder="Password"
+              value={customerSignUp.password}
+              onChange={handleChange}
               size="lg"
               required
             />
-            <Button variant="success" bsPrefix="btn-form" type="submit">
+            <Button variant="success" bsPrefix="btn-form" type="submit" onClick={handleSubmit}>
               Create account
             </Button>
             <Row className="justify-content-center">

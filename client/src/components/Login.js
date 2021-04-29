@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Container, Form, Button, Row } from 'react-bootstrap';
 export default function Login() {
+
+  const [customerSignUp, setCustomerSignUp] = useState(
+    { email: '', password: '' }
+  );
+  const handleChange = (event) => {
+    setCustomerSignUp({ ...customerSignUp, [event.target.name]: event.target.value })
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    console.log(customerSignUp);
+    let res = await axios.post('/api/login', customerSignUp)
+    if (res.status === 200) {
+      window.location.assign('/')
+    }
+  }
   return (
     <div>
       <Container fluid="sm">
@@ -20,18 +37,24 @@ export default function Login() {
             <Form.Control
               className="loginForm"
               type="email"
+              name="email"
               placeholder="Email"
+              value={customerSignUp.email}
+              onChange={handleChange}
               size="lg"
               required
             />
             <Form.Control
               className="loginForm"
               type="password"
+              name="password"
               placeholder="Password"
+              value={customerSignUp.password}
+              onChange={handleChange}
               size="lg"
               required
             />
-            <Button variant="success" bsPrefix="btn-form" type="submit">
+            <Button variant="success" bsPrefix="btn-form" type="submit" onClick={handleSubmit}>
               Login
             </Button>
             <Row className="justify-content-center">
