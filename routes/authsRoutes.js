@@ -8,16 +8,17 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const flash = require('express-flash')
 const session = require('express-session')
-const users = []
+// const users = []
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
 const initializePassport = require('./passport-config');
+const authGoogleRoutes = require('./authGoogleRoutes');
 
 initializePassport(
     passport,
-    email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
+    async email => await User.find({ email: email }),
+    async id => await User.find({ id: id })
 )
 
 router.use(express.urlencoded({ extended: true }))
@@ -51,23 +52,23 @@ router.get('/signup', (req, res) => {
 
 
 router.post('/signup', async (req, res) => {
-    try {
 
+    let user = await User.findOne({ email: req.body.email });
+    if (user) {
+        return res.send(user)
+    } else {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        users.push({
-            id: Date.now().toString(),
+        console.log(req.body.username)
+        user = new User({
             name: req.body.username,
             email: req.body.email,
             password: hashedPassword
         })
-        res.status(200).json({ message: "successful signup" })
-    } catch {
-        error => {
-            console.error(error);
-        }
+        await user.save();
+        let email = await User.find({ email: req.body.email });
+        console.log(email[0].email)
+        res.send(null);
     }
-    console.log(users);
-
 
 });
 

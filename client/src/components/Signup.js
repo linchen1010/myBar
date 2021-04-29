@@ -18,10 +18,19 @@ export default function Signup() {
     console.log(customerSignUp);
 
     let res = await axios.post('/api/signup', customerSignUp)
-    console.log(res.data)
-    if (res.status === 200) {
+    console.log(res)
+    if (res.data == "") {
       window.location.assign('/login')
+    } else {
+      console.log(res.data)
+      window.location.assign('/signup')
     }
+    // if (res.status === 200) {
+    //   window.location.assign('/login')
+    // } else if (res.status === 400) {
+    //   console.log("error")
+    //   window.location.assign('/signup')
+    // }
   }
 
   return (
@@ -31,7 +40,7 @@ export default function Signup() {
           Start your cocktails journey.
         </Row>
         <Form.Group className="loginForm">
-          <Form >
+          <Form onSubmit={handleSubmit}>
             <a href="/auth/google">
               <Button variant="success" bsPrefix="btn-google">
                 <img
@@ -72,7 +81,7 @@ export default function Signup() {
               size="lg"
               required
             />
-            <Button variant="success" bsPrefix="btn-form" type="submit" onClick={handleSubmit}>
+            <Button variant="success" bsPrefix="btn-form" type="submit" >
               Create account
             </Button>
             <Row className="justify-content-center">
