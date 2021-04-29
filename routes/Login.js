@@ -8,14 +8,15 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const flash = require('express-flash')
 const session = require('express-session')
-const users = []
+const User = require('../models/User');
 
 const initializePassport = require('./passport-config');
 
-initializePassport(
+initializePassport( async () => {
     passport,
-    email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
+    email => await User.find(user => user.email === email),
+    id => await User.find(user => user.id === id)
+}
 )
 
 router.use(express.urlencoded({ extended: true }))

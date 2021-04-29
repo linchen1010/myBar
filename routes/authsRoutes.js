@@ -17,8 +17,8 @@ const authGoogleRoutes = require('./authGoogleRoutes');
 
 initializePassport(
     passport,
-    async email => await User.find({ email: email }),
-    async id => await User.find({ id: id })
+    email => User.find({ email: email }).email,
+    id => User.find({ id: id }).id
 )
 
 router.use(express.urlencoded({ extended: true }))
@@ -38,7 +38,9 @@ router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
     failureFlash: true
-}));
+}), (req, res) => {
+    res.send('111')
+});
 
 
 router.get('/login', (req, res) => {

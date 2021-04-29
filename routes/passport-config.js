@@ -1,29 +1,34 @@
 
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt')
-
+const mongoose = require('mongoose');
+const User = mongoose.model('users');
 
 
 function initialize(passport, getUserByEmail, getUserByID) {
+    
     const authenticateUser = async (email, password, done) => {
-        const user = getUserByEmail(email)
-        console.log(user);
+        // could figure out how to use this (thumb)
+        // const user = await getUserByID(email);
+        const user = await User.findOne({email: email});
+        
         if (user == null) {
+            console.log('No user with this email');
             return done(null, false, { message: 'No user with that email' })
         }
 
         try {
             if (await bcrypt.compare(password, user.password)) {
-                console.log('success')
+                console.log('Login Success!')
                 return done(null, user)
             } else {
-                console.log('incorrect')
+                console.log('Password incorrect!')
                 return done(null, false, { message: 'Password incorrect' })
             }
 
         } catch (e) {
+            console.log(e);
             return done(e)
-
         }
 
 
