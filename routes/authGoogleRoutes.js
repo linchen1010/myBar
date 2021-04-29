@@ -4,18 +4,17 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('../config/keys');
 const mongoose = require('mongoose');
 
+
 const User = mongoose.model('users');
 
 const app = express();
 
 passport.serializeUser((user, done) => {
-    console.log('serialze: ', user.id);
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
   User.findById(id).then((user) => {
-    console.log('serialze: ', user);
     done(null, user);
   });
 });
@@ -31,6 +30,7 @@ passport.use(
       const existingUser = await User.findOne({ userId: profile.id });
 
       if (existingUser) {
+          console.log(existingUser);
         return done(null, existingUser);
       }
 
@@ -44,7 +44,9 @@ passport.use(
   )
 );
 
+
 module.exports = (app) => {
+
   app.get(
     '/auth/google',
     passport.authenticate('google', {
@@ -66,7 +68,6 @@ module.exports = (app) => {
   });
 
   app.get('/api/current_user', (req, res) => {
-      console.log(req.user);
     res.send(req.user);
   });
 };
