@@ -2,25 +2,28 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Form, Button, Row } from 'react-bootstrap';
 export default function Login() {
-
-  const [customerSignUp, setCustomerSignUp] = useState(
-    { email: '', password: '' }
-  );
+  const [customerSignUp, setCustomerSignUp] = useState({
+    email: '',
+    password: '',
+  });
   const handleChange = (event) => {
-    setCustomerSignUp({ ...customerSignUp, [event.target.name]: event.target.value })
-  }
+    setCustomerSignUp({
+      ...customerSignUp,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(customerSignUp);
-    let res = await axios.post('/api/login', customerSignUp)
-    console.log(res.data.message)
-    if (res.data === "") {
-      window.location.assign('/login')
+    let res = await axios.post('/api/login', customerSignUp);
+    console.log(res.data.message);
+    if (res.data === '') {
+      window.location.assign('/login');
     } else {
-      window.location.assign('/')
+      window.location.assign('/');
     }
-  }
+  };
   return (
     <div>
       <Container fluid="sm">
@@ -32,6 +35,7 @@ export default function Login() {
                 <img
                   className="googleImg"
                   src="https://developers.google.com/identity/images/g-logo.png"
+                  alt="googleLogo"
                 ></img>{' '}
                 Login in with Google
               </Button>
@@ -60,7 +64,7 @@ export default function Login() {
             {/* {
               state.message
             } */}
-            <Button variant="success" bsPrefix="btn-form" type="submit" >
+            <Button variant="success" bsPrefix="btn-form" type="submit">
               Login
             </Button>
             <Row className="justify-content-center">

@@ -1,31 +1,33 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Row } from 'react-bootstrap';
 import axios from 'axios';
-import { propTypes } from 'react-bootstrap/esm/Image';
 export default function Signup() {
-  const [customerSignUp, setCustomerSignUp] = useState(
-    { email: '', password: '', username: '' }
-  );
+  const [customerSignUp, setCustomerSignUp] = useState({
+    email: '',
+    password: '',
+    username: '',
+  });
   const handleChange = (event) => {
-    setCustomerSignUp({ ...customerSignUp, [event.target.name]: event.target.value })
-  }
+    setCustomerSignUp({
+      ...customerSignUp,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-
-  const handleSubmit = async e => {
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     console.log(customerSignUp);
 
-    let res = await axios.post('/api/signup', customerSignUp)
-    console.log(res)
-    if (res.data === "") {
-      window.location.assign('/login')
+    let res = await axios.post('/api/signup', customerSignUp);
+    console.log(res);
+    if (res.data === '') {
+      window.location.assign('/login');
     } else {
-      console.log(res.data)
-      window.location.assign('/signup')
+      console.log(res.data);
+      window.location.assign('/signup');
     }
-  }
+  };
 
   return (
     <div>
@@ -40,6 +42,7 @@ export default function Signup() {
                 <img
                   className="googleImg"
                   src="https://developers.google.com/identity/images/g-logo.png"
+                  alt="googleLogo"
                 ></img>{' '}
                 Sign up with Google
               </Button>
@@ -75,7 +78,7 @@ export default function Signup() {
               size="lg"
               required
             />
-            <Button variant="success" bsPrefix="btn-form" type="submit" >
+            <Button variant="success" bsPrefix="btn-form" type="submit">
               Create account
             </Button>
             <Row className="justify-content-center">
