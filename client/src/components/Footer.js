@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Container, NavbarBrand, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 
 export default function Footer() {

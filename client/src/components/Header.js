@@ -2,7 +2,6 @@ import React, { useState, useRef, useContext } from 'react';
 import {
   Navbar,
   Nav,
-  NavDropdown,
   Form,
   Button,
   FormControl,
@@ -11,7 +10,7 @@ import {
 } from 'react-bootstrap';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import SearchIcon from '@material-ui/icons/Search';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import axios from 'axios';
 
@@ -19,7 +18,7 @@ export default function Header() {
   const [search, setSearch] = useState('');
   const searchEl = useRef(null);
   const history = useHistory();
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -100,7 +99,7 @@ export default function Header() {
 const LoginSignUp = () => {
   return (
     <div>
-      <Nav className="ml" className="navLog">
+      <Nav className="ml navLog">
         <Nav.Link as={Link} to="/login">
           Log in
         </Nav.Link>
@@ -115,7 +114,6 @@ const LoginSignUp = () => {
 // when user sign in -- show logout element and log out the user
 const Logout = () => {
   const { user, setUser } = useContext(UserContext);
-  const [open, setOpen] = useState(false);
   const logoutUser = async () => {
     await axios.get('/api/logout'); // ask server to logout user
     await setTimeout(() => setUser(null), 1200); // set the frontend user data to null

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Button, CloseButton } from 'react-bootstrap';
+import { Container, Row, Col, Button} from 'react-bootstrap';
 import Cocktails from '../Cocktails/Cocktails';
 import DrinkCategory from './DrinkCategory';
 
