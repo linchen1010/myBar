@@ -16,6 +16,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React, { useState, useMemo, useEffect } from 'react';
 import { UserContext } from './contexts/UserContext';
 import axios from 'axios';
+import UserProfile from './components/Users/UserProfile';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,6 +51,7 @@ function App() {
             <Route exact path="/cocktails/:id" component={CocktailDetail} />
             <Route path="/ingredients/:name" component={IngredientDetail} />
             <Route path="/search" component={CocktailSearch} />
+            <Route path="/user/:id" component={UserProfile}/>
           </div>
           <Route path="/" component={Footer} />
         </div>
