@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import Cocktails from './Cocktails';
 
 export default function CocktailSearch() {
-  const [drinks, setDrinks] = useState({});
   const [item, setItem] = useState('');
 
   const useQuery = () => {

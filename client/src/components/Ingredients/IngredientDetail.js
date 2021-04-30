@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
-import { Collapse, Button, Fade } from 'react-bootstrap';
+import { Collapse, Button } from 'react-bootstrap';
 import RelatedCocktails from '.././Cocktails/RelatedCocktails';
 
 export default function IngredientDetail(props) {

@@ -38,7 +38,6 @@ function App() {
         <div className="Site">
           <Header />
           <div className="Site-content">
-            <Route exact path="/" exact component={HomeCover} />
             {/* <pre style={{ textAlign: 'center' }}>
               {JSON.stringify(user, null, 2)}
             </pre> */}
