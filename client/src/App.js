@@ -39,9 +39,9 @@ function App() {
           <Header />
           <div className="Site-content">
             <Route exact path="/" exact component={HomeCover} />
-            <pre style={{ textAlign: 'center' }}>
+            {/* <pre style={{ textAlign: 'center' }}>
               {JSON.stringify(user, null, 2)}
-            </pre>
+            </pre> */}
             <Route exact path="/" exact component={CocktailHome} />
             <Route exact path="/drinks" component={Drinks} />
             <Route path="/drinks/category/:category" component={Drink} />
@@ -51,7 +51,7 @@ function App() {
             <Route exact path="/cocktails/:id" component={CocktailDetail} />
             <Route path="/ingredients/:name" component={IngredientDetail} />
             <Route path="/search" component={CocktailSearch} />
-            <Route path="/user/:id" component={UserProfile}/>
+            <Route path="/user/:id" component={UserProfile} />
           </div>
           <Route path="/" component={Footer} />
         </div>
