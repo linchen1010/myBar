@@ -8,7 +8,6 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const flash = require('express-flash')
 const session = require('express-session')
-// const users = []
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
@@ -17,7 +16,6 @@ const authGoogleRoutes = require('./authGoogleRoutes');
 
 initializePassport(
     passport,
-    email => User.find({ email: email }).email,
     id => User.find({ id: id }).id
 )
 
@@ -34,23 +32,17 @@ router.use(passport.initialize())
 router.use(passport.session())
 
 
-router.post('/login', passport.authenticate('local', {
+router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/login',
+    failureRedirect: '/api/failureLogin',
     failureFlash: true
-}), (req, res) => {
-    res.send('111')
-});
+}));
 
 
-router.get('/login', (req, res) => {
-    req.send("ok");
+router.get('/failureLogin', (req, res) => {
+    res.json({ message: req.flash('error') });
 })
 
-
-router.get('/signup', (req, res) => {
-
-});
 
 
 router.post('/signup', async (req, res) => {
@@ -67,25 +59,23 @@ router.post('/signup', async (req, res) => {
             password: hashedPassword
         })
         await user.save();
-        let email = await User.find({ email: req.body.email });
-        console.log(email[0].email)
         res.send(null);
     }
 
 });
 
+
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next()
     }
-
-    window.location = '/login';
+    res.redirect('/login')
 }
 
-function checkNotAuthenticated(req, res, next) {
+async function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        console.log(req);
-        res.status(303).send("already exist");
+        console.log("already login")
+        return res.send("already login");
     }
     next()
 }

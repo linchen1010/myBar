@@ -14,16 +14,19 @@ export default function Login() {
     e.preventDefault();
     console.log(customerSignUp);
     let res = await axios.post('/api/login', customerSignUp)
-    if (res.status === 200) {
-      window.location.assign('/')
-    }
+    console.log(res.data.message)
+    // if (res.data === "") {
+    //   window.location.assign('/login')
+    // } else {
+    //   window.location.assign('/')
+    // }
   }
   return (
     <div>
       <Container fluid="sm">
         <Row className="cocktailCategory justify-content-center">Log In</Row>
         <Form.Group className="loginForm">
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <a href="/auth/google">
               <Button variant="success" bsPrefix="btn-google">
                 <img
@@ -54,7 +57,10 @@ export default function Login() {
               size="lg"
               required
             />
-            <Button variant="success" bsPrefix="btn-form" type="submit" onClick={handleSubmit}>
+            {/* {
+              state.message
+            } */}
+            <Button variant="success" bsPrefix="btn-form" type="submit" >
               Login
             </Button>
             <Row className="justify-content-center">

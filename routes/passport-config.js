@@ -3,15 +3,14 @@ const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
+const flash = require('express-flash')
 
 
-function initialize(passport, getUserByEmail, getUserByID) {
-    
+function initialize(passport, getUserByID) {
+
     const authenticateUser = async (email, password, done) => {
-        // could figure out how to use this (thumb)
-        // const user = await getUserByID(email);
-        const user = await User.findOne({email: email});
-        
+        const user = await User.findOne({ email: email });
+
         if (user == null) {
             console.log('No user with this email');
             return done(null, false, { message: 'No user with that email' })
@@ -27,7 +26,6 @@ function initialize(passport, getUserByEmail, getUserByID) {
             }
 
         } catch (e) {
-            console.log(e);
             return done(e)
         }
 

@@ -30,7 +30,7 @@ passport.use(
       const existingUser = await User.findOne({ userId: profile.id });
 
       if (existingUser) {
-          console.log(existingUser);
+        console.log(existingUser);
         return done(null, existingUser);
       }
 
@@ -63,6 +63,7 @@ module.exports = (app) => {
   );
 
   app.get('/api/logout', (req, res) => {
+    console.log('logout')
     req.logout();
     res.redirect('/');
   });

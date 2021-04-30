@@ -7,7 +7,7 @@ const passport = require('passport');
 
 
 require('./models/User');
-mongoose.connect(keys.mongoURI, {
+mongoose.connect(keys.mongoURI2, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

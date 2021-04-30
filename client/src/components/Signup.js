@@ -19,18 +19,12 @@ export default function Signup() {
 
     let res = await axios.post('/api/signup', customerSignUp)
     console.log(res)
-    if (res.data == "") {
+    if (res.data === "") {
       window.location.assign('/login')
     } else {
       console.log(res.data)
       window.location.assign('/signup')
     }
-    // if (res.status === 200) {
-    //   window.location.assign('/login')
-    // } else if (res.status === 400) {
-    //   console.log("error")
-    //   window.location.assign('/signup')
-    // }
   }
 
   return (
