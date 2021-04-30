@@ -15,11 +15,11 @@ export default function Login() {
     console.log(customerSignUp);
     let res = await axios.post('/api/login', customerSignUp)
     console.log(res.data.message)
-    // if (res.data === "") {
-    //   window.location.assign('/login')
-    // } else {
-    //   window.location.assign('/')
-    // }
+    if (res.data === "") {
+      window.location.assign('/login')
+    } else {
+      window.location.assign('/')
+    }
   }
   return (
     <div>
