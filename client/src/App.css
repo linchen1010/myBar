@@ -12,6 +12,22 @@
   margin-bottom: 5px;
 }
 
+/* log in / Sign up / log out font */
+.navLog {
+  font-family: Trebuchet MS;
+}
+
+.navAvatar {
+  border-radius: 50%;
+  width: 40px;
+}
+
+.navDropdown {
+  background-color: #343a40;
+  color: #343a40;
+  border: none;
+}
+
 .homeCover {
   margin: 15px 15px !important;
 }

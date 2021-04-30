@@ -1,5 +1,14 @@
 import React, { useState, useRef, useContext } from 'react';
-import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap';
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Form,
+  Button,
+  FormControl,
+  Dropdown,
+  DropdownButton,
+} from 'react-bootstrap';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link, Redirect, useHistory } from 'react-router-dom';
@@ -91,7 +100,7 @@ export default function Header() {
 const LoginSignUp = () => {
   return (
     <div>
-      <Nav className="ml">
+      <Nav className="ml" className="navLog">
         <Nav.Link as={Link} to="/login">
           Log in
         </Nav.Link>
@@ -106,17 +115,35 @@ const LoginSignUp = () => {
 // when user sign in -- show logout element and log out the user
 const Logout = () => {
   const { user, setUser } = useContext(UserContext);
+  const [open, setOpen] = useState(false);
   const logoutUser = async () => {
     await axios.get('/api/logout'); // ask server to logout user
     await setTimeout(() => setUser(null), 1200); // set the frontend user data to null
   };
   return (
-    <div>
-      <Nav className="ml">
-        <Nav.Link as={Link} to="/" onClick={() => logoutUser()}>
-          Log out
-        </Nav.Link>
-      </Nav>
-    </div>
+    <Nav className="ml">
+      <DropdownButton
+        title={
+          <img
+            src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg"
+            className="navAvatar"
+          ></img>
+        }
+        menuAlign="right"
+        bsPrefix="navDropdown"
+      >
+        <Dropdown.Item href={`/user/${user._id}`} className="navLog">
+          My Profile
+        </Dropdown.Item>
+        <Dropdown.Item
+          as={Link}
+          to="/"
+          className="navLog"
+          onClick={() => logoutUser()}
+        >
+          Logout
+        </Dropdown.Item>
+      </DropdownButton>
+    </Nav>
   );
 };
