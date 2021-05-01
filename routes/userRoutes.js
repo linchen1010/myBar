@@ -53,17 +53,22 @@ module.exports = (app) => {
 
   // remove from favorite list -- have not tested yet
   app.delete('/api/user/:id/favorite/:removeId', async (req, res) => {
-    const user = await User.updateOne(
-      { _id: req.params.id },
-      {
-        $pull: {
-          favoriteList: {
-            drinkId: req.params.removeId,
+    try {
+      await User.updateOne(
+        { _id: req.params.id },
+        {
+          $pull: {
+            favoriteList: {
+              drinkId: req.params.removeId,
+            },
           },
-        },
-      }
-    );
-    // console.log(user.favoriteList);
-    console.log(`${req.params.removeId} has been delete`);
+        }
+      );
+      // console.log(user.favoriteList);
+      console.log(`${req.params.removeId} has been delete`);
+    } catch (err) {
+      console.log('delete fail!');
+      console.log(err);
+    }
   });
 };
