@@ -5,15 +5,12 @@ const keys = require('./config/keys');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-
 require('./models/User');
-mongoose.connect(keys.mongoURI3, {
+mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
 });
-
-
 
 // app.all('/*', function (req, res, next) {
 //   res.header('Access-Control-Allow-Origin', '*');
@@ -31,11 +28,20 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.json()); // to support JSON-encoded bodies
+app.use(
+  express.urlencoded({
+    // to support URL-encoded bodies
+    extended: true,
+  })
+);
+
 const cocktail = require('./routes/cocktailRoutes');
 const ingredient = require('./routes/ingredientRoutes');
 const authsRoutes = require('./routes/authsRoutes');
 // const Login = require('./routes/Login');
 require('./routes/authGoogleRoutes')(app);
+require('./routes/userRoutes')(app);
 
 app.use('/api', cocktail);
 app.use('/api', ingredient);
