@@ -12,7 +12,6 @@ const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
 const initializePassport = require('./passport-config');
-const authGoogleRoutes = require('./authGoogleRoutes');
 
 initializePassport(
     passport,
@@ -48,6 +47,7 @@ router.get('/failureLogin', (req, res) => {
 router.post('/signup', async (req, res) => {
 
     let user = await User.findOne({ email: req.body.email });
+    console.log(user);
     if (user) {
         return res.send(user)
     } else {
