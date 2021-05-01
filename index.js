@@ -7,11 +7,13 @@ const passport = require('passport');
 
 
 require('./models/User');
-mongoose.connect(keys.mongoURI, {
+mongoose.connect(keys.mongoURI3, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
 });
+
+
 
 // app.all('/*', function (req, res, next) {
 //   res.header('Access-Control-Allow-Origin', '*');
