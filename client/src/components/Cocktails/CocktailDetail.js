@@ -5,15 +5,18 @@ import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Spinner, Button } from 'react-bootstrap';
 import Cocktails from './Cocktails';
 import { UserContext } from '../../contexts/UserContext';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteButton from '../utils/FavoriteButton';
 
 export default function CocktailDetail() {
   const [cocktails, setCocktails] = useState([]);
   const [ingredients, setIngredients] = useState({});
   const [ingredientURLs, setIngredientURLs] = useState([]);
   const [ingredientNames, setIngredientNames] = useState([]);
+  const [like, setLike] = useState(false);
+
   const { user } = useContext(UserContext);
   let { id } = useParams();
+
   const style = {
     display: 'flex',
     textAlign: 'center',
@@ -36,6 +39,23 @@ export default function CocktailDetail() {
     setIngredients(ingredientData);
     setIngredientURLs(ingreURL);
     setIngredientNames(ingreNames);
+  };
+
+  const addToFavorite = async (e) => {
+    // e.preventDefault();
+    console.log(cocktails.name);
+    const data = {
+      drinkId: cocktails.id,
+      drinkName: cocktails.name,
+      drinkImgURL: cocktails.imageURL,
+    };
+    if (!like) {
+      const res = await axios.post(`/api/user/favorite/${user._id}`, data);
+      console.log(data);
+      setLike(true);
+    }
+    // setLike(!like);
+    // console.log(res.data);
   };
 
   useEffect(() => {
@@ -67,9 +87,12 @@ export default function CocktailDetail() {
         </Row>
         {user ? (
           <Row className="justify-content-center">
-            <Button variant="outline-danger" bsPrefix="btn-favorite">
-              <FavoriteBorderIcon style={{ fontSize: '25px' }} />
-              add
+            <Button
+              variant="outline-danger"
+              bsPrefix="btn-favorite"
+              onClick={() => addToFavorite()}
+            >
+              <FavoriteButton like={like} />
             </Button>
           </Row>
         ) : (
