@@ -1,15 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Spinner, Button } from 'react-bootstrap';
 import Cocktails from './Cocktails';
+import { UserContext } from '../../contexts/UserContext';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 export default function CocktailDetail() {
   const [cocktails, setCocktails] = useState([]);
   const [ingredients, setIngredients] = useState({});
   const [ingredientURLs, setIngredientURLs] = useState([]);
   const [ingredientNames, setIngredientNames] = useState([]);
+  const { user } = useContext(UserContext);
   let { id } = useParams();
   const style = {
     display: 'flex',
@@ -62,6 +65,16 @@ export default function CocktailDetail() {
             ></img>
           )}
         </Row>
+        {user ? (
+          <Row className="justify-content-center">
+            <Button variant="outline-danger" bsPrefix="btn-favorite">
+              <FavoriteBorderIcon style={{ fontSize: '25px' }} />
+              add
+            </Button>
+          </Row>
+        ) : (
+          <div></div>
+        )}
         <hr className="detailDivider"></hr>
         <Row className="justify-content-center detailTitle">
           <Col md="8">
