@@ -350,13 +350,23 @@ a.cocktailNameLink:hover {
   border-radius: 12px;
 }
 
-.btn-favorite:hover {
+.btn-favorite:not(:focus):hover {
   background-color: rgb(245, 94, 94);
   color: white;
   padding: 5px 5px;
   font-size: 15px;
-  /* border: none; */
-  /* text-align: center; */
+  text-decoration: none;
+  font-weight: 700;
+  transition-duration: 0.4s;
+  border: 3px solid rgb(245, 94, 94);
+  border-radius: 12px;
+}
+
+.btn-favorite:focus {
+  background-color: white;
+  color: rgb(245, 94, 94);
+  padding: 5px 5px;
+  font-size: 15px;
   text-decoration: none;
   font-weight: 700;
   transition-duration: 0.4s;

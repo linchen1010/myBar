@@ -42,20 +42,18 @@ export default function CocktailDetail() {
   };
 
   const addToFavorite = async (e) => {
-    // e.preventDefault();
     console.log(cocktails.name);
     const data = {
       drinkId: cocktails.id,
       drinkName: cocktails.name,
       drinkImgURL: cocktails.imageURL,
     };
+    // this condition handle post request and the display of the button
     if (!like) {
       const res = await axios.post(`/api/user/favorite/${user._id}`, data);
-      console.log(data);
+      console.log(res.data);
       setLike(true);
     }
-    // setLike(!like);
-    // console.log(res.data);
   };
 
   useEffect(() => {
