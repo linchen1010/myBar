@@ -374,6 +374,60 @@ a.cocktailNameLink:hover {
   border-radius: 12px;
 }
 
+.btn-remove {
+  background-color: white;
+  color: rgb(246, 50, 50);
+  padding: 8px 8px;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 700;
+  transition-duration: 0.4s;
+  border: 3px solid rgb(246, 50, 50);
+  border-radius: 12px;
+  margin-left: 5px;
+}
+
+.btn-remove:hover {
+  background-color: rgb(246, 50, 50);
+  color: white;
+  padding: 8px 8px;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 700;
+  transition-duration: 0.4s;
+  border: 3px solid rgb(246, 50, 50);
+  border-radius: 12px;
+  margin-left: 5px;
+}
+
+.btn-moreInfo {
+  background-color: white;
+  color: rgb(0, 140, 255);
+  padding: 8px 8px;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 700;
+  transition-duration: 0.4s;
+  border: 3px solid rgb(0, 140, 255);
+  border-radius: 12px;
+  margin-right: 5px;
+  /* font-family: Trebuchet MS; */
+}
+
+.btn-moreInfo:hover {
+  background-color: rgb(0, 140, 255);
+  color: white;
+  padding: 8px 8px;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 700;
+  transition-duration: 0.4s;
+  border: 3px solid rgb(0, 140, 255);
+  border-radius: 12px;
+  margin-right: 5px;
+  /* font-family: Trebuchet MS; */
+}
+
 .googleImg {
   width: 20px;
   margin-bottom: 3px;
@@ -426,6 +480,13 @@ input[type='email'] {
 }
 
 .userProfileImg {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+.cardImage {
   width: 40%;
   height: 40%;
   border-radius: 50%;

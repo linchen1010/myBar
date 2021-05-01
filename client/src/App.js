@@ -17,6 +17,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { UserContext } from './contexts/UserContext';
 import axios from 'axios';
 import UserProfile from './components/Users/UserProfile';
+import UserFavoriteList from './components/Users/UserFavoriteList';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,7 +51,8 @@ function App() {
             <Route exact path="/cocktails/:id" component={CocktailDetail} />
             <Route path="/ingredients/:name" component={IngredientDetail} />
             <Route path="/search" component={CocktailSearch} />
-            <Route path="/user/:id" component={UserProfile} />
+            <Route exact path="/user/:id" component={UserProfile} />
+            <Route path="/user/:id/favorite" component={UserFavoriteList} />
           </div>
           <Route path="/" component={Footer} />
         </div>

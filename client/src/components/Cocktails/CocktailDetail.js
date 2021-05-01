@@ -41,7 +41,7 @@ export default function CocktailDetail() {
     setIngredientNames(ingreNames);
   };
 
-  const addToFavorite = async (e) => {
+  const addToFavorite = async () => {
     console.log(cocktails.name);
     const data = {
       drinkId: cocktails.id,
@@ -50,7 +50,7 @@ export default function CocktailDetail() {
     };
     // this condition handle post request and the display of the button
     if (!like) {
-      const res = await axios.post(`/api/user/favorite/${user._id}`, data);
+      const res = await axios.post(`/api/user/${user._id}/favorite`, data);
       console.log(res.data);
       setLike(true);
     }

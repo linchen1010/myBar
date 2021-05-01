@@ -34,9 +34,11 @@ export default function UserProfile() {
             </Button>
           </Col>
           <Col sm="auto">
-            <Button variant="outline-success" bsPrefix="btn-form">
-              My Favorite List
-            </Button>
+            <a href={`/user/${user._id}/favorite`}>
+              <Button variant="outline-success" bsPrefix="btn-form">
+                My Favorite List
+              </Button>
+            </a>
           </Col>
           <Col sm="auto">
             <Button variant="outline-success" bsPrefix="btn-form">
