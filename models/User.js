@@ -5,7 +5,14 @@ const userSchema = new Schema({
   userId: String,
   name: String,
   email: String,
-  password: String
+  password: String,
+  favoriteList: [
+    {
+      drinkId: String,
+      drinkName: String,
+      drinkImgURL: String
+    }
+  ]
 });
 
 mongoose.model('users', userSchema);
