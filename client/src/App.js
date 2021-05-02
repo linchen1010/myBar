@@ -18,6 +18,7 @@ import { UserContext } from './contexts/UserContext';
 import axios from 'axios';
 import UserProfile from './components/Users/UserProfile';
 import UserFavoriteList from './components/Users/UserFavoriteList';
+import UserPost from './components/Users/UserPost';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,6 +51,7 @@ function App() {
             <Route path="/search" component={CocktailSearch} />
             <Route exact path="/user/:id" component={UserProfile} />
             <Route path="/user/:id/favorite" component={UserFavoriteList} />
+            <Route path="/user/:id/post" component={UserPost} />
           </div>
           <Route path="/" component={Footer} />
         </div>

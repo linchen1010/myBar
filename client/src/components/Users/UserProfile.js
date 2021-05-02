@@ -38,9 +38,11 @@ export default function UserProfile() {
             </a>
           </Col>
           <Col sm="auto">
-            <Button variant="outline-success" bsPrefix="btn-form">
-              My Post
-            </Button>
+            <a href={`/user/${user._id}/post`}>
+              <Button variant="outline-success" bsPrefix="btn-form">
+                My Post
+              </Button>
+            </a>
           </Col>
         </Row>
       </Container>
