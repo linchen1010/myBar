@@ -18,18 +18,22 @@ import { set } from 'mongoose';
 export default function UserFavoriteList() {
   const { user } = useContext(UserContext);
   const [drinks, setDrinks] = useState([]);
-  const [data, setData] = useState([]);
+  const [edited, setEdited] = useState(false);
+
   const { id } = useParams();
   const fetchDrinks = async () => {
     const res = await axios.get(`/api/user/${id}/favorite`);
-    let newData = [...res.data];
-    setDrinks(newData);
-    setData(newData);
-    // setDrinks(res.data);
+    setDrinks(res.data);
   };
+
+  // a callback function pass to child component to detect removed
+  const detectRemoved = () => {
+    setEdited(true);
+  };
+
   useEffect(() => {
     fetchDrinks();
-  }, []);
+  }, [edited]);
   if (!user)
     return (
       <Row className="m-auto">
@@ -45,10 +49,10 @@ export default function UserFavoriteList() {
       </Row>
       <Container fluid="md">
         {!drinks.length > 0 ? (
-          <Row className="m-auto">
-            <Col>
-              <Spinner animation="border" />
-            </Col>
+          <Row className="justify-content-center">
+            <div className="detailTitle">
+              Start add drinks to you collection!
+            </div>
           </Row>
         ) : (
           <Row className="justify-content-center">
@@ -59,6 +63,7 @@ export default function UserFavoriteList() {
                     drinkImgURL={drink.drinkImgURL}
                     drinkName={drink.drinkName}
                     drinkId={drink.drinkId}
+                    detectRemoved={detectRemoved}
                   />
                 </Col>
               ))}

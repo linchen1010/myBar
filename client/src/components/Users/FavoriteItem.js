@@ -3,13 +3,19 @@ import { Card, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-export default function FavoriteItem({ drinkId, drinkName, drinkImgURL }) {
+export default function FavoriteItem({
+  drinkId,
+  drinkName,
+  drinkImgURL,
+  detectRemoved,
+}) {
   const [removed, setRemoved] = useState(false);
   const { id } = useParams();
   const removeDrink = async () => {
     const res = await axios.delete(`/api/user/${id}/favorite/${drinkId}`);
+    console.log(res.data);
+    detectRemoved();
     setRemoved(true);
-    console.log(res);
   };
 
   if (removed) return <div></div>;
