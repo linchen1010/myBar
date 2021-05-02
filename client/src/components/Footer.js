@@ -13,7 +13,7 @@ export default function Footer() {
           <Nav.Link href="/" to="/" style={style}>
             <LocalBarIcon color="inherit" fontSize="large" /> MyBestBar
           </Nav.Link>
-          <Nav style={style}> developed by Chen & Lin © 2021 </Nav>
+          <Nav style={style}> © 2021 | developed by Chen & Lin</Nav>
         </Container>
       </Navbar>
     </div>
