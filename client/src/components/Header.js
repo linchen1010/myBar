@@ -13,8 +13,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import axios from 'axios';
+import FlashMsg from './utils/FlashMsg';
 
-export default function Header() {
+export default function Header({ firstLogin }) {
   const [search, setSearch] = useState('');
   const searchEl = useRef(null);
   const history = useHistory();

@@ -11,6 +11,7 @@ import IngredientDetail from './components/Ingredients/IngredientDetail';
 import Footer from './components/Footer';
 import Drinks from './components/Drinks/Drinks';
 import Drink from './components/Drinks/Drink';
+import FlashMsg from './components/utils/FlashMsg';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React, { useState, useMemo, useEffect } from 'react';
@@ -39,9 +40,6 @@ function App() {
         <div className="Site">
           <Header />
           <div className="Site-content">
-            {/* <pre style={{ textAlign: 'center' }}>
-              {JSON.stringify(user, null, 2)}
-            </pre> */}
             <Route exact path="/" exact component={CocktailHome} />
             <Route exact path="/drinks" component={Drinks} />
             <Route path="/drinks/category/:category" component={Drink} />

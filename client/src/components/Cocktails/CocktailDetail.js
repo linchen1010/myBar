@@ -2,10 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col, Spinner, Button } from 'react-bootstrap';
+import { Container, Row, Col, Spinner, Button, Alert } from 'react-bootstrap';
 import Cocktails from './Cocktails';
 import { UserContext } from '../../contexts/UserContext';
 import FavoriteButton from '../utils/FavoriteButton';
+import FlashMessage from 'react-flash-message';
+import RemoveButton from '../utils/RemoveButton';
 
 export default function CocktailDetail() {
   const [cocktails, setCocktails] = useState([]);
@@ -13,6 +15,9 @@ export default function CocktailDetail() {
   const [ingredientURLs, setIngredientURLs] = useState([]);
   const [ingredientNames, setIngredientNames] = useState([]);
   const [like, setLike] = useState(false);
+  const [msg, setMsg] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [inlist, setInlist] = useState(false);
 
   const { user } = useContext(UserContext);
   let { id } = useParams();
@@ -51,6 +56,8 @@ export default function CocktailDetail() {
     // this condition handle post request and the display of the button
     if (!like) {
       const res = await axios.post(`/api/user/${user._id}/favorite`, data);
+      setMsg(res.data.message);
+      if (res.data.success) setSuccess(res.data.success);
       console.log(res.data);
       setLike(true);
     }
@@ -63,6 +70,24 @@ export default function CocktailDetail() {
   return (
     <div>
       <Container>
+        {like && success ? (
+          <Row className="justify-content-center flashMsg">
+            <FlashMessage duration={3000}>
+              <Alert variant="success">{msg}</Alert>
+            </FlashMessage>
+          </Row>
+        ) : (
+          <div></div>
+        )}
+        {like && !success ? (
+          <Row className="justify-content-center flashMsg">
+            <FlashMessage duration={3000}>
+              <Alert variant="danger">{msg}</Alert>
+            </FlashMessage>
+          </Row>
+        ) : (
+          <div></div>
+        )}
         <Row className="justify-content-center cocktailDetailName">
           <Col md="8">
             <div>{cocktails.name}</div>

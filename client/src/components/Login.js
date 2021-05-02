@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { Container, Form, Button, Row } from 'react-bootstrap';
+import { Container, Form, Button, Row, Alert, Fade } from 'react-bootstrap';
+import FlashMessage from 'react-flash-message';
+import { UserContext } from '../contexts/UserContext';
+
 export default function Login() {
   const [customerSignUp, setCustomerSignUp] = useState({
     email: '',
     password: '',
   });
+  const [msg, setMsg] = useState('');
+  const { user } = useContext(UserContext);
   const handleChange = (event) => {
     setCustomerSignUp({
       ...customerSignUp,
@@ -17,9 +22,10 @@ export default function Login() {
     e.preventDefault();
 
     let res = await axios.post('/api/login', customerSignUp);
-    
+
     if (res.data.message) {
-      window.location.assign('/login');
+      // window.location.assign('/login');
+      setMsg(res.data.message);
     } else {
       window.location.assign('/');
     }
@@ -27,6 +33,15 @@ export default function Login() {
   return (
     <div>
       <Container fluid="sm">
+        {msg.length > 0 ? (
+          <Row className="justify-content-center">
+            <Alert variant="danger" className="flashMsg">
+              {msg}
+            </Alert>
+          </Row>
+        ) : (
+          <div></div>
+        )}
         <Row className="cocktailCategory justify-content-center">Log In</Row>
         <Form.Group className="loginForm">
           <Form onSubmit={handleSubmit}>
@@ -78,3 +93,12 @@ export default function Login() {
     </div>
   );
 }
+
+const Msg = () => {
+  // const user = await axios.get('/api/current_user');
+  return (
+    <div>
+      <Alert variant="success">{`Log Success`}</Alert>
+    </div>
+  );
+};
