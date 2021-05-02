@@ -72,7 +72,7 @@ export default function CocktailDetail() {
       <Container>
         {like && success ? (
           <Row className="justify-content-center flashMsg">
-            <FlashMessage duration={3000}>
+            <FlashMessage duration={2000}>
               <Alert variant="success">{msg}</Alert>
             </FlashMessage>
           </Row>
@@ -81,7 +81,7 @@ export default function CocktailDetail() {
         )}
         {like && !success ? (
           <Row className="justify-content-center flashMsg">
-            <FlashMessage duration={3000}>
+            <FlashMessage duration={2000}>
               <Alert variant="danger">{msg}</Alert>
             </FlashMessage>
           </Row>
