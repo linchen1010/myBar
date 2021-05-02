@@ -7,7 +7,6 @@ import Cocktails from './Cocktails';
 import { UserContext } from '../../contexts/UserContext';
 import FavoriteButton from '../utils/FavoriteButton';
 import FlashMessage from 'react-flash-message';
-import RemoveButton from '../utils/RemoveButton';
 
 export default function CocktailDetail() {
   const [cocktails, setCocktails] = useState([]);
