@@ -133,6 +133,9 @@ const Logout = () => {
         <Dropdown.Item href={`/user/${user._id}`} className="navLog">
           My Profile
         </Dropdown.Item>
+        <Dropdown.Item href={`/user/${user._id}/favorite`} className="navLog">
+          My Favorite List
+        </Dropdown.Item>
         <Dropdown.Item
           as={Link}
           to="/"

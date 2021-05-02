@@ -17,12 +17,23 @@ export default function FavoriteItem({ drinkId, drinkName, drinkImgURL }) {
     <div>
       <Card
         className="text-center"
-        border="light"
+        border="dark"
         style={{ width: '14rem', marginTop: '40px' }}
       >
         <Card.Img variant="top" src={drinkImgURL} />
         <Card.Body>
-          <Card.Title>{drinkName}</Card.Title>
+          <Card.Title>
+            <div
+              style={{
+                fontSize: '25px',
+                fontWeight: '600',
+                color: 'rgb(59,59,59)',
+                fontFamily: 'Trebuchet MS',
+              }}
+            >
+              {drinkName}
+            </div>
+          </Card.Title>
           <a href={`/cocktails/${drinkId}`}>
             <Button bsPrefix="btn-moreInfo">More info</Button>
           </a>
