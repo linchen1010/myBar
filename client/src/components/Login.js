@@ -15,10 +15,10 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(customerSignUp);
+
     let res = await axios.post('/api/login', customerSignUp);
-    console.log(res.data.message);
-    if (res.data === '') {
+    
+    if (res.data.message) {
       window.location.assign('/login');
     } else {
       window.location.assign('/');
