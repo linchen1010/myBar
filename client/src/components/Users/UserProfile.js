@@ -19,13 +19,10 @@ export default function UserProfile() {
           ></img>
         </Row>
         <Row className="justify-content-center">
-          <div className="userProfile">_id: {user._id}</div>
+          <div className="userProfile">User name: {user.name}</div>
         </Row>
         <Row className="justify-content-center">
-          <div className="userProfile">user name: {user.name}</div>
-        </Row>
-        <Row className="justify-content-center">
-          <div className="userProfile">email address: {user.email}</div>
+          <div className="userProfile">Email address: {user.email}</div>
         </Row>
         <Row className="justify-content-center">
           <Col sm="auto">

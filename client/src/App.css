@@ -428,6 +428,20 @@ a.cocktailNameLink:hover {
   /* font-family: Trebuchet MS; */
 }
 
+.btn-home {
+  background-color: white;
+  color: rgb(0, 140, 255);
+  padding: 8px 8px;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 700;
+  transition-duration: 0.4s;
+  border: 2px solid rgb(0, 140, 255);
+  border-radius: 12px;
+  margin-right: 5px;
+  /* font-family: Trebuchet MS; */
+}
+
 .googleImg {
   width: 20px;
   margin-bottom: 3px;
@@ -490,4 +504,17 @@ input[type='email'] {
   font-size: 20px;
   font-family: Trebuchet MS;
   font-weight: 400;
+}
+
+.aboutPageImg {
+  width: 100%;
+  height: 45vw;
+  max-height: 50vw;
+}
+
+.aboutPageDescription {
+  font-size: 22px;
+  font-family: Trebuchet MS;
+  font-weight: 500;
+  text-align: center;
 }
