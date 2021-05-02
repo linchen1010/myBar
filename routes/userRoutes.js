@@ -66,6 +66,7 @@ module.exports = (app) => {
       );
       // console.log(user.favoriteList);
       console.log(`${req.params.removeId} has been delete`);
+      res.send(`${req.params.removeId} has been delete`);
     } catch (err) {
       console.log('delete fail!');
       console.log(err);
