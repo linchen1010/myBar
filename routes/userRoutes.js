@@ -19,7 +19,9 @@ module.exports = (app) => {
     try {
       if (existInList(user.favoriteList, req.body.drinkId)) {
         console.log('drinks already exist in favorite list!');
-        res.send('drinks already exist in favorite list!');
+        res.json({
+          message: `${req.body.drinkName} is already in favorite list!`,
+        });
       } else {
         await User.updateOne(
           { _id: req.params.id },
@@ -36,7 +38,10 @@ module.exports = (app) => {
         // const user = await User.findOne({ _id: req.params.id });
         // console.log(user);
         console.log(`Successfully add ${req.body.drinkName} to favorite list`);
-        res.send(`Successfully add ${req.body.drinkName} to favorite list`);
+        res.json({
+          message: `Successfully add ${req.body.drinkName} to favorite list.`,
+          success: true,
+        });
       }
     } catch (err) {
       console.log(err);
@@ -65,8 +70,8 @@ module.exports = (app) => {
         }
       );
       // console.log(user.favoriteList);
-      console.log(`${req.params.removeId} has been delete`);
-      res.send(`${req.params.removeId} has been delete`);
+      console.log(`${req.params.removeId} has been deleted`);
+      res.json({ message: `Drink has been removed` });
     } catch (err) {
       console.log('delete fail!');
       console.log(err);
