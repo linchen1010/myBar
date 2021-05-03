@@ -492,10 +492,24 @@ input[type='email'] {
   /* font-family: Trebuchet MS; */
   color: rgb(59, 59, 59);
 }
+.userImg:hover .userProfileImg{
+  opacity: 0.7;
+}
+.userImg:hover .middle{
+  opacity: 1;
+}
+.userImgText{
+  color: white;
+  font-size: 14px;
+  padding: 16px 32px;
+  background-color: rgb(78, 78, 78);
+  background-size:auto;
+}
+
 
 .userProfileImg {
-  width: 40%;
-  height: 40%;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
   margin-bottom: 30px;
 }
