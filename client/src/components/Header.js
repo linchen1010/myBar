@@ -7,12 +7,14 @@ import {
   FormControl,
   Dropdown,
   DropdownButton,
+  Alert,
 } from 'react-bootstrap';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import axios from 'axios';
+import { set } from 'mongoose';
 
 export default function Header() {
   const [search, setSearch] = useState('');
@@ -114,9 +116,10 @@ const LoginSignUp = () => {
 // when user sign in -- show logout element and log out the user
 const Logout = () => {
   const { user, setUser } = useContext(UserContext);
+
   const logoutUser = async () => {
     await axios.get('/api/logout'); // ask server to logout user
-    await setTimeout(() => setUser(null), 1200); // set the frontend user data to null
+    setTimeout(() => setUser(null), 1200); // set the frontend user data to null
   };
   return (
     <Nav className="ml">

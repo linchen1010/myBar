@@ -8,6 +8,7 @@ export default function Signup() {
     username: '',
   });
   const [msg, setMsg] = useState('');
+  const [signupMsg, setSignupMsg] = useState('');
   const handleChange = (event) => {
     setCustomerSignUp({
       ...customerSignUp,
@@ -27,7 +28,10 @@ export default function Signup() {
       setMsg(res.data.message);
     } else {
       // successfully sign up, redirect to login
-      window.location.assign('/login');
+      setSignupMsg(
+        'Your account has been successfully created, please log in at next page!'
+      );
+      setTimeout(() => window.location.assign('/login'), 2000);
     }
   };
 
@@ -38,6 +42,15 @@ export default function Signup() {
           <Row className="justify-content-center">
             <Alert variant="danger" className="flashMsg">
               {msg}
+            </Alert>
+          </Row>
+        ) : (
+          <div></div>
+        )}
+        {signupMsg.length > 0 ? (
+          <Row className="justify-content-center">
+            <Alert variant="success" className="flashMsg">
+              {signupMsg}
             </Alert>
           </Row>
         ) : (

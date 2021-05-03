@@ -10,6 +10,7 @@ export default function Login() {
     password: '',
   });
   const [msg, setMsg] = useState('');
+  const [loginMsg, setLoginMsg] = useState('');
   const { user } = useContext(UserContext);
   const handleChange = (event) => {
     setCustomerSignUp({
@@ -24,10 +25,11 @@ export default function Login() {
     let res = await axios.post('/api/login', customerSignUp);
 
     if (res.data.message) {
-      // window.location.assign('/login');
+      // error occurs, set msg and display
       setMsg(res.data.message);
     } else {
-      window.location.assign('/');
+      setLoginMsg('Successfully logged in!');
+      setTimeout(() => window.location.assign('/'), 2000);
     }
   };
   return (
@@ -37,6 +39,15 @@ export default function Login() {
           <Row className="justify-content-center">
             <Alert variant="danger" className="flashMsg">
               {msg}
+            </Alert>
+          </Row>
+        ) : (
+          <div></div>
+        )}
+        {loginMsg.length > 0 ? (
+          <Row className="justify-content-center">
+            <Alert variant="success" className="flashMsg">
+              {loginMsg}
             </Alert>
           </Row>
         ) : (
