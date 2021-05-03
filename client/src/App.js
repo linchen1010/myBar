@@ -41,6 +41,7 @@ function App() {
           <Header />
           <div className="Site-content">
             <Route exact path="/" exact component={CocktailHome} />
+            {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
             <Route exact path="/drinks" component={Drinks} />
             <Route path="/drinks/category/:category" component={Drink} />
             <Route path="/about" component={About} />
