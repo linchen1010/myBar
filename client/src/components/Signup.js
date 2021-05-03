@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Form, Button, Row } from 'react-bootstrap';
+import { Container, Form, Button, Row, Alert } from 'react-bootstrap';
 import axios from 'axios';
 export default function Signup() {
   const [customerSignUp, setCustomerSignUp] = useState({
@@ -7,6 +7,7 @@ export default function Signup() {
     password: '',
     username: '',
   });
+  const [msg, setMsg] = useState('');
   const handleChange = (event) => {
     setCustomerSignUp({
       ...customerSignUp,
@@ -21,17 +22,27 @@ export default function Signup() {
 
     let res = await axios.post('/api/signup', customerSignUp);
     console.log(res);
-    if (res.data === '') {
-      window.location.assign('/login');
+    if (res.data.message) {
+      // error occur, setMsg and display
+      setMsg(res.data.message);
     } else {
-      console.log(res.data);
-      window.location.assign('/signup');
+      // successfully sign up, redirect to login
+      window.location.assign('/login');
     }
   };
 
   return (
     <div>
       <Container fluid="sm">
+        {msg.length > 0 ? (
+          <Row className="justify-content-center">
+            <Alert variant="danger" className="flashMsg">
+              {msg}
+            </Alert>
+          </Row>
+        ) : (
+          <div></div>
+        )}
         <Row className="cocktailCategory justify-content-center">
           Start your cocktails journey.
         </Row>
