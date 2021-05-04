@@ -51,7 +51,7 @@ export default function UserFavoriteList() {
         {!drinks.length > 0 ? (
           <Row className="justify-content-center">
             <div className="detailTitle">
-              Start add drinks to you collection!
+              Start adding drinks to your favorite list!
             </div>
           </Row>
         ) : (
