@@ -1,19 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../contexts/UserContext';
-import {
-  Spinner,
-  Container,
-  Row,
-  Col,
-  Button,
-  CardDeck,
-  CardColumns,
-} from 'react-bootstrap';
+import { Spinner, Container, Row, Col, CardColumns } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Cocktail from '../Cocktails/Cocktail';
+
 import FavoriteItem from './FavoriteItem';
-import { set } from 'mongoose';
 
 export default function UserFavoriteList() {
   const { user } = useContext(UserContext);
@@ -36,11 +27,11 @@ export default function UserFavoriteList() {
   }, [edited]);
   if (!user)
     return (
-      <Row className="m-auto">
-        <Col>
+      <Container>
+        <Row className="justify-content-center">
           <Spinner animation="border" />
-        </Col>
-      </Row>
+        </Row>
+      </Container>
     );
   return (
     <div>
