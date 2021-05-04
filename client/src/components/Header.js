@@ -55,7 +55,7 @@ export default function Header() {
       >
         <Navbar.Brand href="/" to="/">
           <LocalBarIcon color="inherit" fontSize="large" />
-          myBestBar
+          myBar
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -124,12 +124,7 @@ const Logout = () => {
   return (
     <Nav className="ml">
       <DropdownButton
-        title={
-          <img
-            src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg"
-            className="navAvatar"
-          ></img>
-        }
+        title={<img src={user.avatar} className="navAvatar"></img>}
         menuAlign="right"
         bsPrefix="navDropdown"
       >

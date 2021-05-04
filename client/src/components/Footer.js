@@ -11,7 +11,7 @@ export default function Footer() {
       <Navbar bg="dark" variant="dark">
         <Container className="justify-content-center myNavbar">
           <Nav.Link href="/" to="/" style={style}>
-            <LocalBarIcon color="inherit" fontSize="large" /> MyBestBar
+            <LocalBarIcon color="inherit" fontSize="large" /> MyBar
           </Nav.Link>
           <Nav style={style}> © 2021 | developed by Chen & Lin</Nav>
         </Container>
