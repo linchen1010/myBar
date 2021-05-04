@@ -7,22 +7,24 @@ import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios';
 
 export default function UserProfile() {
-  const [uploadFile, setuploadFile] = useState("");
+  // const [uploadFile, setUploadFile] = useState('');
   const { user, setUser } = useContext(UserContext);
   const { id } = useParams();
-  const handleChange = (event) => {
-    setuploadFile(event.target.files[0])
-  }
+  // const handleChange = (event) => {
+  //   console.log(event.target.files);
+  //   setUploadFile(event.target.files[0]);
+  // };
 
-  const handleUpload = async e => {
+  const handleUpload = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("file", uploadFile)
-    console.log(uploadFile)
-    console.log(data)
+    data.append('file', e.target.files[0]);
     const res = await axios.post(`/api/imageUpload/${id}`, data);
-    console.log(res.data.response_data.Location);
-  }
+    // update user info after upload avatar image
+    const updatedUser = await axios.get(`/api/current_user`);
+    setUser(updatedUser.data);
+    // console.log(res.data.response_data.Location);
+  };
   if (!user) return <Spinner />;
 
   return (
@@ -39,17 +41,29 @@ export default function UserProfile() {
               className="userProfileImg"
             ></img>
             <div className="middle">
-              <form action="/upload/photo" enctype="multipart/form-data" onInput={handleUpload}  >
-                <input accept="image/*" id="icon-button-file"
-                  type="file" name="file" style={{ display: 'none' }} onChange={handleChange} />
+              <form
+                action="/upload/photo"
+                encType="multipart/form-data"
+                onInput={handleUpload}
+              >
+                <input
+                  accept="image/*"
+                  id="icon-button-file"
+                  type="file"
+                  name="file"
+                  style={{ display: 'none' }}
+                  // onChange={handleUpload}
+                />
                 <label htmlFor="icon-button-file">
-                  <IconButton color="primary" aria-label="upload picture"
-                    component="span">
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="span"
+                  >
                     <PhotoCamera />
                   </IconButton>
                 </label>
               </form>
-
             </div>
           </div>
           {/* <input type="file" name='file' /> */}
