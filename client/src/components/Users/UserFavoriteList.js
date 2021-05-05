@@ -19,7 +19,7 @@ export default function UserFavoriteList() {
 
   // a callback function pass to child component to detect removed
   const detectRemoved = () => {
-    setEdited(true);
+    setEdited(!edited);
   };
 
   useEffect(() => {

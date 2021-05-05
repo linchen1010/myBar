@@ -9,16 +9,13 @@ export default function FavoriteItem({
   drinkImgURL,
   detectRemoved,
 }) {
-  const [removed, setRemoved] = useState(false);
   const { id } = useParams();
   const removeDrink = async () => {
     const res = await axios.delete(`/api/user/${id}/favorite/${drinkId}`);
     console.log(res.data);
     detectRemoved();
-    setRemoved(true);
   };
 
-  if (removed) return <div></div>;
   return (
     <div>
       <Card
