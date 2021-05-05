@@ -22,7 +22,7 @@ export default function Header() {
   const [search, setSearch] = useState('');
   const [logout, setLogout] = useState(false);
   const searchEl = useRef(null);
-  const history = useHistory();
+  // const history = useHistory();
   const { user } = useContext(UserContext);
 
   const handleChange = (e) => {
@@ -37,8 +37,9 @@ export default function Header() {
     e.preventDefault();
     if (search === '') alert(`search cound not be empty!`);
     else {
-      history.push(`/search?s=${search}`);
-      console.log(search);
+      // history.push(`/search?s=${search}`);
+      // resend the request, will reload the page
+      window.location.assign(`/search?s=${search}`);
     }
   };
 
@@ -140,7 +141,8 @@ const Logout = ({ loggingOut }) => {
   const logoutUser = async () => {
     await axios.get('/api/logout'); // ask server to logout user
     loggingOut();
-    setTimeout(() => setUser(null), 1200); // set the frontend user data to null
+    setTimeout(() => setUser(null), 2000); // set the frontend user data to null
+    setTimeout(() => window.location.assign('/'), 2000);
   };
   return (
     <Nav className="ml">
@@ -155,12 +157,7 @@ const Logout = ({ loggingOut }) => {
         <Dropdown.Item href={`/user/${user._id}/favorite`} className="navLog">
           My Favorite List
         </Dropdown.Item>
-        <Dropdown.Item
-          as={Link}
-          to="/"
-          className="navLog"
-          onClick={() => logoutUser()}
-        >
+        <Dropdown.Item className="navLog" onClick={() => logoutUser()}>
           Logout
         </Dropdown.Item>
       </DropdownButton>
