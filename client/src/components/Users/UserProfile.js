@@ -75,11 +75,11 @@ export default function UserProfile() {
           <div className="userProfile">Email address: {user.email}</div>
         </Row>
         <Row className="justify-content-center">
-          <Col sm="auto">
+          {/* <Col sm="auto">
             <Button variant="outline-success" bsPrefix="btn-form">
               Edit Profile
             </Button>
-          </Col>
+          </Col> */}
           <Col sm="auto">
             <a href={`/user/${user._id}/favorite`}>
               <Button variant="outline-success" bsPrefix="btn-form">
