@@ -89,12 +89,8 @@ async function getCatergoryDrinks(category) {
     return { error: 'Result not found!' };
 
   let drinks = [];
-  let dataLen =
-    categoryDrinks.data['drinks'].length < 60
-      ? categoryDrinks.data['drinks'].length
-      : 60;
 
-  for (let i = 0; i < dataLen; i++) {
+  for (let i = 0; i < categoryDrinks.data['drinks'].length; i++) {
     drinks.push(sanitizeSearchData(categoryDrinks.data['drinks'][i]));
   }
 
