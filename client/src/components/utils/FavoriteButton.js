@@ -8,10 +8,12 @@ export default function FavoriteButton({ like }) {
       {like ? (
         <div>
           <FavoriteIcon style={{ fontSize: '35px' }} />
+          add to list
         </div>
       ) : (
         <div>
           <FavoriteBorderIcon style={{ fontSize: '35px' }} />
+          add to list
         </div>
       )}
     </div>
