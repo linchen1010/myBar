@@ -76,47 +76,30 @@ async function getSearchResult(query) {
   return cocktails;
 }
 
-// function getCategoryDrinks() {
-//   const categories = ["Ordinary Drink", "Cocktail", "Milk / Float / Shake"];
-//   const url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c="
-//   const categoriesURL = categories.map(category => {
-//     return url+category;
-//   });
-//   // console.log(categoriesURL);
-//   const promises = categoriesURL.map(cURL => {
-//     return axios.get(cURL);
-//   });
-//   Promise.all(promises).then(data => {
-//     console.log(data[0].data.drinks.length);
-//     console.log(data[1].data.drinks.length);
-//     console.log(data[2].data.drinks.length);
-//     // console.log(data[1].data[0]);
-//     // console.log(data[2].data[0]);
-//   })
-// }
-
 async function getCatergoryDrinks(category) {
-  if(category == 'Soft Drink and Soda') category = 'Soft Drink / Soda';
-  else if(category == 'Coffee and Tea') category = 'Coffee / Tea';
-  else if(category == 'Party Drink and Punch') category = 'Punch / Party Drink'
+  if (category == 'Soft Drink and Soda') category = 'Soft Drink / Soda';
+  else if (category == 'Coffee and Tea') category = 'Coffee / Tea';
+  else if (category == 'Party Drink and Punch')
+    category = 'Punch / Party Drink';
   const categoryDrinks = await axios.get(
     `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
   );
-  console.log(category);
-  if (categoryDrinks.data['drinks'] == null) return { error: 'Result not found!' };
+
+  if (categoryDrinks.data['drinks'] == null)
+    return { error: 'Result not found!' };
 
   let drinks = [];
-  let dataLen = categoryDrinks.data['drinks'].length < 60 ? categoryDrinks.data['drinks'].length : 60;
-  console.log(dataLen);
+  let dataLen =
+    categoryDrinks.data['drinks'].length < 60
+      ? categoryDrinks.data['drinks'].length
+      : 60;
+
   for (let i = 0; i < dataLen; i++) {
     drinks.push(sanitizeSearchData(categoryDrinks.data['drinks'][i]));
   }
-  // console.log(drinks)
+
   return drinks;
 }
-
-
-
 
 /**
  * Fetch random six cocktails from cocktail API
@@ -213,11 +196,11 @@ router.get('/cocktails/top10', async (req, res) => {
   }
 });
 
-router.get('/cocktails/drinks/:category', async(req, res) => {
+router.get('/cocktails/drinks/:category', async (req, res) => {
   try {
     const drinks = await getCatergoryDrinks(req.params.category);
     res.send(drinks);
-  } catch(err) {
+  } catch (err) {
     console.log('Error', err);
     res.status(500).send(err.message);
   }
