@@ -77,8 +77,6 @@ export default function Header() {
             <Nav.Link as={Link} to="/about">
               About
             </Nav.Link>
-
-            {/* <Nav.Link href="#">Pricing</Nav.Link> */}
           </Nav>
 
           <Form inline className="mr-sm-4">
@@ -86,14 +84,13 @@ export default function Header() {
               type="text"
               placeholder="Search for drinks"
               onChange={handleChange}
-              onKeyPress={handleKeyDown}
-              // onSubmit={handleKeyDown}
               ref={searchEl}
             />
             <Button
               onClick={handleSubmit}
               ref={searchEl}
               variant="outline-light"
+              type="submit"
             >
               <SearchIcon />
             </Button>
@@ -140,9 +137,11 @@ const Logout = ({ loggingOut }) => {
 
   const logoutUser = async () => {
     await axios.get('/api/logout'); // ask server to logout user
-    loggingOut();
+    // loggingOut();
+    // setUser(null);
     setTimeout(() => setUser(null), 2000); // set the frontend user data to null
     setTimeout(() => window.location.assign('/'), 2000);
+    setTimeout(() => loggingOut(), 1000);
   };
   return (
     <Nav className="ml">
