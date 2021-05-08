@@ -4,7 +4,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('../config/keys');
 const mongoose = require('mongoose');
 
-
 const User = mongoose.model('users');
 
 const app = express();
@@ -33,20 +32,20 @@ passport.use(
         console.log(existingUser);
         return done(null, existingUser);
       }
-
+      // create user with their google account and a default image for the user
       const user = await new User({
         userId: profile.id,
         name: profile.displayName,
         email: profile.emails[0].value,
+        avatar:
+          'https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg',
       }).save();
       done(null, user);
     }
   )
 );
 
-
 module.exports = (app) => {
-
   app.get(
     '/auth/google',
     passport.authenticate('google', {
@@ -63,7 +62,7 @@ module.exports = (app) => {
   );
 
   app.get('/api/logout', (req, res) => {
-    console.log('logout')
+    console.log('logout');
     req.logout();
     res.redirect('/');
   });

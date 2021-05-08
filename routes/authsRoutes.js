@@ -55,6 +55,8 @@ router.post('/signup', async (req, res) => {
       name: req.body.username,
       email: req.body.email,
       password: hashedPassword,
+      avatar:
+        'https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg',
     });
     await user.save();
     res.send(null);
