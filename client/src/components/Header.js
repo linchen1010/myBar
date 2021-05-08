@@ -156,6 +156,9 @@ const Logout = ({ loggingOut }) => {
         <Dropdown.Item href={`/user/${user._id}/favorite`} className="navLog">
           My Favorite List
         </Dropdown.Item>
+        <Dropdown.Item href={`/user/${user._id}/post`} className="navLog">
+          My Post
+        </Dropdown.Item>
         <Dropdown.Item className="navLog" onClick={() => logoutUser()}>
           Logout
         </Dropdown.Item>
