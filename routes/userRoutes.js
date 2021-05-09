@@ -14,8 +14,8 @@ const existInList = (drinks, reqId) => {
 
 module.exports = (app) => {
   // add drinks to user's favorite list
-  app.post('/api/user/:id/favorite', async (req, res) => {
-    const user = await User.findOne({ _id: req.params.id });
+  app.post('/api/user/favorite', async (req, res) => {
+    const user = await User.findOne({ _id: req.user.id });
     try {
       if (existInList(user.favoriteList, req.body.drinkId)) {
         console.log('drinks already exist in favorite list!');
@@ -24,7 +24,7 @@ module.exports = (app) => {
         });
       } else {
         await User.updateOne(
-          { _id: req.params.id },
+          { _id: req.user.id },
           {
             $push: {
               favoriteList: {
@@ -35,8 +35,6 @@ module.exports = (app) => {
             },
           }
         );
-        // const user = await User.findOne({ _id: req.params.id });
-        // console.log(user);
         console.log(`Successfully add ${req.body.drinkName} to favorite list`);
         res.json({
           message: `Successfully add ${req.body.drinkName} to favorite list.`,
@@ -45,22 +43,21 @@ module.exports = (app) => {
       }
     } catch (err) {
       console.log(err);
+      res.status(422).send(err);
     }
   });
 
   // get favorite drinks
-  app.get('/api/user/:id/favorite', async (req, res) => {
-    console.log(req.params.id);
-    const user = await User.findOne({ _id: req.params.id });
-    // console.log(user.favoriteList);
+  app.get('/api/user/favorite', async (req, res) => {
+    const user = await User.findOne({ _id: req.user.id });
     res.send(user.favoriteList);
   });
 
   // remove from favorite list -- have not tested yet
-  app.delete('/api/user/:id/favorite/:removeId', async (req, res) => {
+  app.delete('/api/user/favorite/:removeId', async (req, res) => {
     try {
       await User.updateOne(
-        { _id: req.params.id },
+        { _id: req.user.id },
         {
           $pull: {
             favoriteList: {
@@ -75,6 +72,7 @@ module.exports = (app) => {
     } catch (err) {
       console.log('delete fail!');
       console.log(err);
+      res.status(422).send(err);
     }
   });
 };
