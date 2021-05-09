@@ -153,10 +153,10 @@ const Logout = ({ loggingOut }) => {
         <Dropdown.Item href="/user" className="navLog">
           My Profile
         </Dropdown.Item>
-        <Dropdown.Item href="user/favorite" className="navLog">
+        <Dropdown.Item href="/user/favorite" className="navLog">
           My Favorite List
         </Dropdown.Item>
-        <Dropdown.Item href="/user/post" className="navLog">
+        <Dropdown.Item href="/user/posts" className="navLog">
           My Post
         </Dropdown.Item>
         <Dropdown.Item className="navLog" onClick={() => logoutUser()}>
