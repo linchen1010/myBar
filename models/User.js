@@ -11,9 +11,9 @@ const userSchema = new Schema({
     {
       drinkId: String,
       drinkName: String,
-      drinkImgURL: String
-    }
-  ]
+      drinkImgURL: String,
+    },
+  ],
 });
 
-mongoose.model('users', userSchema);
+mongoose.model('User', userSchema);

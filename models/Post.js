@@ -7,8 +7,9 @@ const postSchema = new Schema({
   comment: String,
   instruction: String,
   createDate: Date,
+  lastEdit: String,
   _user: { type: Schema.Types.ObjectId, ref: 'User' },
   like: { type: Number, default: 0 },
 });
 
-mongoose.model('posts'.postSchema);
+mongoose.model('Post', postSchema);
