@@ -9,7 +9,6 @@ export default function FavoriteItem({
   drinkImgURL,
   detectRemoved,
 }) {
-  const { id } = useParams();
   const removeDrink = async () => {
     const res = await axios.delete(`/api/user/favorite/${drinkId}`);
     console.log(res.data);
@@ -21,7 +20,7 @@ export default function FavoriteItem({
       <Card
         className="text-center"
         border="dark"
-        style={{ width: '14rem', marginTop: '40px' }}
+        style={{ width: '16rem', marginTop: '40px' }}
       >
         <Card.Img variant="top" src={drinkImgURL} />
         <Card.Body>

@@ -90,7 +90,7 @@ export default function UserProfile() {
             </a>
           </Col>
           <Col sm="auto">
-            <a href={`/user/post`}>
+            <a href={`/user/posts`}>
               <Button variant="outline-success" bsPrefix="btn-form">
                 My Post
               </Button>
