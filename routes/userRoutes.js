@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const User = mongoose.model('users');
+const User = mongoose.model('User');
 
 // const bodyParser = require('body-parser');
 

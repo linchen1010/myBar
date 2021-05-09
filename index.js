@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 require('./models/User');
+require('./models/Post');
+
 mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -42,6 +44,7 @@ const authsRoutes = require('./routes/authsRoutes');
 const userProfile = require('./routes/userProfileRoutes');
 require('./routes/authGoogleRoutes')(app);
 require('./routes/userRoutes')(app);
+require('./routes/postsRoutes')(app);
 
 app.use('/api', cocktail);
 app.use('/api', ingredient);

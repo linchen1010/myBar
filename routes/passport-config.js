@@ -1,7 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
-const User = mongoose.model('users');
+const User = mongoose.model('User');
 const flash = require('express-flash');
 
 function initialize(passport, getUserByID) {

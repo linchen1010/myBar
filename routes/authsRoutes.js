@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   require('dotenv').config();
+// }
 
 const express = require('express');
 const router = express.Router();
@@ -9,7 +9,8 @@ const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const mongoose = require('mongoose');
-const User = mongoose.model('users');
+const User = mongoose.model('User');
+const keys = require('../config/keys');
 
 const initializePassport = require('./passport-config');
 
@@ -20,7 +21,7 @@ router.use(express.json());
 router.use(flash());
 router.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: keys.cookieKey,
     resave: false,
     saveUninitialized: false,
   })
