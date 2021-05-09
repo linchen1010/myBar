@@ -8,5 +8,6 @@ module.exports = {
     'mongodb+srv://mbar:5jjHls3OSV2ldQHL@cluster0.s2xci.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   mongoURI3:
     'mongodb+srv://Timmy:1HwE6Sha1RB0N7QO@cluster0.jb1ay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-  cookieKey: 'qwejzmxcopqiwemasdoyrelwqmzxcloawer'
+  cookieKey: 'qwejzmxcopqiwemasdoyrelwqmzxcloawer',
+  SESSION_SECRET: 'secret',
 };
