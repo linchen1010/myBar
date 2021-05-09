@@ -11,10 +11,11 @@ export default function UserFavoriteList() {
   const [drinks, setDrinks] = useState([]);
   const [edited, setEdited] = useState(false);
 
-  const { id } = useParams();
   const fetchDrinks = async () => {
-    const res = await axios.get(`/api/user/${id}/favorite`);
-    setDrinks(res.data);
+    if (user) {
+      const res = await axios.get(`/api/user/favorite`);
+      setDrinks(res.data);
+    }
   };
 
   // a callback function pass to child component to detect removed
@@ -24,7 +25,7 @@ export default function UserFavoriteList() {
 
   useEffect(() => {
     fetchDrinks();
-  }, [edited]);
+  }, [edited, user]);
   if (!user)
     return (
       <Container>

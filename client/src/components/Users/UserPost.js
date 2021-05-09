@@ -13,7 +13,7 @@ export default function UserPost() {
 
         <Row className="justify-content-center">
           {user ? (
-            <a href={`/user/${user._id}/post/new`}>
+            <a href={`/user/post/new`}>
               <Button bsPrefix="btn-random">add new post</Button>
             </a>
           ) : (

@@ -19,11 +19,13 @@ export default function UserProfile() {
     e.preventDefault();
     const data = new FormData();
     data.append('file', e.target.files[0]);
-    const res = await axios.post(`/api/imageUpload/${id}`, data);
-    // update user info after upload avatar image
-    const updatedUser = await axios.get(`/api/current_user`);
-    setUser(updatedUser.data);
-    // console.log(res.data.response_data.Location);
+    if (user) {
+      const res = await axios.post(`/api/imageUpload/${user._id}`, data);
+      // update user info after upload avatar image
+      const updatedUser = await axios.get(`/api/current_user`);
+      setUser(updatedUser.data);
+      // console.log(res.data.response_data.Location);
+    }
   };
   if (!user) return <Spinner />;
 
@@ -81,14 +83,14 @@ export default function UserProfile() {
             </Button>
           </Col> */}
           <Col sm="auto">
-            <a href={`/user/${user._id}/favorite`}>
+            <a href={`/user/favorite`}>
               <Button variant="outline-success" bsPrefix="btn-form">
                 My Favorite List
               </Button>
             </a>
           </Col>
           <Col sm="auto">
-            <a href={`/user/${user._id}/post`}>
+            <a href={`/user/post`}>
               <Button variant="outline-success" bsPrefix="btn-form">
                 My Post
               </Button>

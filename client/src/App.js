@@ -1,6 +1,5 @@
 import './App.css';
 import Header from './components/Header';
-import HomeCover from './components/HomeCover';
 import About from './components/About';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -19,6 +18,7 @@ import axios from 'axios';
 import UserProfile from './components/Users/UserProfile';
 import UserFavoriteList from './components/Users/UserFavoriteList';
 import UserPost from './components/Users/UserPost';
+import PostNew from './components/Posts/PostNew';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,9 +50,10 @@ function App() {
             <Route exact path="/cocktails/:id" component={CocktailDetail} />
             <Route path="/ingredients/:name" component={IngredientDetail} />
             <Route path="/search" component={CocktailSearch} />
-            <Route exact path="/user/:id" component={UserProfile} />
-            <Route path="/user/:id/favorite" component={UserFavoriteList} />
-            <Route path="/user/:id/post" component={UserPost} />
+            <Route exact path="/user" component={UserProfile} />
+            <Route path="/user/favorite" component={UserFavoriteList} />
+            <Route exact path="/user/post" component={UserPost} />
+            <Route path="/user/post/new" component={PostNew} />
           </div>
           <Route path="/" component={Footer} />
         </div>
