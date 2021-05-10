@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const keys = require('../config/keys');
 
-const initializePassport = require('./passport-config');
+const initializePassport = require('../services/passport-config');
 
 initializePassport(passport, (id) => User.find({ id: id }).id);
 

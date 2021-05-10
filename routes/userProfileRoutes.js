@@ -15,19 +15,7 @@ const upload = Multer({ storage: storage });
 
 const AWS = require('aws-sdk');
 
-router.get('/profilePic/:id', async (req, res) => {
-  const user = await User.findOne({ _id: req.params.id });
-  if (user.avatar) {
-    res.send(user.avatar);
-  } else {
-    // if user haven't upload avatar, default to this image url
-    res.send(
-      'https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg'
-    );
-  }
-});
-
-router.post('/imageUpload/:id', upload.single('file'), (req, res) => {
+router.post('/user/avatar/:id', upload.single('file'), (req, res) => {
   const file = req.file;
   console.log(req.params.id);
   console.log(file);
