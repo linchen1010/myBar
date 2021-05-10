@@ -1,13 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../contexts/UserContext';
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Spinner,
-  CardColumns,
-} from 'react-bootstrap';
+import { Container, Row, Col, Spinner, CardColumns } from 'react-bootstrap';
 import axios from 'axios';
 import PostItem from '../Posts/PostItem';
 import AddIcon from '@material-ui/icons/Add';
@@ -43,7 +36,6 @@ export default function UserPost() {
           {user ? (
             <div>
               <a href={`/user/posts/new`}>
-                {/* <Button bsPrefix="btn-random">add new post</Button> */}
                 <AddIcon
                   color="inherit"
                   className="addIcon"

@@ -14,7 +14,6 @@ export default function PostNew() {
   const [uploadMsg, setUploadMsg] = useState('');
   const onFileChange = (e) => {
     setUploadImg(e.target.files[0]);
-    // console.log(e.target.files[0]);
     setUploadMsg('Successfully uploaded the image!');
   };
 
@@ -37,7 +36,6 @@ export default function PostNew() {
     const res = await axios.post('/api/user/posts/new', formData);
 
     if (res.data.message) {
-      console.log(res.data.message);
       setMsg(res.data.message);
       setTimeout(() => window.location.assign('/user/posts'), 2000);
     }

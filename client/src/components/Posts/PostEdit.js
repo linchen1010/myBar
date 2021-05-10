@@ -17,16 +17,15 @@ import GoBackButton from '../utils/GoBackButton';
 export default function Post() {
   const { user } = useContext(UserContext);
   const [post, setPost] = useState({});
-  //   const [msg, setMsg] = useState('');
   const [title, setTitle] = useState('');
   const [instruction, setInstruction] = useState('');
   const [comment, setComment] = useState('');
   const [msg, setMsg] = useState('');
 
   const handleChange = (e) => {
-    if (e.target.name == 'title') setTitle(e.target.value);
-    else if (e.target.name == 'instruction') setInstruction(e.target.value);
-    else if (e.target.name == 'comment') setComment(e.target.value);
+    if (e.target.name === 'title') setTitle(e.target.value);
+    else if (e.target.name === 'instruction') setInstruction(e.target.value);
+    else if (e.target.name === 'comment') setComment(e.target.value);
   };
   const { postId } = useParams();
 
@@ -134,7 +133,7 @@ export default function Post() {
                   onChange={handleChange}
                   required
                 ></Form.Control>
-                {user && user._id == post._user ? (
+                {user && user._id === post._user ? (
                   <div>
                     <Button
                       bsPrefix="btn-moreInfo"

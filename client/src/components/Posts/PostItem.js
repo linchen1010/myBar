@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 export default function PostItem({ postId, title, image, createDate }) {
   return (

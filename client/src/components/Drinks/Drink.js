@@ -22,9 +22,8 @@ export default function Drink() {
             and scrambled it to make a type specimen book.
           </div>
         </Row>
-        {/* <hr className="divider"></hr> */}
+
         <Cocktails url={`/api/cocktails/drinks/${category}`} />
-        {/* <hr className="divider"></hr> */}
       </Container>
     </div>
   );

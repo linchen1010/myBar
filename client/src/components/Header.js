@@ -13,7 +13,7 @@ import {
 } from 'react-bootstrap';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import SearchIcon from '@material-ui/icons/Search';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import axios from 'axios';
 import FlashMessage from 'react-flash-message';
@@ -22,7 +22,7 @@ export default function Header() {
   const [search, setSearch] = useState('');
   const [logout, setLogout] = useState(false);
   const searchEl = useRef(null);
-  // const history = useHistory();
+
   const { user } = useContext(UserContext);
 
   const handleChange = (e) => {

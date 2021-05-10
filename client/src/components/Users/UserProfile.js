@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import { Spinner, Container, Row, Col, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
@@ -9,7 +9,6 @@ import axios from 'axios';
 export default function UserProfile() {
   // const [uploadFile, setUploadFile] = useState('');
   const { user, setUser } = useContext(UserContext);
-  const { id } = useParams();
   // const handleChange = (event) => {
   //   console.log(event.target.files);
   //   setUploadFile(event.target.files[0]);
