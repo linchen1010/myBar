@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 const Post = mongoose.model('Post');
 
+const Multer = require('multer');
+const storage = Multer.memoryStorage();
+const upload = Multer({ storage: storage });
+const AWS = require('aws-sdk');
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const transformDate = (time) => {
   let dd = String(time.getDate()).padStart(2, '0');
   let mm = String(time.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -40,30 +48,55 @@ module.exports = (app) => {
     }
   });
 
-  // create post
-  app.post('/api/user/posts/new', async (req, res) => {
+  // create post, integrate AWS S3 to store user's uploaded image
+  app.post('/api/user/posts/new', upload.single('file'), async (req, res) => {
     const { title, image, comment, instruction } = req.body;
+    const { file } = req;
+    console.log(req.file);
     console.log(req.user.name);
-    const post = new Post({
-      title,
-      image,
-      comment,
-      instruction,
-      _user: req.user.id,
-      createDate: Date.now(),
-      lastEdit: transformDate(new Date()),
-      createdBy: req.user.name,
-      image:
-        'https://images.unsplash.com/photo-1594487984147-3389bcee5078?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
+
+    AWS.config.update({
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID, // Access key ID
+      secretAccesskey: process.env.AWS_SECRET_ACCESS_KEY, // Secret access key
+      region: process.env.AWS_REGION,
     });
 
-    try {
-      await post.save();
-      console.log(`Post is create!`);
-      res.json({ message: `Post has been successfully created!` });
-    } catch (err) {
-      res.status(422).send(err);
-    }
+    const s3 = new AWS.S3();
+
+    const params = {
+      ACL: 'public-read',
+      Bucket: 'mybardb',
+      Key: file.originalname, // File name you want to save as in S3
+      Body: file.buffer,
+      ContentType: file.mimetype,
+    };
+
+    // // Uploading files to the bucket
+
+    s3.upload(params, async function (err, data) {
+      if (err) {
+        throw err;
+      }
+      const post = new Post({
+        title,
+        image,
+        comment,
+        instruction,
+        _user: req.user.id,
+        createDate: Date.now(),
+        lastEdit: transformDate(new Date()),
+        createdBy: req.user.name,
+        image: data.Location,
+      });
+
+      try {
+        await post.save();
+        console.log(`Post is create!`);
+        res.json({ message: `Post has been successfully created!` });
+      } catch (err) {
+        res.status(422).send(err);
+      }
+    });
   });
 
   // delete the post given the postId within the URL
