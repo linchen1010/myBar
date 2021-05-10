@@ -9,7 +9,7 @@ export default function PostItem({ postId, title, image, createDate }) {
       <Card
         className="text-center"
         border="dark"
-        style={{ width: '16rem', marginTop: '40px' }}
+        style={{ width: '18rem', marginTop: '40px' }}
       >
         <Card.Img variant="top" src={image} />
         <Card.Body>

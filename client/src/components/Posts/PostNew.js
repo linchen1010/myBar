@@ -10,6 +10,12 @@ export default function PostNew() {
     comment: '',
   });
   const [msg, setMsg] = useState('');
+  const [uploadImg, setUploadImg] = useState(null);
+
+  const onFileChange = (e) => {
+    setUploadImg(e.target.files[0]);
+    console.log(e.target.files[0]);
+  };
 
   const handleChange = (event) => {
     setPostData({
@@ -20,14 +26,20 @@ export default function PostNew() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(postData);
-    let res = await axios.post('/api/user/posts/new', postData);
+
+    let formData = new FormData();
+    formData.append('file', uploadImg);
+    formData.append('title', postData.title);
+    formData.append('instruction', postData.instruction);
+    formData.append('comment', postData.comment);
+
+    const res = await axios.post('/api/user/posts/new', formData);
+
     if (res.data.message) {
       console.log(res.data.message);
       setMsg(res.data.message);
       setTimeout(() => window.location.assign('/user/posts'), 2000);
     }
-    // redirect user to their post page
   };
 
   return (
@@ -86,6 +98,7 @@ export default function PostNew() {
                 id="uploadFile"
                 hidden
                 required
+                onChange={onFileChange}
               />
               <label htmlFor="uploadFile" className="btn-upload">
                 Upload image

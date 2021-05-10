@@ -16,14 +16,7 @@ export default function Posts() {
   useEffect(() => {
     fetchPosts();
   }, []);
-  if (!user)
-    return (
-      <Container>
-        <Row className="justify-content-center">
-          <Spinner animation="border" />
-        </Row>
-      </Container>
-    );
+
   return (
     <div>
       <Container fuild="md">
@@ -43,7 +36,7 @@ export default function Posts() {
                 <PostCard
                   key={i}
                   title={post.title}
-                  image="https://images.unsplash.com/photo-1594487984147-3389bcee5078?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80"
+                  image={post.image}
                   createDate={post.lastEdit}
                   postId={post._id}
                   userName={post.createdBy}
