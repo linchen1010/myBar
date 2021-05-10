@@ -7,13 +7,13 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Multer = require('multer');
-var storage = Multer.memoryStorage();
-var upload = Multer({ storage: storage });
+const storage = Multer.memoryStorage();
+const upload = Multer({ storage: storage });
 
 // router.use(fileUpload());
 // router.use(express.urlencoded({ extended: true }))
 
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
 
 router.get('/profilePic/:id', async (req, res) => {
   const user = await User.findOne({ _id: req.params.id });
@@ -31,6 +31,7 @@ router.post('/imageUpload/:id', upload.single('file'), (req, res) => {
   const file = req.file;
   console.log(req.params.id);
   console.log(file);
+
   AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID, // Access key ID
     secretAccesskey: process.env.AWS_SECRET_ACCESS_KEY, // Secret access key
@@ -48,10 +49,12 @@ router.post('/imageUpload/:id', upload.single('file'), (req, res) => {
   };
 
   // // Uploading files to the bucket
+
   s3.upload(params, async function (err, data) {
     if (err) {
       throw err;
     }
+
     await User.updateOne({ _id: req.params.id }, { avatar: data.Location });
 
     res.send({

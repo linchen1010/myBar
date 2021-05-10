@@ -1,9 +1,4 @@
-const express = require('express');
 const mongoose = require('mongoose');
-const { post } = require('./ingredientRoutes');
-
-const User = mongoose.model('User');
-
 const Post = mongoose.model('Post');
 
 const transformDate = (time) => {
@@ -15,8 +10,7 @@ const transformDate = (time) => {
 };
 
 module.exports = (app) => {
-  // get all posts from the specific user
-
+  // get all posts
   app.get('/api/posts', async (req, res) => {
     try {
       const posts = await Post.find();
@@ -26,6 +20,7 @@ module.exports = (app) => {
     }
   });
 
+  // get all posts from a specific user
   app.get('/api/user/posts', async (req, res) => {
     try {
       const posts = await Post.find({ _user: req.user.id });
@@ -35,6 +30,7 @@ module.exports = (app) => {
     }
   });
 
+  // get post information given postId
   app.get('/api/user/posts/:postId', async (req, res) => {
     try {
       const post = await Post.findOne({ _id: req.params.postId });
@@ -43,6 +39,7 @@ module.exports = (app) => {
       res.status(422).send(err);
     }
   });
+
   // create post
   app.post('/api/user/posts/new', async (req, res) => {
     const { title, image, comment, instruction } = req.body;

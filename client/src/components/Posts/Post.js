@@ -51,7 +51,7 @@ export default function Post() {
           <div></div>
         )}
         <Row className="justify-content-center" style={{ marginTop: '30px' }}>
-          <a href={`/user/posts/`}>
+          <a href={`javascript:history.back()`}>
             <Button bsPrefix="btn-random">Go back</Button>
           </a>
         </Row>

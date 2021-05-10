@@ -18,6 +18,7 @@ import UserPost from './components/Users/UserPost';
 import PostNew from './components/Posts/PostNew';
 import Post from './components/Posts/Post';
 import PostEdit from './components/Posts/PostEdit';
+import Posts from './components/Posts/Posts';
 export default function MyRoutes() {
   return (
     <div>
@@ -32,6 +33,7 @@ export default function MyRoutes() {
         <Route path="/ingredients/:name" component={IngredientDetail} />
         <Route path="/search" component={CocktailSearch} />
         <Route exact path="/user" component={UserProfile} />
+        <Route path="/posts" component={Posts} />
         <Route path="/user/favorite" component={UserFavoriteList} />
         <Route exact path="/user/posts" component={UserPost} />
         <Route exact path="/user/posts/new" component={PostNew} />
