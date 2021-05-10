@@ -4,13 +4,15 @@ import { useParams } from 'react-router';
 import { Container, Row, Spinner, Card, Button, Alert } from 'react-bootstrap';
 import { UserContext } from '../../contexts/UserContext';
 import FlashMessage from 'react-flash-message';
+import { useHistory } from 'react-router-dom';
+import GoBackButton from '../utils/GoBackButton';
 
 export default function Post() {
   const { user } = useContext(UserContext);
   const [post, setPost] = useState({});
   const { postId } = useParams();
   const [msg, setMsg] = useState('');
-
+  const history = useHistory();
   const fetchPost = async () => {
     const res = await axios.get(`/api/user/posts/${postId}`);
     console.log(res.data);
@@ -51,9 +53,7 @@ export default function Post() {
           <div></div>
         )}
         <Row className="justify-content-center" style={{ marginTop: '30px' }}>
-          <a href={`javascript:history.back()`}>
-            <Button bsPrefix="btn-random">Go back</Button>
-          </a>
+          <GoBackButton />
         </Row>
         <Row className="justify-content-center" style={{ marginTop: '20px' }}>
           <Card className="text-center" style={{ width: '40rem' }}>

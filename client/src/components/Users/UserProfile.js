@@ -20,7 +20,7 @@ export default function UserProfile() {
     const data = new FormData();
     data.append('file', e.target.files[0]);
     if (user) {
-      const res = await axios.post(`/api/imageUpload/${user._id}`, data);
+      const res = await axios.post(`/api/user/avatar/${user._id}`, data);
       // update user info after upload avatar image
       const updatedUser = await axios.get(`/api/current_user`);
       setUser(updatedUser.data);

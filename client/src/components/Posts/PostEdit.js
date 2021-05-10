@@ -12,6 +12,7 @@ import {
 } from 'react-bootstrap';
 import { UserContext } from '../../contexts/UserContext';
 import FlashMessage from 'react-flash-message';
+import GoBackButton from '../utils/GoBackButton';
 
 export default function Post() {
   const { user } = useContext(UserContext);
@@ -30,7 +31,7 @@ export default function Post() {
   const { postId } = useParams();
 
   const fetchPost = async () => {
-    const res = await axios.get(`/api/user/posts/${postId}`);
+    const res = await axios.get(`/api/user/posts/${postId}/edit`);
     console.log(res.data);
     setPost(res.data);
     setTitle(res.data.title);
@@ -74,9 +75,7 @@ export default function Post() {
           <div></div>
         )}
         <Row className="justify-content-center" style={{ marginTop: '30px' }}>
-          <a href={`/user/posts/${postId}`}>
-            <Button bsPrefix="btn-random">Go back</Button>
-          </a>
+          <GoBackButton />
         </Row>
         <Row className="justify-content-center" style={{ marginTop: '30px' }}>
           <Card className="text-center" style={{ width: '40rem' }}>
