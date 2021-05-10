@@ -428,6 +428,34 @@ a.cocktailNameLink:hover {
   /* font-family: Trebuchet MS; */
 }
 
+.btn-edit {
+  background-color: white;
+  color: rgb(23, 176, 0);
+  padding: 8px 8px;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  transition-duration: 0.4s;
+  border: 4px solid rgb(23, 176, 0);
+  border-radius: 12px;
+  margin-right: 5px;
+  /* font-family: Trebuchet MS; */
+}
+
+.btn-edit:hover {
+  background-color: rgb(23, 176, 0);
+  color: white;
+  padding: 8px 8px;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  transition-duration: 0.4s;
+  border: 4px solid rgb(23, 176, 0);
+  border-radius: 12px;
+  margin-right: 5px;
+  /* font-family: Trebuchet MS; */
+}
+
 .btn-upload {
   background-color: white;
   border: none;
@@ -564,5 +592,10 @@ input[type='email'] {
   width: 40%;
   margin: 20px auto;
   font-size: 22px;
+  font-weight: 600;
+}
+
+.postContent {
+  font-size: 20px;
   font-weight: 600;
 }

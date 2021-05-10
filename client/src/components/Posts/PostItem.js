@@ -3,19 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-export default function PostItem({
-  postId,
-  title,
-  image,
-  comment,
-  instruction,
-  createDate,
-}) {
-  //   const removeDrink = async () => {
-  //     const res = await axios.delete(`/api/user/favorite/${drinkId}`);
-  //     console.log(res.data);
-  //   };
-
+export default function PostItem({ postId, title, image, createDate }) {
   return (
     <div style={{ textAlign: 'center' }}>
       <Card
@@ -28,7 +16,7 @@ export default function PostItem({
           <Card.Title>
             <div
               style={{
-                fontSize: '25px',
+                fontSize: '30px',
                 fontWeight: '600',
                 color: 'rgb(59,59,59)',
                 fontFamily: 'Trebuchet MS',
@@ -38,7 +26,9 @@ export default function PostItem({
             </div>
           </Card.Title>
           <a href={`/user/posts/${postId}`}>
-            <Button bsPrefix="btn-moreInfo">View post</Button>
+            <Button bsPrefix="btn-moreInfo" style={{ fontSize: '18px' }}>
+              View post
+            </Button>
           </a>
         </Card.Body>
         <Card.Footer className="text-muted">

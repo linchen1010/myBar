@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Container, Row, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
-import { FlashMessage } from 'react-flash-message';
+import FlashMessage from 'react-flash-message';
 
 export default function PostNew() {
   const [postData, setPostData] = useState({
@@ -21,17 +21,19 @@ export default function PostNew() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(postData);
-    const res = await axios.post('/api/user/posts/new', postData);
-    console.log(res.data.message);
-    setMsg(res.data.message);
+    let res = await axios.post('/api/user/posts/new', postData);
+    if (res.data.message) {
+      console.log(res.data.message);
+      setMsg(res.data.message);
+      setTimeout(() => window.location.assign('/user/posts'), 2000);
+    }
     // redirect user to their post page
-    setTimeout(() => window.location.assign('/user/posts'), 2000);
   };
 
   return (
     <div>
       <Container>
-        {/* {success ? (
+        {msg.length > 0 ? (
           <Row className="justify-content-center flashMsg">
             <FlashMessage duration={1500}>
               <Alert variant="success">{msg}</Alert>
@@ -39,13 +41,13 @@ export default function PostNew() {
           </Row>
         ) : (
           <div></div>
-        )} */}
+        )}
         <Row className="justify-content-center">
           <div className="userProfileTitle">Create a new post</div>
         </Row>
 
         <Form.Group className="postForm">
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} noValidate>
             <Form.Control
               className="postForm"
               type="title"
@@ -56,7 +58,6 @@ export default function PostNew() {
               required
             ></Form.Control>
             <Form.Control
-              className="postForm"
               as="textarea"
               rows={3}
               name="instruction"
@@ -64,6 +65,10 @@ export default function PostNew() {
               placeholder="Instruction"
               onChange={handleChange}
             ></Form.Control>
+            <Form.Text className="text-muted" style={{ fontSize: '12px' }}>
+              If you just want to share something, then instruction is not
+              required: )
+            </Form.Text>
             <Form.Control
               className="postForm"
               as="textarea"

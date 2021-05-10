@@ -35,7 +35,7 @@ export default function Login() {
   return (
     <div>
       <Container fluid="sm">
-        {msg.length > 0 ? (
+        {msg.length > 0 && loginMsg.length == 0 ? (
           <Row className="justify-content-center">
             <Alert variant="danger" className="flashMsg">
               {msg}

@@ -10,6 +10,7 @@ const postSchema = new Schema({
   lastEdit: String,
   _user: { type: Schema.Types.ObjectId, ref: 'User' },
   like: { type: Number, default: 0 },
+  createdBy: String,
 });
 
 mongoose.model('Post', postSchema);

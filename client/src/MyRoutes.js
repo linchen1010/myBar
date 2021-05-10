@@ -17,7 +17,7 @@ import UserFavoriteList from './components/Users/UserFavoriteList';
 import UserPost from './components/Users/UserPost';
 import PostNew from './components/Posts/PostNew';
 import Post from './components/Posts/Post';
-
+import PostEdit from './components/Posts/PostEdit';
 export default function MyRoutes() {
   return (
     <div>
@@ -36,6 +36,7 @@ export default function MyRoutes() {
         <Route exact path="/user/posts" component={UserPost} />
         <Route exact path="/user/posts/new" component={PostNew} />
         <Route exact path="/user/posts/:postId" component={Post} />
+        <Route exact path="/user/posts/:postId/edit" component={PostEdit} />
       </Switch>
     </div>
   );
