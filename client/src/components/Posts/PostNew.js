@@ -11,10 +11,11 @@ export default function PostNew() {
   });
   const [msg, setMsg] = useState('');
   const [uploadImg, setUploadImg] = useState(null);
-
+  const [uploadMsg, setUploadMsg] = useState('');
   const onFileChange = (e) => {
     setUploadImg(e.target.files[0]);
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
+    setUploadMsg('Successfully uploaded the image!');
   };
 
   const handleChange = (event) => {
@@ -49,6 +50,15 @@ export default function PostNew() {
           <Row className="justify-content-center flashMsg">
             <FlashMessage duration={1500}>
               <Alert variant="success">{msg}</Alert>
+            </FlashMessage>
+          </Row>
+        ) : (
+          <div></div>
+        )}
+        {uploadMsg.length > 0 ? (
+          <Row className="justify-content-center flashMsg">
+            <FlashMessage duration={1000}>
+              <Alert variant="success">{uploadMsg}</Alert>
             </FlashMessage>
           </Row>
         ) : (
