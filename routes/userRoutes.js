@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const User = mongoose.model('User');
-
+const requireLogin = require('../middlewares/requireLogin');
 // const bodyParser = require('body-parser');
 
 const existInList = (drinks, reqId) => {
@@ -14,7 +14,7 @@ const existInList = (drinks, reqId) => {
 
 module.exports = (app) => {
   // add drinks to user's favorite list
-  app.post('/api/user/favorite', async (req, res) => {
+  app.post('/api/user/favorite', requireLogin, async (req, res) => {
     const user = await User.findOne({ _id: req.user.id });
     try {
       if (existInList(user.favoriteList, req.body.drinkId)) {
@@ -48,13 +48,13 @@ module.exports = (app) => {
   });
 
   // get favorite drinks
-  app.get('/api/user/favorite', async (req, res) => {
+  app.get('/api/user/favorite', requireLogin, async (req, res) => {
     const user = await User.findOne({ _id: req.user.id });
     res.send(user.favoriteList);
   });
 
   // remove from favorite list -- have not tested yet
-  app.delete('/api/user/favorite/:removeId', async (req, res) => {
+  app.delete('/api/user/favorite/:removeId', requireLogin, async (req, res) => {
     try {
       await User.updateOne(
         { _id: req.user.id },
