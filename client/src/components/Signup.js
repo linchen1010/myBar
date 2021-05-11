@@ -73,7 +73,6 @@ export default function Signup() {
             </a>
             <div className="formText">or</div>
             <Form.Control
-              className="loginForm"
               type="username"
               name="username"
               placeholder="Username"
@@ -83,7 +82,6 @@ export default function Signup() {
               required
             />
             <Form.Control
-              className="loginForm"
               type="email"
               name="email"
               placeholder="Email"
@@ -93,7 +91,6 @@ export default function Signup() {
               required
             />
             <Form.Control
-              className="loginForm"
               type="password"
               name="password"
               placeholder="Password"

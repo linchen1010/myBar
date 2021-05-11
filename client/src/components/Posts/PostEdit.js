@@ -83,7 +83,6 @@ export default function Post() {
               <Card.Header style={{ fontSize: '40px', fontWeight: '700' }}>
                 Title
                 <Form.Control
-                  className="postForm"
                   type="title"
                   name="title"
                   value={title}
@@ -103,7 +102,6 @@ export default function Post() {
                   Instruction
                 </Card.Title>
                 <Form.Control
-                  className="postForm"
                   as="textarea"
                   rows={3}
                   name="instruction"
@@ -123,7 +121,6 @@ export default function Post() {
                   Something about this drink
                 </Card.Title>
                 <Form.Control
-                  className="postForm"
                   type="title"
                   name="title"
                   value={comment}
@@ -141,6 +138,7 @@ export default function Post() {
                         fontSize: '20px',
                         border: '4px solid rgb(0, 140, 255)',
                         width: '30%',
+                        marginTop: '20px',
                       }}
                       onClick={() => handleSubmit()}
                     >

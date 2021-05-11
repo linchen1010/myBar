@@ -9,13 +9,10 @@ module.exports = async (req, res, next) => {
       if (post._user.equals(req.user._id)) {
         next();
       } else {
-        console.log(post._user);
-        console.log(req.user._id);
         return res
           .status(401)
           .send({ error: `You dont't have permission to do this!` });
       }
     }
   }
-  console.log('last');
 };

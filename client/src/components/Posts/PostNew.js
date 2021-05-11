@@ -69,7 +69,6 @@ export default function PostNew() {
         <Form.Group className="postForm">
           <Form onSubmit={handleSubmit} noValidate>
             <Form.Control
-              className="postForm"
               type="title"
               name="title"
               value={postData.title}
@@ -90,7 +89,6 @@ export default function PostNew() {
               required: )
             </Form.Text>
             <Form.Control
-              className="postForm"
               as="textarea"
               rows={3}
               name="comment"
@@ -98,6 +96,7 @@ export default function PostNew() {
               placeholder="Share something about this drink : )"
               onChange={handleChange}
               required
+              style={{ margin: '15px 0' }}
             ></Form.Control>
             <Row className="justify-content-center">
               <input

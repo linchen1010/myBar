@@ -68,7 +68,7 @@ export default function Login() {
             </a>
             <div className="formText">or</div>
             <Form.Control
-              className="loginForm"
+              // className="loginForm"
               type="email"
               name="email"
               placeholder="Email"
@@ -78,7 +78,7 @@ export default function Login() {
               required
             />
             <Form.Control
-              className="loginForm"
+              // className="loginForm"
               type="password"
               name="password"
               placeholder="Password"
