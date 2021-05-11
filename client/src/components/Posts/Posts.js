@@ -10,7 +10,6 @@ export default function Posts() {
   const fetchPosts = async () => {
     const res = await axios.get('/api/posts');
     setPosts(res.data);
-    console.log(res.data);
   };
 
   useEffect(() => {

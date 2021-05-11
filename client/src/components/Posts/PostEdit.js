@@ -31,7 +31,6 @@ export default function Post() {
 
   const fetchPost = async () => {
     const res = await axios.get(`/api/user/posts/${postId}/edit`);
-    console.log(res.data);
     setPost(res.data);
     setTitle(res.data.title);
     setInstruction(res.data.instruction);

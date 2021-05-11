@@ -11,7 +11,6 @@ export default function UserPost() {
   const fetchPosts = async () => {
     const res = await axios.get('/api/user/posts');
     setPosts(res.data);
-    console.log(res.data);
   };
 
   useEffect(() => {

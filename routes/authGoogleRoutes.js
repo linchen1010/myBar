@@ -29,7 +29,6 @@ passport.use(
       const existingUser = await User.findOne({ userId: profile.id });
 
       if (existingUser) {
-        console.log(existingUser);
         return done(null, existingUser);
       }
       // create user with their google account and a default image for the user

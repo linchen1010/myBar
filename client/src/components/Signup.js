@@ -19,10 +19,8 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(customerSignUp);
-
     let res = await axios.post('/api/signup', customerSignUp);
-    console.log(res);
+
     if (res.data.message) {
       // error occur, setMsg and display
       setMsg(res.data.message);

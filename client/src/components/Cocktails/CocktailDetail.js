@@ -46,7 +46,6 @@ export default function CocktailDetail() {
   };
 
   const addToFavorite = async () => {
-    console.log(cocktails.name);
     const data = {
       drinkId: cocktails.id,
       drinkName: cocktails.name,
@@ -57,7 +56,6 @@ export default function CocktailDetail() {
       const res = await axios.post(`/api/user/favorite`, data);
       setMsg(res.data.message);
       if (res.data.success) setSuccess(res.data.success);
-      console.log(res.data);
       setLike(true);
     }
   };

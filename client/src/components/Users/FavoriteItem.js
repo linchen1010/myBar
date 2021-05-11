@@ -11,7 +11,6 @@ export default function FavoriteItem({
 }) {
   const removeDrink = async () => {
     const res = await axios.delete(`/api/user/favorite/${drinkId}`);
-    console.log(res.data);
     detectRemoved();
   };
 

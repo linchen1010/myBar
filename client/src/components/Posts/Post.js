@@ -13,7 +13,7 @@ export default function Post() {
   const [msg, setMsg] = useState('');
   const fetchPost = async () => {
     const res = await axios.get(`/api/user/posts/${postId}`);
-    console.log(res.data);
+
     setPost(res.data);
   };
 

@@ -17,8 +17,6 @@ const AWS = require('aws-sdk');
 
 router.post('/user/avatar/:id', upload.single('file'), (req, res) => {
   const file = req.file;
-  console.log(req.params.id);
-  console.log(file);
 
   AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID, // Access key ID
