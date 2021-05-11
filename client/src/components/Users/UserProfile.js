@@ -7,12 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios';
 
 export default function UserProfile() {
-  // const [uploadFile, setUploadFile] = useState('');
   const { user, setUser } = useContext(UserContext);
-  // const handleChange = (event) => {
-  //   console.log(event.target.files);
-  //   setUploadFile(event.target.files[0]);
-  // };
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -35,39 +30,29 @@ export default function UserProfile() {
           <div className="userProfileTitle">{user.name}'s Profile</div>
         </Row>
         <Row className="justify-content-center">
-          <div className="userImg">
-            <img
-              src={user.avatar}
-              alt="profile img"
-              className="userProfileImg"
-            ></img>
-            <div className="middle">
-              <form
-                action="/upload/photo"
-                encType="multipart/form-data"
-                onInput={handleUpload}
-              >
-                <input
-                  accept="image/*"
-                  id="icon-button-file"
-                  type="file"
-                  name="file"
-                  style={{ display: 'none' }}
-                  // onChange={handleUpload}
-                />
-                <label htmlFor="icon-button-file">
-                  <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="span"
-                  >
-                    <PhotoCamera />
-                  </IconButton>
-                </label>
-              </form>
-            </div>
-          </div>
-          {/* <input type="file" name='file' /> */}
+          <img
+            src={user.avatar}
+            alt="profile img"
+            className="userProfileImg"
+          ></img>
+        </Row>
+        <Row className="justify-content-center">
+          <input
+            accept="image/*"
+            type="file"
+            id="uploadFile"
+            hidden
+            required
+            onChange={handleUpload}
+          />
+          <label
+            htmlFor="uploadFile"
+            className="btn-upload"
+            style={{ width: '100px' }}
+          >
+            <PhotoCamera />
+            Upload
+          </label>
         </Row>
         <Row className="justify-content-center">
           <div className="userProfile">User name: {user.name}</div>
@@ -76,11 +61,6 @@ export default function UserProfile() {
           <div className="userProfile">Email address: {user.email}</div>
         </Row>
         <Row className="justify-content-center">
-          {/* <Col sm="auto">
-            <Button variant="outline-success" bsPrefix="btn-form">
-              Edit Profile
-            </Button>
-          </Col> */}
           <Col sm="auto">
             <a href={`/user/favorite`}>
               <Button variant="outline-success" bsPrefix="btn-form">
