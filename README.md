@@ -79,7 +79,7 @@ module.exports = {
 
 ```
 
-As for the AWS S3 part, you need to first register for AWS S3 service and create a .env file in root and add the following to .env
+As for AWS S3 part, you need to register for AWS S3 service and create a .env file in root and add the following to .env file.
 
 ```
 AWS_ACCESS_KEY_ID = YOUR_AWS_ACCESS_KEY_ID
@@ -114,7 +114,7 @@ npm run start
 
 ## Contact
 
-#####Email:
+#### Email:
 
 - [Shi-Lin Chen](shilinch@usc.edu)
 - [Yen-Ting Lin](ylin2150@usc.edu)
