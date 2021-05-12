@@ -1,7 +1,5 @@
 # myBar
 
----
-
 ## Description
 
 myBar is a MERN stack web application for users to view recipes of drinks and share their own dirnks with or without recipes.\
@@ -35,13 +33,13 @@ The app is made with MERN stack (MongoDB, Express, React and Nodejs), drinks dat
 - Search drinks by keyword
 - User authentication
   - Sign up via Google OAuth
-  - Sign up with username, emails and password
+  - Sign up with username, email and password
 - User profile
   - Upload avatar
 - User favorite list
-  - add/remove drinks to own collection
+  - Add/Remove drinks to own collection
 - Manage posts
-  - CURD operation and image uploaded.
+  - Allow user to do CRUD operations and upload image
 
 ---
 
