@@ -1,5 +1,5 @@
 {
-  "name": "my_best_bar",
+  "name": "myBar",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -29,7 +29,6 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Shi-Lin Chen and Yen-Ting Lin",
+  "license": "MIT"
 }
