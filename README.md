@@ -24,6 +24,8 @@ This app could help people who want to make cocktails by their own with detailed
 
 ## ![demo](/image/demo.gif)
 
+---
+
 ## Architecture
 
 ![overview](/image/overview.png)
