@@ -1,5 +1,7 @@
 # myBar
 
+---
+
 ## Description
 
 myBar is a MERN stack web application for users to view recipes of drinks and share their own dirnks with or without recipes.\
