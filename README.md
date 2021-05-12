@@ -2,12 +2,12 @@
 
 ---
 
-### Description
+## Description
 
 myBar is a MERN stack web application for users to view recipes of drinks and share their own dirnks with or without recipes.\
 This app could help people who want to make cocktails by their own with detailed instructions and ingredients.
 
-#### Live Demo here [mybar](http://ec2-52-53-165-181.us-west-1.compute.amazonaws.com/)
+#### Live Demo: [mybar](http://ec2-52-53-165-181.us-west-1.compute.amazonaws.com/)
 
 ## Table of Contents
 
@@ -22,14 +22,10 @@ This app could help people who want to make cocktails by their own with detailed
 
 ![demo](/image/demo.gif)
 
----
-
 ## Architecture
 
 ![overview](/image/overview.png)
 The app is made with MERN stack (MongoDB, Express, React and Nodejs), drinks data is powered by [TheCocktailDB](https://www.thecocktaildb.com/api.php). We also use AWS S3 to store image uploaded by users and deploy our app on AWS EC2.
-
----
 
 ## Features
 
@@ -51,13 +47,13 @@ The app is made with MERN stack (MongoDB, Express, React and Nodejs), drinks dat
 
 ## Usage
 
-####Clone the repo
+#### Clone the repo
 
 ```
 git clone https://github.com/linchen1010/myBar.git
 ```
 
-####Install dependencies (frontend & backend)
+#### Install dependencies (frontend & backend)
 
 ```
 # in root directory
@@ -66,7 +62,7 @@ cd client
 npm install
 ```
 
-####Credential part
+#### Credential part
 
 For MongoDB Altas and Google OAuth, you need to register for the services and add keys in config folder.\
 For Google OAuth, you will also need to add some credential setting like URL callback in their service.
@@ -91,7 +87,7 @@ AWS_SECRET_ACCESS_KEY = YOUR_AWS_SECRET_ACCESS_KEY
 AWS_REGION: YOUR_AWS_REGION
 ```
 
-####Run
+#### Run
 
 ```
 # Run frontend (:3000) & backend (:5000)
@@ -100,7 +96,7 @@ npm run dev
 npm run start
 ```
 
-####Future work
+#### Future work
 
 - Integrate bar information with posts
   - More enjoyable for people who love drinks
@@ -113,14 +109,10 @@ npm run start
 
 ## Authors
 
----
-
 [Shi-Lin Chen](https://github.com/linchen1010)
 [Yen-Ting Lin](https://github.com/linyenting365)
 
 ## Contact
-
----
 
 #####Email:
 
