@@ -132,5 +132,5 @@ npm run start
 
 #### Email:
 
-- [Shi-Lin Chen](shilinch@usc.edu)
-- [Yen-Ting Lin](ylin2150@usc.edu)
+- [Shi-Lin Chen](mailto:shilinch@usc.edu)
+- [Yen-Ting Lin](mailto:ylin2150@usc.edu)
