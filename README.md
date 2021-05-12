@@ -47,13 +47,13 @@ The app is made with MERN stack (MongoDB, Express, React and Nodejs), drinks dat
 
 ## Usage
 
-#### Clone the repo
+### Clone the repo
 
 ```
 git clone https://github.com/linchen1010/myBar.git
 ```
 
-#### Install dependencies (frontend & backend)
+### Install dependencies (frontend & backend)
 
 ```
 # in root directory
@@ -62,7 +62,7 @@ cd client
 npm install
 ```
 
-#### Credential part
+### Credential part
 
 For MongoDB Altas and Google OAuth, you need to register for the services and add keys in config folder.\
 For Google OAuth, you will also need to add some credential setting like URL callback in their service.
@@ -87,7 +87,7 @@ AWS_SECRET_ACCESS_KEY = YOUR_AWS_SECRET_ACCESS_KEY
 AWS_REGION: YOUR_AWS_REGION
 ```
 
-#### Run
+### Run
 
 ```
 # Run frontend (:3000) & backend (:5000)
@@ -96,7 +96,7 @@ npm run dev
 npm run start
 ```
 
-#### Future work
+## Future work
 
 - Integrate bar information with posts
   - More enjoyable for people who love drinks
