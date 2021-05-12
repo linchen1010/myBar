@@ -7,6 +7,8 @@ This app could help people who want to make cocktails by their own with detailed
 
 #### Live Demo: [mybar](http://ec2-52-53-165-181.us-west-1.compute.amazonaws.com/)
 
+---
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -16,14 +18,18 @@ This app could help people who want to make cocktails by their own with detailed
 - [Authors](#authors)
 - [Contact](#contact)
 
+---
+
 ## Overview
 
-![demo](/image/demo.gif)
+## ![demo](/image/demo.gif)
 
 ## Architecture
 
 ![overview](/image/overview.png)
 The app is made with MERN stack (MongoDB, Express, React and Nodejs), drinks data is powered by [TheCocktailDB](https://www.thecocktaildb.com/api.php). We also use AWS S3 to store image uploaded by users and deploy our app on AWS EC2.
+
+---
 
 ## Features
 
@@ -94,6 +100,8 @@ npm run dev
 npm run start
 ```
 
+---
+
 ## Future work
 
 - Integrate bar information with posts
@@ -101,14 +109,20 @@ npm run start
 - Share comments between users
 - User post ranking
 
+---
+
 ## License
 
 [MIT License](LICENSE)
+
+---
 
 ## Authors
 
 [Shi-Lin Chen](https://github.com/linchen1010)
 [Yen-Ting Lin](https://github.com/linyenting365)
+
+---
 
 ## Contact
 
