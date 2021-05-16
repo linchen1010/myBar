@@ -4,7 +4,7 @@
 
 ## Description
 
-myBar is a MERN stack web application for users to view recipes of drinks and share their own dirnks with or without recipes.\
+myBar is a MERN stack web application for users to view recipes of drinks and share their own drinks with or without recipes.\
 This app could help people who want to make cocktails by their own with detailed instructions and ingredients.
 
 #### Live Demo: [mybar](http://ec2-52-53-165-181.us-west-1.compute.amazonaws.com/)
